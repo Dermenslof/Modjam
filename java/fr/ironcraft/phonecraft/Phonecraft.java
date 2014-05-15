@@ -35,7 +35,7 @@ public class Phonecraft
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-    	clientProxy.events();
+    	clientProxy.init();
     }
     
     @EventHandler
