@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
-import fr.ironcraft.phonecraft.client.gui.GuiPhone;
+import fr.ironcraft.phonecraft.client.gui.GuiPhoneAnimation;
 
 public class KeyHandler {
 	
@@ -26,7 +26,7 @@ public class KeyHandler {
 	public void input(KeyInputEvent event)
 	{
 		if(key_PhoneGUI.getIsKeyPressed()) {
-			this.mc.displayGuiScreen(new GuiPhone(mc, true));
+			this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, false));
 		}
 	}
 }

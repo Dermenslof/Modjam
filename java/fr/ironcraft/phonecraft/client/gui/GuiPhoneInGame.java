@@ -1,6 +1,8 @@
 package fr.ironcraft.phonecraft.client.gui;
 
+import fr.ironcraft.phonecraft.client.KeyHandler;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiScreen;
 
 public class GuiPhoneInGame  extends GuiScreen {
@@ -9,6 +11,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	
 	protected int shift = 0;
 	protected boolean isOpen = true;
+	protected boolean isAnimated = false;
 	
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
@@ -20,5 +23,27 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		System.out.println("Init Phone");
 	}
+	
+	public void drawScreen(int par1, int par2, float par3)
+	{
+		super.drawScreen(par1, par2, par3);
+		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000);
+	}
+	
+	@Override
+	protected void keyTyped(char par1, int par2)
+    {
+		if (par2 == 1) {
+			this.mc.displayGuiScreen(new GuiIngameMenu());
+		}
+		if (this.isOpen && par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
+        	this.isOpen = false;
+        	if (!this.isAnimated) {
+        		this.mc.displayGuiScreen((GuiScreen)null);
+    			this.mc.setIngameFocus();
+        		this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
+        	}
+        }
+    }
 
 }
