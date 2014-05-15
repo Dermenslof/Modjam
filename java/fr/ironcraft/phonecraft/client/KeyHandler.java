@@ -14,7 +14,7 @@ public class KeyHandler {
 	
 	protected Minecraft mc = Minecraft.getMinecraft();
 	
-	private KeyBinding key_PhoneGUI  = new KeyBinding("key.phone.open", Keyboard.KEY_P, "Phonecraft");
+	private KeyBinding key_PhoneGUI  = new KeyBinding("phone.open", Keyboard.KEY_P, "Phonecraft");
 	public static boolean open_phoneGUI = false;
 
 	public KeyHandler()

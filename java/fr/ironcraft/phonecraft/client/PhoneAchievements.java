@@ -6,6 +6,6 @@ import net.minecraft.stats.Achievement;
 
 public class PhoneAchievements {
 
-	public Achievement openPhone = new Achievement("openPhone", "openPhone", 0, -1, new ItemStack(Blocks.bedrock), null).registerStat().initIndependentStat();
+	public Achievement openPhone = new Achievement("openPhonecraft", "openPhone", 0, -1, new ItemStack(Blocks.bedrock), null).registerStat().initIndependentStat();
 	
 }
