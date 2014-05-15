@@ -50,7 +50,6 @@ public class GuiPhoneInGame  extends GuiScreen {
 		GL11.glPushMatrix();
 		this.mc.renderEngine.bindTexture(texturePhone);
 		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
-		//this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 3, 0, 110, 414/2);
 		GL11.glPopMatrix();
 	}
 
