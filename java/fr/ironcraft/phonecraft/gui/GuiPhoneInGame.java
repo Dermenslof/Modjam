@@ -12,6 +12,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		this.mc = par1Minecraft;
 	}
 	
+	@Override
 	public void initGui()
 	{
 		System.out.println("Init Phone");

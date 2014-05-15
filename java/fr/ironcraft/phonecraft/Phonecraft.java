@@ -35,12 +35,12 @@ public class Phonecraft
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	clientProxy.events();
     }
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
-    	new KeyHandler();
     	System.out.println("[PhoneCraft] Version: "+VERSION+" was loaded");
     }
 }
