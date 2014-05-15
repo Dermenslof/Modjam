@@ -16,7 +16,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected static Minecraft mc;
 
 	protected int shift = 0;
-	private boolean isFocused = false;
+	private boolean isFocused = true;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
@@ -80,11 +80,10 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		if (this.isFocused) {
 			this.mc.inGameHasFocus = false;
-			this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
+			//this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
 		}
  		else {
 			this.mc.inGameHasFocus = true;
-			this.mc.mouseHelper.grabMouseCursor(); //not work correctly, hummm i search ideas
 		}
 
 	}

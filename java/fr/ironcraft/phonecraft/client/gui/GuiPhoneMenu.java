@@ -1,9 +1,13 @@
 package fr.ironcraft.phonecraft.client.gui;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiIngameMenu;
-import fr.ironcraft.phonecraft.client.ClientProxy;
-import fr.ironcraft.phonecraft.client.KeyHandler;
+import net.minecraft.client.gui.GuiButton;
+import net.minecraft.client.resources.I18n;
 
 public class GuiPhoneMenu extends GuiPhoneInGame {
 
@@ -24,12 +28,18 @@ public class GuiPhoneMenu extends GuiPhoneInGame {
 	}
 	
 	@Override
-	public void mouseClicked(int par1, int par2, int par3)
+	public void initGui()
 	{
+		super.initGui();	
+	}
+	
+	/*@Override
+	protected void actionPerformed(GuiButton button)
+    {
 		if (!this.mc.inGameHasFocus)
 		{
-			this.screen = this.button > 0 ? this.button : 0;
-			switch(this.button)
+			//this.screen = this.button > 0 ? this.button : 0;
+			switch(button.id)
 			{
 			case 0:
 				//this.app = -1; //This is for futur appLoader
@@ -51,6 +61,11 @@ public class GuiPhoneMenu extends GuiPhoneInGame {
 				break;
 			}
 		}
+    }*/
+	
+	@Override
+	public void mouseClicked(int par1, int par2, int par3)
+	{
 		super.mouseClicked(par1, par2, par3);
 	}
 }
