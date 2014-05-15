@@ -73,15 +73,25 @@ public class GuiPhoneInGame  extends GuiScreen {
 		}
 	}
 	
+	/**
+	 * Change focus (inGameGUI / PhoneGUI)
+	 **/
 	private void setFocus()
 	{
-		if (this.isFocused)
+		if (this.isFocused) {
 			this.mc.inGameHasFocus = false;
-		else
+			this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
+		}
+ 		else {
 			this.mc.inGameHasFocus = true;
-		//this.mc.mouseHelper.ungrabMouseCursor();
+			this.mc.mouseHelper.grabMouseCursor(); //not work correctly, hummm i search ideas
+		}
+
 	}
 	
+	/**
+	 * Move player focused into this GUI
+	 **/
 	private void setMovement()
 	{
 		float dir = 180;
