@@ -38,7 +38,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void initGui()
 	{
-		System.out.println("Init Phone");
+		//System.out.println("Init Phone");
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
