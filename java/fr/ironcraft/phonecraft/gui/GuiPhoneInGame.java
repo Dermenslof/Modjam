@@ -6,7 +6,9 @@ import net.minecraft.client.gui.GuiScreen;
 public class GuiPhoneInGame  extends GuiScreen {
 	
 	protected static Minecraft mc;
+	
 	protected int shift = 0;
+	protected boolean isOpen = true;
 	
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
