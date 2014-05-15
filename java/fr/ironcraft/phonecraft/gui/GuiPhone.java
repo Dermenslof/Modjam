@@ -1,24 +1,20 @@
 package fr.ironcraft.phonecraft.gui;
 
-import fr.ironcraft.phonecraft.client.ClientProxy;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
+import fr.ironcraft.phonecraft.client.ClientProxy;
+import fr.ironcraft.phonecraft.client.KeyHandler;
 
 public class GuiPhone extends GuiPhoneInGame {
 
 	private boolean slide = false;
-	private boolean isOpen = false;
+	private boolean isOpen = true;
 	
 	public GuiPhone(Minecraft par1Minecraft, boolean slide)
 	{
 		super(par1Minecraft);
 		this.slide = slide;
 		this.shift = this.slide ? 214 : 0;
-	}
-	
-	public GuiPhone(Minecraft par1Minecraft)
-	{
-		super(par1Minecraft);
 		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 	}
 	
@@ -29,13 +25,20 @@ public class GuiPhone extends GuiPhoneInGame {
 		drawAnimation();
 	}
 	
+	@Override
+	protected void keyTyped(char par1, int par2)
+    {
+        if (par2 == KeyHandler.key_PhoneGUI.getKeyCode())
+        	this.isOpen = true;
+    }
+	
     private void drawAnimation()
     {
     	if(this.slide)
     	{
 
     	}
-    	else if (!isOpen)
+    	else if (!this.isOpen)
     	{
     		if(this.shift < 214)
     			this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;

@@ -14,8 +14,7 @@ public class KeyHandler {
 	
 	protected Minecraft mc = Minecraft.getMinecraft();
 	
-	private KeyBinding key_PhoneGUI  = new KeyBinding("phone.open", Keyboard.KEY_P, "Phonecraft");
-	public static boolean open_phoneGUI = false;
+	public static final KeyBinding key_PhoneGUI = new KeyBinding("phone.open", Keyboard.KEY_P, "Phonecraft");
 
 	public KeyHandler()
 	{
@@ -26,10 +25,8 @@ public class KeyHandler {
 	@SubscribeEvent
 	public void input(KeyInputEvent event)
 	{
-		open_phoneGUI = false;
 		if(key_PhoneGUI.getIsKeyPressed()) {
-			this.mc.displayGuiScreen(new GuiPhone(mc));
-			open_phoneGUI = true;
+			this.mc.displayGuiScreen(new GuiPhone(mc, true));
 		}
 	}
 }
