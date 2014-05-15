@@ -8,7 +8,7 @@ import org.lwjgl.input.Keyboard;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
-import fr.ironcraft.phonecraft.gui.GuiPhone;
+import fr.ironcraft.phonecraft.client.gui.GuiPhone;
 
 public class KeyHandler {
 	
