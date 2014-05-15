@@ -26,7 +26,7 @@ public class KeyHandler {
 	public void input(KeyInputEvent event)
 	{
 		if(key_PhoneGUI.getIsKeyPressed()) {
-			this.mc.displayGuiScreen(new GuiPhone(mc, true));
+			this.mc.displayGuiScreen(new GuiPhone(mc, false));
 		}
 	}
 }

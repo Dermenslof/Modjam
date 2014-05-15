@@ -29,22 +29,18 @@ public class GuiPhone extends GuiPhoneInGame {
 	protected void keyTyped(char par1, int par2)
     {
         if (par2 == KeyHandler.key_PhoneGUI.getKeyCode())
-        	this.isOpen = true;
+        	this.isOpen = false;
     }
 	
     private void drawAnimation()
     {
-    	if(this.slide)
-    	{
-
-    	}
-    	else if (!this.isOpen)
-    	{
-    		if(this.shift < 214)
-    			this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;
-    		if(this.shift >= 214){
-                this.mc.displayGuiScreen((GuiScreen)null);
-                this.mc.setIngameFocus();
+    	if (this.isOpen && this.shift != 214)
+    		this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;
+    	else if (!this.isOpen) {
+    		this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;
+    		if (this.shift >= 214) {
+    			this.mc.displayGuiScreen((GuiScreen)null);
+    			this.mc.setIngameFocus();
     		}
     	}
     }
