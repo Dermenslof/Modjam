@@ -18,11 +18,17 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
 	protected float transparency;
-	protected static String texturePath = TextureUtils.getTextureNameForGui("phone");
-	public static ResourceLocation texturePhone = new ResourceLocation(texturePath);
+	public static ResourceLocation texturePhone;
 	
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
+		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui("phone"));
+		this.mc = par1Minecraft;
+	}
+	
+	public GuiPhoneInGame (Minecraft par1Minecraft, String phoneType)
+	{
+		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
 		this.mc = par1Minecraft;
 	}
 
@@ -36,7 +42,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		super.drawScreen(par1, par2, par3);
 		this.drawBackground();
-		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000);
+		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xff000000);
 	}
 
 	private void drawBackground()
@@ -60,6 +66,12 @@ public class GuiPhoneInGame  extends GuiScreen {
 			if (!this.isOpen && !this.isAnimated)
 				this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
 		}
+	}
+	
+	@Override
+	public boolean doesGuiPauseGame()
+	{
+		return false;
 	}
 
 }
