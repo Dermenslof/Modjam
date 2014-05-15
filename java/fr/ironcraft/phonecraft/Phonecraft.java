@@ -34,6 +34,7 @@ public class Phonecraft
     public void preInit(FMLPreInitializationEvent event)
     {
     	this.blocks = new ICBlocks();
+    	this.blocks.init();
     }
     
     @EventHandler
