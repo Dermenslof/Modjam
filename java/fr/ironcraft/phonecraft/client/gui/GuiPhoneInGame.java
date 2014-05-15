@@ -1,4 +1,4 @@
-package fr.ironcraft.phonecraft.gui;
+package fr.ironcraft.phonecraft.client.gui;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiScreen;
