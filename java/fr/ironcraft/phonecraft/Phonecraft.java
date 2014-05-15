@@ -13,13 +13,16 @@ import fr.ironcraft.phonecraft.common.CommonProxy;
 @Mod(modid = Phonecraft.MODID, version = Phonecraft.VERSION)
 public class Phonecraft
 {
+	public static String urlFiles;
+	public static String phoneFolder = "./PhoneCraft/";
+	
     public static final String MODID = "phonecraft";
     public static final String VERSION = "0.1";
     
     @Instance(MODID)
     public static Phonecraft instance;
     
-    @SidedProxy(clientSide = "fr.ironcraft.phonecraft.ClientProxy", serverSide = "fr.ironcraft.phonecraft.CommonProxy")
+    @SidedProxy(clientSide = "fr.ironcraft."+MODID+".client.ClientProxy", serverSide = "fr.ironcraft."+MODID+".common.CommonProxy")
     public static ClientProxy clientProxy;
     public static CommonProxy commonProxy;
     
@@ -35,6 +38,7 @@ public class Phonecraft
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
-    {   
+    {
+    	System.out.println("[PhoneCraft] Version: "+VERSION+" was loaded");
     }
 }
