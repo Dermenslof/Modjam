@@ -18,6 +18,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	protected int shift = 0;
 	private boolean isFocused;
+	protected boolean focus;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
@@ -42,11 +43,31 @@ public class GuiPhoneInGame  extends GuiScreen {
 		this.isFocused = true;
 		//System.out.println("Init Phone");
 	}
+	
+	@Override
+	public void updateScreen()
+	{
+		if(Keyboard.isKeyDown(KeyHandler.key_PhoneFocus.getKeyCode()))
+		{
+			if(!this.isFocused)
+			{
+				this.mc.inGameHasFocus = false;
+				this.mc.mouseHelper.ungrabMouseCursor();
+				this.isFocused = true;
+			}
+		}
+		else
+		{
+			this.mc.inGameHasFocus = true;
+			this.mc.mouseHelper.grabMouseCursor();
+			this.isFocused = false;
+		}
+	}
 
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.setMovement();
-		this.setFocus();
+//		this.setFocus();
 		super.drawScreen(par1, par2, par3);
 		this.drawBackground();
 		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xff000000);
@@ -65,8 +86,8 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		if (par2 == 1)
 			this.mc.displayGuiScreen(new GuiIngameMenu());
-		else if (par2 == KeyHandler.key_PhoneFocus.getKeyCode())
-			this.isFocused = !this.isFocused;
+//		else if (par2 == KeyHandler.key_PhoneFocus.getKeyCode())
+//			this.isFocused = !this.isFocused;
 		else if (par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
 			this.isOpen = !this.isOpen;
 
@@ -80,13 +101,13 @@ public class GuiPhoneInGame  extends GuiScreen {
 	 **/
 	private void setFocus()
 	{
-		if (this.isFocused) {
-			this.mc.inGameHasFocus = false;
-			//this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
-		}
- 		else {
-			this.mc.inGameHasFocus = true;
-		}
+//		if (this.isFocused) {
+//			this.mc.inGameHasFocus = false;
+//			//this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
+//		}
+// 		else {
+//			this.mc.inGameHasFocus = true;
+//		}
 	}
 
 	/**
