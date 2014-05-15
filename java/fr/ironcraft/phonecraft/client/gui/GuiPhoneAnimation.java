@@ -34,7 +34,7 @@ public class GuiPhoneAnimation extends GuiPhoneInGame {
     	}
     	else if (!this.isOpen) {
     		this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;
-    		if (this.shift >= 214) {
+    		if (this.shift == 214) {
     			this.isAnimated = false;
     			this.mc.displayGuiScreen((GuiScreen)null);
     			this.mc.setIngameFocus();

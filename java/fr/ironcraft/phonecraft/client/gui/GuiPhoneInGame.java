@@ -12,6 +12,8 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected int shift = 0;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
+	protected boolean isHome = false;
+	protected float transparency;
 	
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
@@ -33,16 +35,16 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	protected void keyTyped(char par1, int par2)
     {
-		if (par2 == 1) {
+		if (par2 == 1)
 			this.mc.displayGuiScreen(new GuiIngameMenu());
-		}
-		if (this.isOpen && par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
-        	this.isOpen = false;
-        	if (!this.isAnimated) {
-        		this.mc.displayGuiScreen((GuiScreen)null);
-    			this.mc.setIngameFocus();
-        		this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
-        	}
+		
+		if (this.isOpen && par2 == KeyHandler.key_PhoneGUI.getKeyCode())
+			this.isOpen = !this.isOpen;
+		
+        if (!this.isOpen && !this.isAnimated) {
+        	this.mc.displayGuiScreen((GuiScreen)null);
+    		this.mc.setIngameFocus();
+        	this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
         }
     }
 
