@@ -1,6 +1,7 @@
 error.permission=§4Vous n'avez pas la permission !!!
 
 key.phone.open=Ouvrir
+key.phone.focus=Focus
 
 achievement.openPhone=Taking PhoneCraft
 achievement.openPhone.desc=Allumer son PhoneCraft.
