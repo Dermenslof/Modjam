@@ -40,34 +40,18 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void initGui()
 	{
-		this.isFocused = true;
-		//System.out.println("Init Phone");
+		this.isFocused = false;
 	}
 	
 	@Override
 	public void updateScreen()
 	{
-		if(Keyboard.isKeyDown(KeyHandler.key_PhoneFocus.getKeyCode()))
-		{
-			if(!this.isFocused)
-			{
-				this.mc.inGameHasFocus = false;
-				this.mc.mouseHelper.ungrabMouseCursor();
-				this.isFocused = true;
-			}
-		}
-		else
-		{
-			this.mc.inGameHasFocus = true;
-			this.mc.mouseHelper.grabMouseCursor();
-			this.isFocused = false;
-		}
+		//this.setFocus();
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.setMovement();
-//		this.setFocus();
 		super.drawScreen(par1, par2, par3);
 		this.drawBackground();
 		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xff000000);
@@ -101,13 +85,21 @@ public class GuiPhoneInGame  extends GuiScreen {
 	 **/
 	private void setFocus()
 	{
-//		if (this.isFocused) {
-//			this.mc.inGameHasFocus = false;
-//			//this.mc.mouseHelper.ungrabMouseCursor(); //not work correctly, hummm i search ideas
-//		}
-// 		else {
-//			this.mc.inGameHasFocus = true;
-//		}
+		if(Keyboard.isKeyDown(KeyHandler.key_PhoneFocus.getKeyCode()))
+		{
+			if(!this.isFocused)
+			{
+				this.mc.inGameHasFocus = false;
+				this.mc.mouseHelper.ungrabMouseCursor();
+				this.isFocused = true;
+			}
+		}
+		else
+		{
+			this.mc.inGameHasFocus = true;
+			this.mc.mouseHelper.grabMouseCursor();
+			this.isFocused = false;
+		}
 	}
 
 	/**
