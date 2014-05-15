@@ -38,14 +38,12 @@ public class GuiPhoneInGame  extends GuiScreen {
 		if (par2 == 1)
 			this.mc.displayGuiScreen(new GuiIngameMenu());
 		
-		if (this.isOpen && par2 == KeyHandler.key_PhoneGUI.getKeyCode())
+		if (par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
 			this.isOpen = !this.isOpen;
 		
-        if (!this.isOpen && !this.isAnimated) {
-        	this.mc.displayGuiScreen((GuiScreen)null);
-    		this.mc.setIngameFocus();
-        	this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
-        }
+	        if (!this.isOpen && !this.isAnimated)
+	        	this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
+		}
     }
 
 }
