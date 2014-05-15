@@ -1,34 +1,35 @@
 package fr.ironcraft.phonecraft.client.gui;
 
-import org.lwjgl.input.Keyboard;
-import org.lwjgl.opengl.GL11;
-
-import fr.ironcraft.phonecraft.client.KeyHandler;
-import fr.ironcraft.phonecraft.utils.TextureUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
+import org.lwjgl.input.Keyboard;
+import org.lwjgl.opengl.GL11;
+
+import fr.ironcraft.phonecraft.client.KeyHandler;
+import fr.ironcraft.phonecraft.utils.TextureUtils;
+
 public class GuiPhoneInGame  extends GuiScreen {
 
 	protected static Minecraft mc;
 
 	protected int shift = 0;
-	private boolean isFocused = true;
+	private boolean isFocused;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
 	protected float transparency;
 	public static ResourceLocation texturePhone;
-	
+
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
 		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui("phone"));
 		this.mc = par1Minecraft;
 	}
-	
+
 	public GuiPhoneInGame (Minecraft par1Minecraft, String phoneType)
 	{
 		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
@@ -38,6 +39,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void initGui()
 	{
+		this.isFocused = true;
 		//System.out.println("Init Phone");
 	}
 
@@ -72,7 +74,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 				this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
 		}
 	}
-	
+
 	/**
 	 * Change focus (inGameGUI / PhoneGUI)
 	 **/
@@ -85,9 +87,8 @@ public class GuiPhoneInGame  extends GuiScreen {
  		else {
 			this.mc.inGameHasFocus = true;
 		}
-
 	}
-	
+
 	/**
 	 * Move player focused into this GUI
 	 **/
@@ -95,16 +96,16 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		float dir = 180;
 		float power = 0;
-		
+
 		boolean up = Keyboard.isKeyDown(this.mc.gameSettings.keyBindForward.getKeyCode());
 		boolean down = Keyboard.isKeyDown(this.mc.gameSettings.keyBindBack.getKeyCode());
 		boolean jump = Keyboard.isKeyDown(this.mc.gameSettings.keyBindJump.getKeyCode());
 		boolean left = Keyboard.isKeyDown(this.mc.gameSettings.keyBindLeft.getKeyCode());
 		boolean right = Keyboard.isKeyDown(this.mc.gameSettings.keyBindRight.getKeyCode());
-		
+
 		if(jump && this.mc.thePlayer.onGround)
 			this.mc.thePlayer.motionY = 0.4F;
-		
+
 		if (left == right) {
 			dir = 180;
 			power = up && !down ? -1 : (down && !up ? 1 : 0);
@@ -136,7 +137,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		this.mc.thePlayer.motionZ = (double)(MathHelper.cos((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 		this.mc.thePlayer.motionX = (double)(-MathHelper.sin((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 	}
-	
+
 	@Override
 	public boolean doesGuiPauseGame()
 	{

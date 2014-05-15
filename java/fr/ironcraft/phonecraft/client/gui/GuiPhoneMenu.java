@@ -1,13 +1,6 @@
 package fr.ironcraft.phonecraft.client.gui;
 
-import java.util.Calendar;
-import java.util.Date;
-
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.resources.I18n;
 
 public class GuiPhoneMenu extends GuiPhoneInGame {
 
