@@ -8,12 +8,12 @@ import fr.ironcraft.phonecraft.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
 
-	public static ClientAchievements achievements;
+	public static PhoneAchievements achievements;
 
 	public void init()
 	{
 		events();
-		achievements = new ClientAchievements();
+		achievements = new PhoneAchievements();
 	}
 	
 	public void renders()

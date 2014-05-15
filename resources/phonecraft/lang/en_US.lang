@@ -1,1 +1,6 @@
-key.phone.open.name=Open
+error.permission=§4You don't have permission !!!
+
+key.phone.open=Open
+
+achievement.openPhone=Taking PhoneCraft
+achievement.openPhone.desc=Open your PhoneCraft.

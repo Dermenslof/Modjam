@@ -2,7 +2,6 @@ package fr.ironcraft.phonecraft.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.stats.AchievementList;
 
 import org.lwjgl.input.Keyboard;
 
@@ -29,8 +28,6 @@ public class KeyHandler {
 	{
 		open_phoneGUI = false;
 		if(key_PhoneGUI.getIsKeyPressed()) {
-			mc.thePlayer.triggerAchievement(AchievementList.openInventory);
-			mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 			this.mc.displayGuiScreen(new GuiPhone(mc));
 			open_phoneGUI = true;
 		}
