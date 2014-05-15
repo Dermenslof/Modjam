@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.common.CommonProxy;
+import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
 
 @Mod(modid = Phonecraft.MODID, version = Phonecraft.VERSION)
 public class Phonecraft
@@ -27,9 +28,12 @@ public class Phonecraft
     public static ClientProxy clientProxy;
     public static CommonProxy commonProxy;
     
+    private static ICBlocks blocks;
+    
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	this.blocks = new ICBlocks();
     }
     
     @EventHandler
@@ -42,5 +46,10 @@ public class Phonecraft
     public void postInit(FMLPostInitializationEvent event)
     {
     	System.out.println("[PhoneCraft] Version: "+VERSION+" was loaded");
+    }
+    
+    public ICBlocks getBlocks()
+    {
+    	return this.blocks;
     }
 }
