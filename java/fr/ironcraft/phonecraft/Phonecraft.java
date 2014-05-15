@@ -8,6 +8,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fr.ironcraft.phonecraft.client.ClientProxy;
+import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 
 @Mod(modid = Phonecraft.MODID, version = Phonecraft.VERSION)
@@ -34,6 +35,7 @@ public class Phonecraft
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+    	clientProxy.events();
     }
     
     @EventHandler
