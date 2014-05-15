@@ -15,10 +15,12 @@ public class KeyHandler {
 	protected Minecraft mc = Minecraft.getMinecraft();
 	
 	public static final KeyBinding key_PhoneGUI = new KeyBinding("key.phone.open", Keyboard.KEY_P, "Phonecraft");
+	public static final KeyBinding key_PhoneFocus = new KeyBinding("key.phone.focus", Keyboard.KEY_F, "Phonecraft");
 
 	public KeyHandler()
 	{
 	    ClientRegistry.registerKeyBinding(key_PhoneGUI);
+	    ClientRegistry.registerKeyBinding(key_PhoneFocus);
 	    System.out.println("[Phonecraft] Keys was registered");
 	}
 

@@ -16,6 +16,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected static Minecraft mc;
 
 	protected int shift = 0;
+	private boolean isFocused = false;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
@@ -43,6 +44,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	public void drawScreen(int par1, int par2, float par3)
 	{
 		this.setMovement();
+		this.setFocus();
 		super.drawScreen(par1, par2, par3);
 		this.drawBackground();
 		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xff000000);
@@ -61,13 +63,23 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		if (par2 == 1)
 			this.mc.displayGuiScreen(new GuiIngameMenu());
-
-		if (par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
+		else if (par2 == KeyHandler.key_PhoneFocus.getKeyCode())
+			this.isFocused = !this.isFocused;
+		else if (par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
 			this.isOpen = !this.isOpen;
 
 			if (!this.isOpen && !this.isAnimated)
 				this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, true));
 		}
+	}
+	
+	private void setFocus()
+	{
+		if (this.isFocused)
+			this.mc.inGameHasFocus = false;
+		else
+			this.mc.inGameHasFocus = true;
+		//this.mc.mouseHelper.ungrabMouseCursor();
 	}
 	
 	private void setMovement()
@@ -80,45 +92,33 @@ public class GuiPhoneInGame  extends GuiScreen {
 		boolean jump = Keyboard.isKeyDown(this.mc.gameSettings.keyBindJump.getKeyCode());
 		boolean left = Keyboard.isKeyDown(this.mc.gameSettings.keyBindLeft.getKeyCode());
 		boolean right = Keyboard.isKeyDown(this.mc.gameSettings.keyBindRight.getKeyCode());
-		boolean sneak = Keyboard.isKeyDown(this.mc.gameSettings.keyBindSneak.getKeyCode());
 		
 		if(jump && this.mc.thePlayer.onGround)
 			this.mc.thePlayer.motionY = 0.4F;
-
-		if(sneak && this.mc.thePlayer.onGround)
-			this.mc.thePlayer.setSneaking(true);
 		
-		if (left == right)
-		{
+		if (left == right) {
 			dir = 180;
 			power = up && !down ? -1 : (down && !up ? 1 : 0);
 		}
-		else
-		{
-			if (up == down)
-			{
+		else {
+			if (up == down) {
 				dir = -90;
 				power = left && !right ? 1 : (right && !left ? -1 : 0);
 			}
-			else
-			{
-				if (up && !down && left && !right)
-				{
+			else {
+				if (up && !down && left && !right) {
 					dir = -45;
 					power = 1;
 				}
-				else if (up && !down && !left && right)
-				{
+				else if (up && !down && !left && right) {
 					dir = 45;
 					power = 1;
 				}
-				if (!up && down && left && !right)
-				{
+				if (!up && down && left && !right) {
 					dir = 45;
 					power = -1;
 				}
-				else if (!up && down && !left && right)
-				{
+				else if (!up && down && !left && right) {
 					dir = -45;
 					power = -1;
 				}
