@@ -19,7 +19,7 @@ public class KeyHandler {
 	public KeyHandler()
 	{
 	    ClientRegistry.registerKeyBinding(key_PhoneGUI);
-	    System.out.println("Keys was registered");
+	    System.out.println("[Phonecraft] Keys was registered");
 	}
 
 	@SubscribeEvent

@@ -53,5 +53,4 @@ public class GuiPhoneMenu extends GuiPhoneInGame {
 		}
 		super.mouseClicked(par1, par2, par3);
 	}
-	
 }
