@@ -28,13 +28,13 @@ public class GuiPhoneAnimation extends GuiPhoneInGame {
     {
     	if (this.isOpen && this.shift != 0)
     		this.shift = this.shift - 5 > 4 ? this.shift - 10 : 0;
-    	else if (this.isOpen && this.shift == 0) {
+    	if (this.isOpen && this.shift == 0) {
     		this.isAnimated = false;
     		this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc));
     	}
-    	else if (!this.isOpen) {
+    	if (!this.isOpen) {
     		this.shift = this.shift + 5 < 210 ? this.shift + 10 : 214;
-    		if (this.shift >= 214) {
+    		if (this.shift == 214) {
     			this.isAnimated = false;
     			this.mc.displayGuiScreen((GuiScreen)null);
     			this.mc.setIngameFocus();
