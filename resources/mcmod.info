@@ -1,0 +1,16 @@
+[
+{
+  "modid": "phonecraft,
+  "name": "Phonecraft",
+  "description": "This is a smartphone",
+  "version": "0.1",
+  "mcversion": "1.7.2",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Dren", "Dermenslof", "poupi"],
+  "credits": "Ironcraft team - Thanks poupi for textures",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
