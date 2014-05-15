@@ -3,5 +3,8 @@ error.permission=§4Vous n'avez pas la permission !!!
 key.phone.open=Ouvrir
 key.phone.focus=Focus
 
+tile.qrCode.name=Code QR
+tile.flash.name=Bloc Flash
+
 achievement.openPhone=Taking PhoneCraft
 achievement.openPhone.desc=Allumer son PhoneCraft.
