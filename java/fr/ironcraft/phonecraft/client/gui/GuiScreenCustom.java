@@ -2,9 +2,12 @@ package fr.ironcraft.phonecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
 
+@SideOnly(Side.CLIENT)
 public class GuiScreenCustom extends GuiScreen {
 	
 	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5, int par6, float trans)

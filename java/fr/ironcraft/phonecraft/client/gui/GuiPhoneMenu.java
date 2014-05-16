@@ -6,7 +6,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import javax.imageio.ImageIO;
 
@@ -154,34 +156,12 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
-			Calendar cal = Calendar.getInstance();
-			cal.setTime(d);
-			int day = cal.get(Calendar.DAY_OF_WEEK);
-			String Day = "";
-			switch(day)
-			{
-			case 1:
-				Day = TextUtils.getLanguage("day.sunday");
-				break;
-			case 2:
-				Day = TextUtils.getLanguage("day.monday");
-				break;
-			case 3:
-				Day = TextUtils.getLanguage("day.tuesday");
-				break;
-			case 4:
-				Day = TextUtils.getLanguage("day.wednesday");
-				break;
-			case 5:
-				Day = TextUtils.getLanguage("day.thursday");
-				break;
-			case 6:
-				Day = TextUtils.getLanguage("day.friday");
-				break;
-			case 7:
-				Day = TextUtils.getLanguage("day.saturday");
-				break;
-			}
+		
+		Calendar cal = Calendar.getInstance();
+		String Day = TextUtils.getLanguage("day." + cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toLowerCase());
+		if (Day.charAt(0) >= 'a')
+			Day = "" + (char)(Day.charAt(0) - 32) + Day.substring(1);
+		
 			GL11.glTranslatef(this.width - 30 + this.shift, this.height - 170, 0);
 			GL11.glScalef(0.7F,  0.7F,  1);
 			this.font.drawString(this, Day, - (int)((this.font.getStringWidth(Day) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
@@ -189,7 +169,11 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glPushMatrix();
 			GL11.glTranslatef(this.width - 30 + this.shift, this.height - 155, 0);
 			GL11.glScalef(0.5F,  0.5F,  1);
-			this.font.drawString(this, String.valueOf(d.getDay()) + "/" + String.valueOf(d.getMonth()) + "/" + String.valueOf(d.getYear()+1900), - (int)((this.font.getStringWidth(String.valueOf(d.getDay()) + "/" + String.valueOf(d.getMonth()) + "/" + String.valueOf(d.getYear() + 1900)) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
+			this.font.drawString(this, cal.get(Calendar.DAY_OF_MONTH)
+					+ "/" + (cal.get(Calendar.MONTH) + 1)
+					+ "/" + cal.get(Calendar.YEAR), - (int)((this.font.getStringWidth(cal.get(Calendar.DAY_OF_MONTH)
+					+ "/" + (cal.get(Calendar.MONTH) + 1)
+					+ "/" + cal.get(Calendar.YEAR)) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);

@@ -1,11 +1,12 @@
 package fr.ironcraft.phonecraft.client.gui;
 
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
-import net.minecraft.client.gui.GuiScreen;
-import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
@@ -18,7 +19,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.utils.CustomFont;
-import fr.ironcraft.phonecraft.utils.SoundUtils;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 /**
@@ -118,15 +118,17 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 
 		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
 		//time (real)
-		Date d = new Date();
-		String h = d.getHours() < 10 ? "0" + String.valueOf(d.getHours()) : String.valueOf(d.getHours());
-		String m =  d.getMinutes() < 10 ? "0" + String.valueOf(d.getMinutes()) : String.valueOf(d.getMinutes());
+		Calendar cal = new GregorianCalendar();
+		int hour = cal.get(Calendar.HOUR);
+		String h = cal.get(Calendar.AM_PM) == 0 ? "" + hour : "" + (hour + 12);
+		int minute = cal.get(Calendar.MINUTE);
+		String m =  minute < 10 ? "0" + minute : "" + minute;
 		
 		GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 1F);
-			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
+			GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
 			font.drawString(this, h, 0, 0, 0xd2d2d2, 0.3F);
-			font.drawString(this, ":", 12, -1, 0xd2d2d2, 0.3F);
+			font.drawString(this, ":", 12 , -1, 0xd2d2d2, 0.3F);
 			font.drawString(this, m, 16, 0, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
 		
