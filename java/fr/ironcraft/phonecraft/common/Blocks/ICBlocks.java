@@ -24,7 +24,7 @@ public class ICBlocks {
 
 	private void configBlocks() {
 		qrCode = new GenericBlock(Material.cloth).setBlockName("qrCode").setBlockTextureName("qrCode").setStepSound(Block.soundTypeCloth).setCreativeTab(CreaTabs.phoneTab).setBlockUnbreakable();
-		flash = new GenericBlock(Material.glass).setHardness(0.3F).setLightLevel(1.0F).setBlockName("flash").setBlockTextureName("flash");
+		flash = new BlockFlash(Material.glass).setHardness(0.3F).setLightLevel(1.0F).setBlockName("flash").setBlockTextureName("flash");
 	}
 
 }
