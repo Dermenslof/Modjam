@@ -9,6 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.input.Keyboard;
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
 import fr.ironcraft.phonecraft.client.ClientProxy;
@@ -26,10 +27,19 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
+	protected boolean isFullscreen = false;
 	protected float transparency;
 	
 	public static ResourceLocation texturePhone;
 	protected CustomFont font;
+
+	/* For mouse gestion */
+	private int clickX;
+	private int clickY;
+	private int releaseX;
+	private int releaseY;
+	private boolean isTactile;
+	private boolean mouseIsDrag;
 
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
@@ -50,12 +60,10 @@ public class GuiPhoneInGame  extends GuiScreen {
 		//this.isFocused = true;
 		
 		Keyboard.enableRepeatEvents(true);
-		try
-		{
+		try {
 			this.font = new CustomFont(this.mc, "TimesNewRoman", 10);
 		}
-		catch(Exception e)
-		{
+		catch(Exception e) {
 			e.printStackTrace();
 		}
 		this.focus = true;
@@ -196,6 +204,13 @@ public class GuiPhoneInGame  extends GuiScreen {
 		}
 		this.mc.thePlayer.motionZ = (double)(MathHelper.cos((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 		this.mc.thePlayer.motionX = (double)(-MathHelper.sin((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
+	}
+	
+	@Override
+	public void handleMouseInput()
+	{
+		if (Mouse.isButtonDown(this.mc.gameSettings.keyBindUseItem.getKeyCode()) && this.isFocused)
+            this.mc.thePlayer.clearItemInUse();
 	}
 
 	@Override
