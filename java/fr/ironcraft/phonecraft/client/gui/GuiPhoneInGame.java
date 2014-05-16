@@ -13,12 +13,18 @@ import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.utils.CustomFont;
 import fr.ironcraft.phonecraft.utils.SoundUtils;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
+/**
+ * @authors Dren, Dermenslof
+ */
+@SideOnly(Side.CLIENT)
 public class GuiPhoneInGame  extends GuiScreen {
 
 	protected static Minecraft mc;
@@ -32,9 +38,10 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected boolean isCamera;
 	protected float transparency;
 	
-	public static ResourceLocation texturePhone;
+	private static ResourceLocation texturePhone;
+	private static ResourceLocation textureIcons;
 	protected CustomFont font;
-
+	
 	/* For mouse gestion */
 	protected int clickX;
 	protected int clickY;
@@ -57,6 +64,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	public GuiPhoneInGame (Minecraft par1Minecraft, String phoneType)
 	{
 		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
+		this.textureIcons = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
 		this.mc = par1Minecraft;
 		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 	}
@@ -131,7 +139,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		//Texture
 		GL11.glPushMatrix();
-		this.mc.renderEngine.bindTexture(texturePhone);
+		this.mc.renderEngine.bindTexture(this.getTexturePhone());
 		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
 		GL11.glPopMatrix();
 	}
@@ -431,5 +439,15 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
+	}
+	
+	public ResourceLocation getTexturePhone()
+	{
+		return texturePhone;
+	}
+	
+	public ResourceLocation getTextureIcons()
+	{
+		return textureIcons;
 	}
 }

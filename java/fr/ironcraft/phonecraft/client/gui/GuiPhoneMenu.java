@@ -146,7 +146,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1,  1,  1,  this.transparency);
-			this.mc.renderEngine.bindTexture(texturePhone);
+			this.mc.renderEngine.bindTexture(this.getTextureIcons());
 			this.drawTexturedModalRect(this.width - 101 + this.shift, this.height - 178, 113, 78, 42, 42);
 			Date d = new Date();
 			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
@@ -194,7 +194,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1,  1,  1,  this.transparency);
-			this.mc.renderEngine.bindTexture(texturePhone);
+			this.mc.renderEngine.bindTexture(this.getTextureIcons());
 			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
 			GL11.glRotatef(d.getHours() * 30 + 180,  0,  0,  1);
 			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 10);
@@ -202,7 +202,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1,  0,  0,  this.transparency);
-			this.mc.renderEngine.bindTexture(texturePhone);
+			this.mc.renderEngine.bindTexture(this.getTextureIcons());
 			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
 			GL11.glRotatef(d.getSeconds() * 6 + 180,  0,  0,  1);
 			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
@@ -218,7 +218,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 				this.drawGradientRect(this.width - 59 + this.shift, this.height - 47, this.width - 38 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
 				this.drawGradientRect(this.width - 36 + this.shift, this.height - 47, this.width - 15 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
 				//icons boutons
-				this.mc.renderEngine.bindTexture(texturePhone);
+				this.mc.renderEngine.bindTexture(this.getTextureIcons());
 				GL11.glEnable(GL11.GL_BLEND);
 				GL11.glColor4f(1,  1,  1,  (this.transparency - 1.0F));
 				GL11.glTranslatef(this.width - 104 + this.shift, this.height - 44, 0);
@@ -244,7 +244,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  1,  1,  this.transparency);
 		GL11.glTranslatef(-0.5F, 0, 0);
-		this.mc.renderEngine.bindTexture(texturePhone);
+		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 		for(int t=0; t<3; t++)
 			this.drawTexturedModalRect(this.width - 72 + this.shift + (t * 10), this.height - 181, 44, 227, 3, 3);
 		//page actuelle
@@ -258,10 +258,10 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 	{
 		//System.out.println("PAGE");
 		onOverApps();
-		int t = (this.page*16);
-		for(int h=0; h<4; h++)
+		int t = (this.page * 16);
+		for(int line = 0; line < 4; line++)
 		{
-			for(int q=0; q<4; q++)
+			for(int col = 0; col < 4; col++)
 			{
 				t++;
 				try
@@ -281,17 +281,6 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 						//System.err.println("Problème app " + t);
 						return;
 					}
-					GL11.glPushMatrix();
-						this.mc.renderEngine.bindTexture(texturePhone);
-						GL11.glEnable(GL11.GL_BLEND);
-						GL11.glColor4f(1,  1,  1, this.transparency/2);
-						this.drawTexturedModalRect(this.width-103+(q*23)+this.shift, this.height-171+10+(h*30), 110+((t-1)%16)*14, 0, 14, 10);
-						GL11.glPushMatrix();
-							GL11.glScalef(0.5F, 0.5F, 1);
-							GL11.glTranslatef((this.width-103+this.shift+(q%16)*23+9)/0.5F, (this.height-161+10+(h*30))/0.5F, 0);
-							this.font.drawString(this, title, 0-(this.font.getStringWidth(title)/2), 0, 0xffd2d2d2, this.transparency);    				
-						GL11.glPopMatrix();
-					GL11.glPopMatrix();
 				}
 				catch(Exception e)
 				{
@@ -312,9 +301,9 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			if(this.mouseY >= this.height-191 && this.mouseY <= this.height-29)
 			{
 				int t = (this.page*16);
-				for(int h=0; h<4; h++)
+				for(int line = 0; line < 4; line++)
 				{
-					for(int q=0; q<4; q++)
+					for(int col = 0; col < 4; col++)
 					{
 						t++;
 						try
@@ -333,15 +322,6 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 							{
 								//System.err.println("Probl�me app " + t);
 								return;
-							}
-
-							if(this.mouseX >= this.width-103+(q*23)-1 && this.mouseX <= this.width-103+(q*23)+19)
-							{
-								if(this.mouseY >= this.height-171+10+(h*30)-2 && this.mouseY <= this.height-171+10+(h*30)+20)
-								{
-									this.drawRect(this.width-103+(q*23)+this.shift-1, this.height-171+10+(h*30)-2, this.width-103+(q*23)+this.shift+19, this.height-171+10+(h*30)+20, 0x55d2d2d2);
-									this.app = t;
-								}
 							}
 						}
 						catch(Exception e)
@@ -400,7 +380,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					GL11.glTranslatef(0.5F, 1.22F, 0);
 					GL11.glEnable(GL11.GL_BLEND);
 					GL11.glColor4f(1F,  1F,  1F,  this.transparency - 0.7F);
-					this.mc.renderEngine.bindTexture(texturePhone);
+					this.mc.renderEngine.bindTexture(this.getTextureIcons());
 					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
 					GL11.glDisable(GL11.GL_BLEND);
 					GL11.glPopMatrix();
