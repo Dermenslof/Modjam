@@ -9,7 +9,9 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
 
+import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
+import fr.ironcraft.phonecraft.utils.CustomFont;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 public class GuiPhoneInGame  extends GuiScreen {
@@ -23,30 +25,44 @@ public class GuiPhoneInGame  extends GuiScreen {
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
 	protected float transparency;
+	
 	public static ResourceLocation texturePhone;
+	protected CustomFont font;
 
 	public GuiPhoneInGame (Minecraft par1Minecraft)
 	{
-		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui("phone"));
-		this.mc = par1Minecraft;
+		this(par1Minecraft, "phone");
 	}
 
 	public GuiPhoneInGame (Minecraft par1Minecraft, String phoneType)
 	{
 		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
 		this.mc = par1Minecraft;
+		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 	}
 
 	@Override
 	public void initGui()
 	{
-		this.isFocused = false;
+		//useless for now
+		//this.isFocused = true;
+		
+		Keyboard.enableRepeatEvents(true);
+		try
+		{
+			this.font = new CustomFont(this.mc, "TimesNewRoman", 10);
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		this.focus = true;
 	}
 	
 	@Override
 	public void updateScreen()
 	{
-		//this.setFocus();
+//		this.setFocus();
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
@@ -82,9 +98,11 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	/**
 	 * Change focus (inGameGUI / PhoneGUI)
-	 **/
+	 */
 	private void setFocus()
 	{
+//		if (!...controlFocus)
+//			return;
 		if(Keyboard.isKeyDown(KeyHandler.key_PhoneFocus.getKeyCode()))
 		{
 			if(!this.isFocused)
@@ -104,7 +122,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	/**
 	 * Move player focused into this GUI
-	 **/
+	 */
 	private void setMovement()
 	{
 		float dir = 180;
@@ -156,5 +174,4 @@ public class GuiPhoneInGame  extends GuiScreen {
 	{
 		return false;
 	}
-
 }

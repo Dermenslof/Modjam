@@ -14,7 +14,6 @@ public class GuiPhoneAnimation extends GuiPhoneInGame {
 		this.isOpen = !open;
 		this.shift = !open ? 214 : 0;
 		this.isAnimated = true;
-		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 	}
 	
 	@Override
