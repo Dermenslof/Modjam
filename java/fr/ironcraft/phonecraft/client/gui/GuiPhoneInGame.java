@@ -1,5 +1,7 @@
 package fr.ironcraft.phonecraft.client.gui;
 
+import java.util.Date;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiScreen;
@@ -75,9 +77,29 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	private void drawBackground()
 	{
+		//Texture
 		GL11.glPushMatrix();
 		this.mc.renderEngine.bindTexture(texturePhone);
 		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
+		GL11.glPopMatrix();
+		
+		//time (real)
+		String h = "10";
+		String m =  "21";
+		
+		GL11.glPushMatrix();
+			//GL11.glScalef(0.5F, 0.5F, 1);
+			//GL11.glTranslatef((this.width-28.5F+this.shift)/0.5F, (this.height-192.5F)/0.5F, 0);
+			font.drawString(this, h, 0, 0, 0xd2d2d2, 1.0F);
+			font.drawString(this, ":", 12, -1, 0xd2d2d2, 1.0F);
+			font.drawString(this, m, 16, 0, 0xd2d2d2, 1.0F);
+		GL11.glPopMatrix();
+		
+		//reseau
+		GL11.glPushMatrix();
+			GL11.glTranslatef(this.width-105F+this.shift, this.height-192, 0);
+			GL11.glScalef(0.5F, 0.5F, 1);
+			font.drawString(this, "ICtelecom", 0, 0, 0xd2d2d2, 1.0F);
 		GL11.glPopMatrix();
 	}
 
