@@ -68,7 +68,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void updateScreen()
 	{
-//		this.setFocus();
+		this.setFocus();
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
@@ -82,10 +82,15 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	private void drawForground()
 	{	
+		
+		//Wallpaper
+		/*GL11.glPushMatrix();
+		this.mc.renderEngine.bindTexture(Wallpaper);
+		this.drawTexturedModalRect(this.width - 106 + this.shift, this.height - 193, 0, 0, 92, 154);
+		GL11.glPopMatrix();*/
+		
 		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
 		this.drawRect(this.width - 106 + this.shift, this.height - 39, this.width - 14 + this.shift, this.height - 54, 0x22FFFFFF);
-		
-		//this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 182, 0x22FFFFFF);
 		
 		//time (real)
 		Date d = new Date();
@@ -94,7 +99,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		
 		GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 1F);
-			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
+			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0);
 			font.drawString(this, h, 0, 0, 0xd2d2d2, 0.3F);
 			font.drawString(this, ":", 12, -1, 0xd2d2d2, 0.3F);
 			font.drawString(this, m, 16, 0, 0xd2d2d2, 0.3F);
@@ -104,8 +109,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		GL11.glPushMatrix();
 			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
 			GL11.glScalef(0.5F, 0.5F, 1);
-			font.drawString(this, "IC", 0, 0, 0xd2d2d2, 0.3F);
-			font.drawString(this, "telecom", 0, 0 + 1, 0xd2d2d2, 0.3F);
+			font.drawString(this, "IC telecom", 0, 0, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
 	}
 	
@@ -247,5 +251,15 @@ public class GuiPhoneInGame  extends GuiScreen {
 	public boolean doesGuiPauseGame()
 	{
 		return false;
+	}
+	
+	public CustomFont getFont()
+	{
+		return this.font;
+	}
+	
+	public int getShift()
+	{
+		return this.shift;
 	}
 }
