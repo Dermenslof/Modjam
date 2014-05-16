@@ -134,8 +134,7 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 		GL11.glPushMatrix();
 			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
 			GL11.glScalef(0.5F, 0.5F, 1);
-			font.drawString(this, "IC", 0, 0, 0xd2d2d2, 0.3F);
-			font.drawString(this, "telecom", 0, 0 + 1, 0xd2d2d2, 0.3F);
+			font.drawString(this, "IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
 		this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f-this.transparency);
 	}
