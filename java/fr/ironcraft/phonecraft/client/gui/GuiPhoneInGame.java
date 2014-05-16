@@ -23,7 +23,6 @@ public class GuiPhoneInGame  extends GuiScreen {
 
 	protected int shift = 0;
 	private boolean isFocused;
-	protected boolean focus;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
 	protected boolean isHome = false;
@@ -56,9 +55,6 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void initGui()
 	{
-		//useless for now
-		this.isFocused = true;
-		
 		Keyboard.enableRepeatEvents(true);
 		try {
 			this.font = new CustomFont(this.mc, "TimesNewRoman", 10);
@@ -66,7 +62,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		catch(Exception e) {
 			e.printStackTrace();
 		}
-		this.focus = true;
+		this.isFocused = true;
 	}
 	
 	@Override
@@ -209,10 +205,36 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void handleMouseInput()
 	{
-		if (Mouse.isButtonDown(this.mc.gameSettings.keyBindUseItem.getKeyCode() + 100) && !this.isFocused)
-			this.mc.thePlayer.clearItemInUse();
 		int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
 		int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
+		if (Mouse.isButtonDown(0) && this.isFocused)
+		{
+			if(x >= this.width - 106 && x <= this.width - 14)
+			{
+				if(y >= this.height - 193 && y <= this.height - 39)
+				{
+					if(!this.mouseIsDrag)
+					{
+						this.clickX = x;
+						this.clickY = y;
+						this.mouseIsDrag = true;
+					}
+					else
+					{
+						if(this.clickX != x || this.clickY != y)
+							this.isTactile = true;
+						this.releaseX = x;
+						this.releaseY = y;
+					}
+				}
+				else
+					this.mouseIsDrag = false;
+			}
+			else
+				this.mouseIsDrag = false;
+		}
+		else
+			this.mouseIsDrag = false;
 	}
 
 	@Override
