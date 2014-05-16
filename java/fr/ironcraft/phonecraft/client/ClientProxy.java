@@ -11,19 +11,13 @@ public class ClientProxy extends CommonProxy {
 
 	private static Minecraft mc = Minecraft.getMinecraft();
 	public static PhoneAchievements achievements;
-<<<<<<< Updated upstream
 	public static ImageLoader imageLoader = new ImageLoader();
-=======
-	public static ImageLoader imageLoader;
-	public static CustomFonts fonts;
->>>>>>> Stashed changes
-
+	public static CustomFonts fonts = new CustomFonts();
+	
 	public void init()
 	{
 		events();
 		achievements = new PhoneAchievements();
-		fonts = new CustomFonts();
-		
 		fonts.init();
 	}
 	
