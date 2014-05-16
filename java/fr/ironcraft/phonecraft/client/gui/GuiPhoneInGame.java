@@ -97,8 +97,8 @@ public class GuiPhoneInGame  extends GuiScreen {
 		
 		//reseau
 		GL11.glPushMatrix();
-			GL11.glTranslatef(this.width-105F+this.shift, this.height-192, 0);
-			GL11.glScalef(0.5F, 0.5F, 1);
+			//GL11.glTranslatef(this.width-105F+this.shift, this.height-192, 0);
+			//GL11.glScalef(0.5F, 0.5F, 1);
 			font.drawString(this, "ICtelecom", 0, 0, 0xd2d2d2, 1.0F);
 		GL11.glPopMatrix();
 	}
