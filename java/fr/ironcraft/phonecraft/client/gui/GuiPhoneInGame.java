@@ -58,12 +58,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	public void initGui()
 	{
 		Keyboard.enableRepeatEvents(true);
-		try {
-			this.font = new CustomFont(this.mc, "TimesNewRoman", 10);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
+		this.font = ClientProxy.fonts.timenewRoman;
 		this.isFocused = true;
 	}
 	
@@ -83,17 +78,17 @@ public class GuiPhoneInGame  extends GuiScreen {
 	}
 
 	private void drawForground()
-	{	
-		
+	{
+
 		//Wallpaper
 		/*GL11.glPushMatrix();
 		this.mc.renderEngine.bindTexture(Wallpaper);
 		this.drawTexturedModalRect(this.width - 106 + this.shift, this.height - 193, 0, 0, 92, 154);
 		GL11.glPopMatrix();*/
-		
+
 		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
 		this.drawRect(this.width - 106 + this.shift, this.height - 39, this.width - 14 + this.shift, this.height - 54, 0x22FFFFFF);
-		
+
 		//time (real)
 		Date d = new Date();
 		String h = d.getHours() < 10 ? "0" + String.valueOf(d.getHours()) : String.valueOf(d.getHours());
@@ -101,7 +96,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		
 		GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 1F);
-			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0);
+			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
 			font.drawString(this, h, 0, 0, 0xd2d2d2, 0.3F);
 			font.drawString(this, ":", 12, -1, 0xd2d2d2, 0.3F);
 			font.drawString(this, m, 16, 0, 0xd2d2d2, 0.3F);
@@ -111,7 +106,8 @@ public class GuiPhoneInGame  extends GuiScreen {
 		GL11.glPushMatrix();
 			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
 			GL11.glScalef(0.5F, 0.5F, 1);
-			font.drawString(this, "IC telecom", 0, 0, 0xd2d2d2, 0.3F);
+			font.drawString(this, "IC", 0, 0, 0xd2d2d2, 0.3F);
+			font.drawString(this, "telecom", 0, 0 + 1, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
 	}
 	
@@ -249,19 +245,14 @@ public class GuiPhoneInGame  extends GuiScreen {
 			this.mouseIsDrag = false;
 	}
 
-	@Override
-	public boolean doesGuiPauseGame()
-	{
-		return false;
-	}
-	
 	public CustomFont getFont()
 	{
 		return this.font;
 	}
 	
-	public int getShift()
+	@Override
+	public boolean doesGuiPauseGame()
 	{
-		return this.shift;
+		return false;
 	}
 }
