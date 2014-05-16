@@ -1,10 +1,9 @@
 package fr.ironcraft.phonecraft.common.Blocks;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import fr.ironcraft.phonecraft.client.CreaTabs;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
+import cpw.mods.fml.common.registry.GameRegistry;
+import fr.ironcraft.phonecraft.client.CreaTabs;
 
 public class ICBlocks {
 

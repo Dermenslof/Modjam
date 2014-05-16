@@ -8,7 +8,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fr.ironcraft.phonecraft.client.ClientProxy;
-import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
 

@@ -2,9 +2,9 @@ package fr.ironcraft.phonecraft.common.Blocks;
 
 import java.util.Random;
 
+import net.minecraft.block.material.Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.material.Material;
 
 public class BlockFlash extends GenericBlock {
 	
