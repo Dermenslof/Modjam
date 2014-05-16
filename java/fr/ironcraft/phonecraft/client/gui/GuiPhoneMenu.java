@@ -17,8 +17,7 @@ import org.lwjgl.util.Color;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
-
+import fr.ironcraft.phonecraft.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
@@ -162,25 +161,25 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			switch(day)
 			{
 			case 1:
-				Day = "Dimanche";
+				Day = TextUtils.getLanguage("day.sunday");
 				break;
 			case 2:
-				Day = "Lundi";
+				Day = TextUtils.getLanguage("day.monday");
 				break;
 			case 3:
-				Day = "Mardi";
+				Day = TextUtils.getLanguage("day.tuesday");
 				break;
 			case 4:
-				Day = "Mercredi";
+				Day = TextUtils.getLanguage("day.wednesday");
 				break;
 			case 5:
-				Day = "Jeudi";
+				Day = TextUtils.getLanguage("day.thursday");
 				break;
 			case 6:
-				Day = "Vendredi";
+				Day = TextUtils.getLanguage("day.friday");
 				break;
 			case 7:
-				Day = "Samedi";
+				Day = TextUtils.getLanguage("day.saturday");
 				break;
 			}
 			GL11.glTranslatef(this.width - 30 + this.shift, this.height - 170, 0);

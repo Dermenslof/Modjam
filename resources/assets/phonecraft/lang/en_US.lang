@@ -1,5 +1,13 @@
 error.permission=§4You don't have permission !!!
 
+day.monday=Monday
+day.tuesday=Tuesday
+day.wednesday=Wednesday
+day.thursday=Thursday
+day.friday=Friday
+day.saturday=Saturday
+day.sunday=Sunday
+
 key.phone.open=Open
 key.phone.focus=Focus
 
