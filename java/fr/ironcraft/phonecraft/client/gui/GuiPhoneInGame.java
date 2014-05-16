@@ -57,7 +57,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	public void initGui()
 	{
 		//useless for now
-		//this.isFocused = true;
+		this.isFocused = true;
 		
 		Keyboard.enableRepeatEvents(true);
 		try {
@@ -209,8 +209,10 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void handleMouseInput()
 	{
-		if (Mouse.isButtonDown(this.mc.gameSettings.keyBindUseItem.getKeyCode()) && this.isFocused)
-            this.mc.thePlayer.clearItemInUse();
+		if (Mouse.isButtonDown(this.mc.gameSettings.keyBindUseItem.getKeyCode() + 100) && !this.isFocused)
+			this.mc.thePlayer.clearItemInUse();
+		int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
+		int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
 	}
 
 	@Override
