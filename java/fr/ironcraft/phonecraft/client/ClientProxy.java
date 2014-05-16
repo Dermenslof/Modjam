@@ -1,9 +1,7 @@
 package fr.ironcraft.phonecraft.client;
 
-import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
-
-import cpw.mods.fml.common.FMLCommonHandler;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.common.FMLCommonHandler;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 
 public class ClientProxy extends CommonProxy {
@@ -23,7 +21,7 @@ public class ClientProxy extends CommonProxy {
 	
 	public void events()
 	{
-		//MinecraftForge.EVENT_BUS.register(new KeyHandler());
+		MinecraftForge.EVENT_BUS.register(new SoundHandler());
 		FMLCommonHandler.instance().bus().register(new KeyHandler());
 	}
 	
