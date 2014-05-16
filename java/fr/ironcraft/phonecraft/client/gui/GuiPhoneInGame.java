@@ -15,6 +15,7 @@ import org.lwjgl.opengl.GL11;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.utils.CustomFont;
+import fr.ironcraft.phonecraft.utils.SoundUtils;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 public class GuiPhoneInGame  extends GuiScreen {
@@ -50,6 +51,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 		this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
 		this.mc = par1Minecraft;
 		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
+		mc.thePlayer.playSound(SoundUtils.getSoundPath("clicPhoto"), 1.0F, 1.0F);
 	}
 
 	@Override

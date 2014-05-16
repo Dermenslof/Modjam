@@ -8,12 +8,11 @@ import fr.ironcraft.phonecraft.utils.ImageLoader;
 public class ClientProxy extends CommonProxy {
 
 	public static PhoneAchievements achievements;
-	public static ImageLoader imageLoader;
+	public static ImageLoader imageLoader = new ImageLoader();
 
 	public void init()
 	{
 		events();
-		imageLoader = new ImageLoader();
 		achievements = new PhoneAchievements();
 	}
 	
