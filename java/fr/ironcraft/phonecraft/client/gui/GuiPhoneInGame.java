@@ -65,7 +65,7 @@ public class GuiPhoneInGame  extends GuiScreen {
 	@Override
 	public void updateScreen()
 	{
-//		this.setFocus();
+		this.setFocus();
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
@@ -78,12 +78,17 @@ public class GuiPhoneInGame  extends GuiScreen {
 	}
 
 	private void drawForground()
-	{	
+	{
+
+		//Wallpaper
+		/*GL11.glPushMatrix();
+		this.mc.renderEngine.bindTexture(Wallpaper);
+		this.drawTexturedModalRect(this.width - 106 + this.shift, this.height - 193, 0, 0, 92, 154);
+		GL11.glPopMatrix();*/
+
 		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
 		this.drawRect(this.width - 106 + this.shift, this.height - 39, this.width - 14 + this.shift, this.height - 54, 0x22FFFFFF);
-		
-		//this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 182, 0x22FFFFFF);
-		
+
 		//time (real)
 		Date d = new Date();
 		String h = d.getHours() < 10 ? "0" + String.valueOf(d.getHours()) : String.valueOf(d.getHours());
@@ -240,6 +245,11 @@ public class GuiPhoneInGame  extends GuiScreen {
 			this.mouseIsDrag = false;
 	}
 
+	public CustomFont getFont()
+	{
+		return this.font;
+	}
+	
 	@Override
 	public boolean doesGuiPauseGame()
 	{
