@@ -73,23 +73,21 @@ public class GuiPhoneInGame  extends GuiScreen {
 		super.drawScreen(par1, par2, par3);
 		this.drawBackground();
 		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xff000000);
+		this.drawForground();
 	}
 
-	private void drawBackground()
-	{
-		//Texture
-		GL11.glPushMatrix();
-		this.mc.renderEngine.bindTexture(texturePhone);
-		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
-		GL11.glPopMatrix();
+	private void drawForground()
+	{	
+		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 182, 0x22FFFFFF);
 		
 		//time (real)
-		String h = "10";
-		String m =  "21";
+		Date d = new Date();
+		String h = d.getHours()<10 ? "0"+String.valueOf(d.getHours()) : String.valueOf(d.getHours());
+		String m =  d.getMinutes()<10 ? "0"+String.valueOf(d.getMinutes()) : String.valueOf(d.getMinutes());
 		
 		GL11.glPushMatrix();
-			//GL11.glScalef(0.5F, 0.5F, 1);
-			//GL11.glTranslatef((this.width-28.5F+this.shift)/0.5F, (this.height-192.5F)/0.5F, 0);
+			GL11.glScalef(0.5F, 0.5F, 1);
+			GL11.glTranslatef((this.width - 28.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0);
 			font.drawString(this, h, 0, 0, 0xd2d2d2, 1.0F);
 			font.drawString(this, ":", 12, -1, 0xd2d2d2, 1.0F);
 			font.drawString(this, m, 16, 0, 0xd2d2d2, 1.0F);
@@ -97,9 +95,18 @@ public class GuiPhoneInGame  extends GuiScreen {
 		
 		//reseau
 		GL11.glPushMatrix();
-			GL11.glTranslatef(this.width-105F+this.shift, this.height-192, 0);
+			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
 			GL11.glScalef(0.5F, 0.5F, 1);
 			font.drawString(this, "ICtelecom", 0, 0, 0xd2d2d2, 1.0F);
+		GL11.glPopMatrix();
+	}
+	
+	private void drawBackground()
+	{
+		//Texture
+		GL11.glPushMatrix();
+		this.mc.renderEngine.bindTexture(texturePhone);
+		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
 		GL11.glPopMatrix();
 	}
 
