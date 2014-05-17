@@ -36,17 +36,17 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	protected boolean isCamera;
 	protected boolean shootCamera;
 	protected float transparency;
-	
+
 	public boolean hideGui;
 	protected boolean animPhoto;
 	protected float angle;
 	protected int changePoint;
 	protected float scale = 1;
-	
+
 	protected static ResourceLocation texturePhone;
 	private static ResourceLocation textureIcons;
 	protected CustomFont font;
-	
+
 	/* For mouse gestion */
 	protected int clickX;
 	protected int clickY;
@@ -65,7 +65,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		this(par1Minecraft, "phone", "icons/default");
 	}
-	
+
 	public GuiPhoneInGame(Minecraft par1Minecraft,  String phoneType)
 	{
 		this(par1Minecraft, phoneType, "icons/default");
@@ -85,7 +85,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.font = ClientProxy.fonts.timenewRoman;
 		this.isFocused = true;
 	}
-	
+
 	@Override
 	public void updateScreen()
 	{
@@ -106,9 +106,9 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.setMovement();
 		this.mouseX = par1;
 		this.mouseY = par2;
-//		drawBackground();
+		//		drawBackground();
 		this.drawBackground();
-//		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF000000);
+		//		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF000000);
 		this.drawForground();
 	}
 
@@ -129,24 +129,24 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		String h = cal.get(Calendar.AM_PM) == 0 ? "" + hour : "" + (hour + 12);
 		int minute = cal.get(Calendar.MINUTE);
 		String m =  minute < 10 ? "0" + minute : "" + minute;
-		
+
 		GL11.glPushMatrix();
-			GL11.glScalef(0.5F, 0.5F, 1F);
-			GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
-			font.drawString(this, h, 0, 0, 0xd2d2d2, 0.3F);
-			font.drawString(this, ":", 12 , -1, 0xd2d2d2, 0.3F);
-			font.drawString(this, m, 16, 0, 0xd2d2d2, 0.3F);
+		GL11.glScalef(0.5F, 0.5F, 1F);
+		GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
+		font.drawString(this, h, 0, 0, 0xd2d2d2, 0.3F);
+		font.drawString(this, ":", 12 , -1, 0xd2d2d2, 0.3F);
+		font.drawString(this, m, 16, 0, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
-		
+
 		//reseau
 		GL11.glPushMatrix();
-			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
-			GL11.glScalef(0.5F, 0.5F, 1);
-			font.drawString(this, "IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
+		GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
+		GL11.glScalef(0.5F, 0.5F, 1);
+		font.drawString(this, "IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
 		GL11.glPopMatrix();
 		this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f-this.transparency);
 	}
-	
+
 	private void drawBackground()
 	{
 		if(this.screen == 1)
@@ -170,8 +170,8 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		if (par2 == 1)
 			this.mc.displayGuiScreen(new GuiIngameMenu());
-//		else if (par2 == KeyHandler.key_PhoneFocus.getKeyCode())
-//			this.isFocused = !this.isFocused;
+		//		else if (par2 == KeyHandler.key_PhoneFocus.getKeyCode())
+		//			this.isFocused = !this.isFocused;
 		else if (par2 == KeyHandler.key_PhoneGUI.getKeyCode()) {
 			this.isOpen = !this.isOpen;
 		}
@@ -182,8 +182,8 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	 */
 	private void setFocus()
 	{
-//		if (!...controlFocus)
-//			return;
+		//		if (!...controlFocus)
+		//			return;
 		if(Keyboard.isKeyDown(KeyHandler.key_PhoneFocus.getKeyCode()))
 		{
 			if(!this.isFocused)
@@ -249,13 +249,13 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.mc.thePlayer.motionZ = (double)(MathHelper.cos((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 		this.mc.thePlayer.motionX = (double)(-MathHelper.sin((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 	}
-	
+
 	@Override
 	public void handleMouseInput()
 	{
 		int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
 		int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
-		
+
 		//Tactile slide gestion
 		if (Mouse.isButtonDown(0) && this.isFocused)
 		{
@@ -286,43 +286,95 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		else
 			this.mouseIsDrag = false;
 	}
-	
+
 	@Override
 	public boolean doesGuiPauseGame()
 	{
 		return false;
 	}
-	
+
+	/**
+	 * get if mouse is grab on Minecraft or not
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return true if mouse isn't grab on Minecraft
+	 */
 	public boolean getFocus()
 	{
 		return this.isFocused;
 	}
-	
+
+	/**
+	 * get the font used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return CustomFont
+	 */
 	public CustomFont getFont()
 	{
 		return this.font;
 	}
-	
+
+	/**
+	 * set the font used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @param new font
+	 * @return font set
+	 */
 	public CustomFont setFont(CustomFont font)
 	{
 		return this.font = font;
 	}
 	
+	/**
+	 * get the main Phonecraft texture
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return ResourceLocation texture
+	 */
 	public ResourceLocation getTexturePhone()
 	{
 		return texturePhone;
 	}
-	
+
+	/**
+	 * get the main Phonecraft icons
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return ResourceLocation texture
+	 */
 	public ResourceLocation getTextureIcons()
 	{
 		return textureIcons;
 	}
-	
+
+	/**
+	 * set the main texture used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @param filename
+	 * @return new phone texture
+	 */
 	public ResourceLocation setTexturePhone(String phoneType)
 	{
 		return this.texturePhone = new ResourceLocation(TextureUtils.getTextureNameForGui(phoneType));
 	}
-	
+
+	/**
+	 * set the main icons used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @param filenam or domain:filename
+	 * @return new icons
+	 */
 	public ResourceLocation setTextureIcons(String iconsType)
 	{
 		return this.textureIcons = new ResourceLocation(TextureUtils.getTextureNameForGui(iconsType));

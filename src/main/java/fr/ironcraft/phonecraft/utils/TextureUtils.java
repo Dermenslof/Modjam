@@ -1,5 +1,13 @@
 package fr.ironcraft.phonecraft.utils;
 
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
+import net.minecraft.client.Minecraft;
+import cpw.mods.fml.client.FMLClientHandler;
 import fr.ironcraft.phonecraft.Phonecraft;
 
 /**
@@ -26,4 +34,5 @@ public class TextureUtils
 	{
 		return Phonecraft.MODID + ":/textures/gui/" + name + ".png";
 	}
+	
 }
