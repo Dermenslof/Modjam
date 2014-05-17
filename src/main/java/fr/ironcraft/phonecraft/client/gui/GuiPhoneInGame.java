@@ -376,9 +376,11 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	
 	public void drawIcon(int textureId, int posX, int posY)
 	{
+		textureId = 1;
 		int iconSize = 20;
-		int iconPosX = 0;
-		int iconPosY = 0;
+		int iconPosX = textureId * iconSize;
+		//int iconPosY = iconSize * (iconPosX % (iconSize * 1));
+		int iconPosY = iconSize * (textureId % 1);
 		GL11.glPushMatrix();
 		GL11.glColor4f(1,  1,  1,  this.transparency);
 		//GL11.glScalef(1.1F, 1.1F, 1);
