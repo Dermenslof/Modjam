@@ -46,6 +46,9 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	protected static ResourceLocation texturePhone;
 	private static ResourceLocation textureIcons;
 	protected CustomFont font;
+	
+	private int screenWidth;
+	private int screenHeight;
 
 	/* For mouse gestion */
 	protected int clickX;
@@ -289,6 +292,27 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		return false;
 	}
 
+	protected int getScreenWidth()
+	{
+		return this.screenWidth;
+	}
+
+	protected int getScreenHeight()
+	{
+		return this.screenHeight;
+	}
+	
+	protected void drawStringOnScreen(int x, int y, String str, int color, float transparency)
+	{
+		this.font.drawString(this, str, this.width - 106 + x, this.height - 193 + y, color, transparency);
+	}
+	
+	protected void drawImageOnScreen(ResourceLocation img, int x, int y, int imgX, int imgY, int sizeX, int sizeY)
+	{
+		this.mc.renderEngine.bindTexture(img);
+		this.drawTexturedModalRect(this.width - 106 + x,  this.height - 183 + y,  imgX,  imgY,  sizeX,  sizeY);
+	}
+	
 	/**
 	 * get if mouse is grab on Minecraft or not
 	 * 
