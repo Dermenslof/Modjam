@@ -20,11 +20,11 @@ import fr.ironcraft.phonecraft.utils.CustomFont;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 /**
- * @authors Dren, Dermenslof
+ * @authors Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
-public class GuiPhoneInGame extends GuiScreenCustom {
-
+public class GuiPhoneInGame extends GuiScreenCustom
+{
 	protected Minecraft mc;
 
 	protected int shift = 0;

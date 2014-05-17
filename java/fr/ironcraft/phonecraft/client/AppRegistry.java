@@ -16,7 +16,6 @@ import fr.ironcraft.phonecraft.client.gui.GuiPhoneMap;
 import fr.ironcraft.phonecraft.loader.AppServiceLoader;
 
 /**
- * 
  * @author Dermenslof, DrenBx
  */
 public class AppRegistry

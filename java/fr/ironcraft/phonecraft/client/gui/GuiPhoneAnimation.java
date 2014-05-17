@@ -6,7 +6,11 @@ import net.minecraft.client.gui.GuiScreen;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.client.KeyHandler;
 
-public class GuiPhoneAnimation extends GuiPhoneInGame {
+/**
+ * @author Dermenslof, DrenBx
+ */
+public class GuiPhoneAnimation extends GuiPhoneInGame
+{
 	
 	public GuiPhoneAnimation(Minecraft par1Minecraft, boolean open)
 	{

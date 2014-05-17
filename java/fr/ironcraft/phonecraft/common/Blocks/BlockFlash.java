@@ -6,23 +6,29 @@ import net.minecraft.block.material.Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class BlockFlash extends GenericBlock {
-	
-	public BlockFlash(Material par1Material) {
+/**
+ * @authors Dermenslof, DrenBx
+ */
+public class BlockFlash extends GenericBlock
+{
+	public BlockFlash(Material par1Material)
+	{
 		super(par1Material);
 	}
 
 	@SideOnly(Side.CLIENT)
-	public boolean isOpaqueCube() {
+	public boolean isOpaqueCube()
+	{
 		return false;
 	}
 
-    public int quantityDropped(Random par1Random) {
-        return 0;
-    }
+	public int quantityDropped(Random par1Random)
+	{
+		return 0;
+	}
 
-    public int idDropped(int par1, Random par2Random, int par3) {
-    	return 0;
-    }
-
+	public int idDropped(int par1, Random par2Random, int par3)
+	{
+		return 0;
+	}
 }

@@ -16,7 +16,7 @@ import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.client.gui.GuiPhoneInGame;
 
 /**
- * @author Dermenslof
+ * @authors Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class CameraScreenshot implements Runnable

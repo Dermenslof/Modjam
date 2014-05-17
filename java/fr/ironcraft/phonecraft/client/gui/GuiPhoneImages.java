@@ -24,7 +24,7 @@ import fr.ironcraft.phonecraft.client.KeyHandler;
 import fr.ironcraft.phonecraft.utils.ImageLoader;
 
 /**
- * @author Dermenslof
+ * @author Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class GuiPhoneImages extends GuiPhoneInGame

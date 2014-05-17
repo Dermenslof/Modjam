@@ -10,7 +10,7 @@ import net.minecraft.client.Minecraft;
 import fr.ironcraft.phonecraft.client.gui.GuiPhoneCamera;
 
 /**
- * @author Dermenslof
+ * @authors Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class TaskFlash extends GuiPhoneCamera

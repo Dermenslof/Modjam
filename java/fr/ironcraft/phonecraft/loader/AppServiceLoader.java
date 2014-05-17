@@ -18,6 +18,9 @@ import cpw.mods.fml.common.ModClassLoader;
 import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.api.PhoneApps;
 
+/**
+ * @authors Dermenslof, DrenBx
+ */
 class JarFilter implements FilenameFilter
 {
 	public boolean accept(File dir, String name)
@@ -26,6 +29,9 @@ class JarFilter implements FilenameFilter
 	}
 }
 
+/**
+ * @authors Dermenslof, DrenBx
+ */
 public class AppServiceLoader
 {
 	private List<PhoneApps> appCollection;
@@ -77,9 +83,7 @@ public class AppServiceLoader
 					if(!dest.exists())
 					{
 						if(!dest.getParentFile().exists())
-						{
 							dest.getParentFile().mkdirs();
-						}
 						dest.createNewFile();
 					}
 					FileOutputStream fos = new FileOutputStream(dest);

@@ -6,6 +6,9 @@ import fr.ironcraft.phonecraft.client.gui.GuiPhoneCamera;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 public class EventHandler
 {
 	@SubscribeEvent

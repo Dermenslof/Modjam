@@ -25,7 +25,7 @@ import fr.ironcraft.phonecraft.utils.TaskFlash;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 /**
- * @author Dermenslof
+ * @author Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class GuiPhoneCamera extends GuiPhoneInGame

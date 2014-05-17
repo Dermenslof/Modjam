@@ -16,7 +16,7 @@ import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.util.ResourceLocation;
 
 /**
- * @author Dermenslof
+ * @author Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class GuiPhoneEditImg extends GuiPhoneInGame

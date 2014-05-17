@@ -11,6 +11,9 @@ import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 @Mod(modid = Phonecraft.MODID, version = Phonecraft.VERSION)
 public class Phonecraft
 {

@@ -1,5 +1,9 @@
 package fr.ironcraft.phonecraft.common;
 
-public class CommonProxy {
+/**
+ * @authors Dermenslof, DrenBx
+ */
+public class CommonProxy
+{
 
 }
