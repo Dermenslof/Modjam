@@ -250,13 +250,14 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 			this.drawGradientRect(this.width-59+this.shift, this.height-47, this.width-38+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
 			this.drawGradientRect(this.width-36+this.shift, this.height-47, this.width-15+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
 			//icons boutons
-			this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
+			//this.mc.renderEngine.bindTexture(this.getTextureIcons());
+			//this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
 			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glColor4f(1,  1,  1,  (this.transparency-1.0F));
-			GL11.glTranslatef(this.width-104+this.shift, this.height-44, 0);
-			GL11.glScalef(1.1F, 1.1F, 1);
-			this.drawTexturedModalRect(3, 0, 110+5*14, 15, 15, 10);
-			this.drawTexturedModalRect(21, 0, 110+4*14, 15, 15, 10);
+			//GL11.glColor4f(1,  1,  1,  (this.transparency-1.0F));
+			//GL11.glTranslatef(this.width-104+this.shift, this.height-44, 0);
+			//GL11.glScalef(1.1F, 1.1F, 1);
+			this.drawTexturedModalRect(3, 0, 110 + 5 * 14, 15, 15, 10);
+			this.drawTexturedModalRect(21, 0, 110 + 4 * 14, 15, 15, 10);
 		GL11.glPopMatrix();
 	}
 	

@@ -373,6 +373,18 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		return textureIcons;
 	}
+	
+	public void drawIcon(int textureId, int posX, int posY)
+	{
+		GL11.glPushMatrix();
+		GL11.glColor4f(1,  1,  1,  this.transparency);
+		GL11.glScalef(1.1F, 1.1F, 1);
+		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+		//this.drawTexturedModalRect(par1, par2, par3, par4, par5, par6);
+		this.drawTexturedModalRect(3, 0, 110 + 5 * 14, 15, 15, 10);
+		GL11.glPopMatrix();
+		//return textureIcons;
+	}
 
 	/**
 	 * set the main texture used by Phonecraft
