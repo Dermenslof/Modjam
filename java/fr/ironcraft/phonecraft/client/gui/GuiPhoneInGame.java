@@ -1,9 +1,7 @@
 package fr.ironcraft.phonecraft.client.gui;
 
 import java.util.Calendar;
-import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
@@ -36,9 +34,16 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 	protected boolean isHome = false;
 	protected boolean isFullscreen = false;
 	protected boolean isCamera;
+	protected boolean shootCamera;
 	protected float transparency;
 	
-	private static ResourceLocation texturePhone;
+	public boolean hideGui;
+	protected boolean animPhoto;
+	protected float angle;
+	protected int changePoint;
+	protected float scale = 1;
+	
+	protected static ResourceLocation texturePhone;
 	private static ResourceLocation textureIcons;
 	protected CustomFont font;
 	
@@ -56,17 +61,17 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 	protected int app;
 	protected static int page;
 
-	public GuiPhoneInGame (Minecraft par1Minecraft)
+	public GuiPhoneInGame(Minecraft par1Minecraft)
 	{
 		this(par1Minecraft, "phone", "icons/default");
 	}
 	
-	public GuiPhoneInGame (Minecraft par1Minecraft,  String phoneType)
+	public GuiPhoneInGame(Minecraft par1Minecraft,  String phoneType)
 	{
 		this(par1Minecraft, phoneType, "icons/default");
 	}
 
-	public GuiPhoneInGame (Minecraft par1Minecraft, String phoneType, String iconsType)
+	public GuiPhoneInGame(Minecraft par1Minecraft, String phoneType, String iconsType)
 	{
 		setTexturePhone(phoneType);
 		setTextureIcons(iconsType);
@@ -102,14 +107,16 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 		this.setMovement();
 		this.mouseX = par1;
 		this.mouseY = par2;
-		drawBackground();
+//		drawBackground();
 		this.drawBackground();
-		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF000000);
+//		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF000000);
 		this.drawForground();
 	}
 
 	private void drawForground()
 	{	
+		if(this.screen == 1)
+			return;
 		//Wallpaper
 		/*GL11.glPushMatrix();
 		this.mc.renderEngine.bindTexture(Wallpaper);
@@ -143,8 +150,17 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 	
 	private void drawBackground()
 	{
+		if(this.screen == 1)
+			return;
+		//image telephone
+		GL11.glColor4f(1,  1,  1,  3-this.scale);
+		GL11.glTranslatef(this.width/2, this.height/2, 0);
+		GL11.glRotatef(this.angle, 0, 0, 1);
+		GL11.glScalef(this.scale, this.scale, 1);
+		GL11.glTranslatef(-this.width/2-this.changePoint/1.38F, -this.height/2-this.changePoint/15, 0);
 		//Texture
 		GL11.glPushMatrix();
+		GL11.glTranslatef(-0.5F, 0F, 0);
 		this.mc.renderEngine.bindTexture(this.getTexturePhone());
 		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
 		GL11.glPopMatrix();

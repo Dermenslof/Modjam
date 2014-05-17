@@ -88,22 +88,22 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					this.isHome = true;
 				}
 				break;
-//			case 1:
-//				this.isCamera = true;
-//				this.mc.displayGuiScreen(new GuiPhoneCamera(this.mc));
-//				break;
-//			case 2:
-//				this.screen = 2;
-//				this.mc.displayGuiScreen(new GuiPhoneMessages(this.mc));
-//				break;
-//			case 3:
-//				this.screen = 3;
-//				this.mc.displayGuiScreen(new GuiPhoneContacts(this.mc));
-//				break;
-//			case 4:
-//				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc, false));
-//				this.screen = 0;
-//				break;
+			case 1:
+				this.isCamera = true;
+				this.mc.displayGuiScreen(new GuiPhoneCamera(this.mc));
+				break;
+			case 2:
+				this.screen = 2;
+				this.mc.displayGuiScreen(new GuiPhoneMessages(this.mc));
+				break;
+			case 3:
+				this.screen = 3;
+				this.mc.displayGuiScreen(new GuiPhoneContacts(this.mc));
+				break;
+			case 4:
+				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc, false));
+				this.screen = 0;
+				break;
 			}
 			if(this.app > 0)
 			{
@@ -304,7 +304,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 
 							if(title == null)
 							{
-								//System.err.println("Probl�me app " + t);
+								//System.err.println("Problème app " + t);
 								return;
 							}
 						}
