@@ -27,7 +27,7 @@ public class CameraScreenshot implements Runnable
 	private GuiPhoneInGame gui;
 	private Minecraft mc;
 	private boolean isQrCode;
-//	private Qrcode decoder;
+	private Qrcode decoder;
 
 	public CameraScreenshot(Minecraft mc, GuiPhoneInGame gui, IntBuffer buf, int[] li, boolean isQrCode)
 	{
@@ -36,7 +36,7 @@ public class CameraScreenshot implements Runnable
 		this.isQrCode = isQrCode;
 		this.buffer = buf;
 		this.list = li;
-//		this.decoder = new Qrcode();
+		this.decoder = new Qrcode();
 	}
 
 	@Override
@@ -52,8 +52,8 @@ public class CameraScreenshot implements Runnable
 			var3.setRGB(0, 0, this.mc.displayWidth, this.mc.displayHeight, this.list, 0, this.mc.displayWidth);
 			File var4 = setFileName(var1);
 			ImageIO.write(var3, "png", var4);
-//			if (this.isQrCode)
-//				this.decoder.decode(var4);
+			if (this.isQrCode)
+				this.decoder.decode(var4);
 			gui.hideGui = false;
 		}
 		catch (Exception var8)
