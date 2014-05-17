@@ -28,6 +28,7 @@ public class KeyHandler {
 	public void input(KeyInputEvent event)
 	{
 		if(key_PhoneGUI.getIsKeyPressed()) {
+			mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 			this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, false));
 		}
 	}

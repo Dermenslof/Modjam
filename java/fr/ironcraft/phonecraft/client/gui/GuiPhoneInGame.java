@@ -25,7 +25,7 @@ import fr.ironcraft.phonecraft.utils.TextureUtils;
 @SideOnly(Side.CLIENT)
 public class GuiPhoneInGame extends GuiScreenCustom {
 
-	protected static Minecraft mc;
+	protected Minecraft mc;
 
 	protected int shift = 0;
 	protected boolean isFocused;
@@ -76,7 +76,6 @@ public class GuiPhoneInGame extends GuiScreenCustom {
 		setTexturePhone(phoneType);
 		setTextureIcons(iconsType);
 		this.mc = par1Minecraft;
-		mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 	}
 
 	@Override

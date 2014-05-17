@@ -7,6 +7,7 @@ import java.util.List;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.BufferUtils;
@@ -18,6 +19,7 @@ import org.lwjgl.opengl.GL12;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.client.KeyHandler;
+import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
 import fr.ironcraft.phonecraft.utils.CameraScreenshot;
 import fr.ironcraft.phonecraft.utils.TaskFlash;
 import fr.ironcraft.phonecraft.utils.TextureUtils;
@@ -69,7 +71,6 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 
 	public void keyTyped(char par1, int par2)
 	{
-//		super.keyTyped(par1, par2);
 		if (par2 == 1)
 		{
 			this.mc.gameSettings.fovSetting = 0;
@@ -200,7 +201,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 				for (int i=0; i<lastBlocks.size(); i++)
 				{
 					int[] loc = lastBlocks.get(i);
-//					this.mc.thePlayer.worldObj.setBlock(loc[0], loc[1], loc[2], 0, 0, 2);
+					this.mc.thePlayer.worldObj.setBlock(loc[0], loc[1], loc[2], Blocks.air, 0, 2);
 				}
 				lastBlocks.clear();
 			}
@@ -310,6 +311,6 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 	{	
 		int[] loc = {(int)this.mc.thePlayer.posX , (int)this.mc.thePlayer.posY - 1, (int)this.mc.thePlayer.posZ};
 		this.lastBlocks.add(loc);
-//		this.mc.theWorld.setBlock(loc[0], loc[1], loc[2], 3003, 0, 2);;
+		this.mc.theWorld.setBlock(loc[0], loc[1], loc[2], ICBlocks.flash, 0, 2);;
 	}
 }

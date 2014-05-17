@@ -3,6 +3,9 @@ package fr.ironcraft.phonecraft.client;
 import fr.ironcraft.phonecraft.api.PhoneApps;
 import fr.ironcraft.phonecraft.client.gui.GuiPhoneInGame;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 class SystemApp implements PhoneApps
 {
 	private String appname;
