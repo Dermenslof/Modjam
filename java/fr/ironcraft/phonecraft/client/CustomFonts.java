@@ -3,18 +3,22 @@ package fr.ironcraft.phonecraft.client;
 import net.minecraft.client.Minecraft;
 import fr.ironcraft.phonecraft.utils.CustomFont;
 
-public class CustomFonts {
-
+/**
+ * @author Dermenslof, DrenBx
+ */
+public class CustomFonts
+{
 	public static CustomFont timenewRoman;
 	
 	public void init()
 	{
-		try {
+		try
+		{
 			this.timenewRoman = new CustomFont(Minecraft.getMinecraft(), "TimesNewRoman", 10);
 		}
-		catch(Exception e) {
+		catch(Exception e)
+		{
 			e.printStackTrace();
 		}
 	}
-	
 }

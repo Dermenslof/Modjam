@@ -5,9 +5,9 @@ import net.minecraft.client.Minecraft;
 /**
  * @authors Dermenslof, DrenBx
  */
-public class GuiPhoneMessages extends GuiPhoneInGame
+public class GuiPhoneMap extends GuiPhoneInGame
 {
-	public GuiPhoneMessages(Minecraft par1Minecraft)
+	public GuiPhoneMap(Minecraft par1Minecraft)
 	{
 		super(par1Minecraft);
 	}

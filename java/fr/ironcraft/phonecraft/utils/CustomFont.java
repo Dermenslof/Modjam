@@ -24,7 +24,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 
 /**
- * @author Dermenslof
+ * @authors Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class CustomFont

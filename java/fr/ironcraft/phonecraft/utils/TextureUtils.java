@@ -2,8 +2,11 @@ package fr.ironcraft.phonecraft.utils;
 
 import fr.ironcraft.phonecraft.Phonecraft;
 
-public class TextureUtils {
-
+/**
+ * @authors Dermenslof, DrenBx
+ */
+public class TextureUtils
+{
 	public static String getTextureNameForBlocks(String name)
 	{
 		return Phonecraft.MODID + ":" + name.replace("tile.", "");
@@ -23,5 +26,4 @@ public class TextureUtils {
 	{
 		return Phonecraft.MODID + ":/textures/gui/" + name + ".png";
 	}
-	
 }

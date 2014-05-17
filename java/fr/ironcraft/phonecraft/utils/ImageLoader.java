@@ -18,7 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 
 /**
- * @author Dermenslof
+ * @authors Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class ImageLoader

@@ -10,8 +10,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import fr.ironcraft.phonecraft.client.gui.GuiPhoneAnimation;
 
-public class KeyHandler {
-	
+/**
+ * @author Dermenslof, DrenBx
+ */
+public class KeyHandler
+{
 	protected Minecraft mc = Minecraft.getMinecraft();
 	
 	public static final KeyBinding key_PhoneGUI = new KeyBinding("key.phone.open", Keyboard.KEY_P, "Phonecraft");
@@ -27,7 +30,9 @@ public class KeyHandler {
 	@SubscribeEvent
 	public void input(KeyInputEvent event)
 	{
-		if(key_PhoneGUI.getIsKeyPressed()) {
+		if(key_PhoneGUI.getIsKeyPressed())
+		{
+			mc.thePlayer.triggerAchievement(ClientProxy.achievements.openPhone);
 			this.mc.displayGuiScreen(new GuiPhoneAnimation(mc, false));
 		}
 	}

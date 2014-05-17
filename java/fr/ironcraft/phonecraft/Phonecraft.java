@@ -1,5 +1,6 @@
 package fr.ironcraft.phonecraft;
 
+import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -10,12 +11,17 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
+import fr.ironcraft.phonecraft.packet.PacketPipeline;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 @Mod(modid = Phonecraft.MODID, version = Phonecraft.VERSION)
 public class Phonecraft
 {
 	public static String urlFiles;
 	public static String phoneFolder = "./PhoneCraft/";
+	public static final PacketPipeline packetPipeline = new PacketPipeline();
 	
     public static final String MODID = "phonecraft";
     public static final String VERSION = "0.1";
@@ -32,6 +38,11 @@ public class Phonecraft
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+    	Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+		config.load();
+		urlFiles = config.get(Configuration.CATEGORY_GENERAL, "urlFiles", "http://ironcraft.local/").getString(); /* dev value */
+		if (config.hasChanged())
+			config.save();
     	this.blocks = new ICBlocks();
     	this.blocks.init();
     }
@@ -40,11 +51,13 @@ public class Phonecraft
     public void init(FMLInitializationEvent event)
     {
     	clientProxy.init();
+    	packetPipeline.initialise();
     }
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+    	packetPipeline.postInitialise();
     	System.out.println("[PhoneCraft] Version: "+VERSION+" was loaded");
     }
     

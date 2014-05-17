@@ -7,9 +7,12 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 @SideOnly(Side.CLIENT)
-public class GuiScreenCustom extends GuiScreen {
-	
+public class GuiScreenCustom extends GuiScreen
+{
 	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5, int par6, float trans)
 	{
 		float var7 = (float)(par5 >> 24 & 255) / 255.0F;
@@ -173,5 +176,4 @@ public class GuiScreenCustom extends GuiScreen {
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 	}
-
 }

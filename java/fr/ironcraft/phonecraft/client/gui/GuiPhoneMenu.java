@@ -19,13 +19,15 @@ import org.lwjgl.util.Color;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.ironcraft.phonecraft.api.PhoneApps;
+import fr.ironcraft.phonecraft.client.AppRegistry;
 import fr.ironcraft.phonecraft.utils.TextUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.util.ResourceLocation;
 
 /**
- * @author Dermenslof
+ * @author Dermenslof, DrenBx
  */
 @SideOnly(Side.CLIENT)
 public class GuiPhoneMenu extends GuiPhoneInGame
@@ -88,36 +90,36 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					this.isHome = true;
 				}
 				break;
-//			case 1:
-//				this.isCamera = true;
-//				this.mc.displayGuiScreen(new GuiPhoneCamera(this.mc));
-//				break;
-//			case 2:
-//				this.screen = 2;
-//				this.mc.displayGuiScreen(new GuiPhoneMessages(this.mc));
-//				break;
-//			case 3:
-//				this.screen = 3;
-//				this.mc.displayGuiScreen(new GuiPhoneContacts(this.mc));
-//				break;
-//			case 4:
-//				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc, false));
-//				this.screen = 0;
-//				break;
+			case 1:
+				this.isCamera = true;
+				this.mc.displayGuiScreen(new GuiPhoneCamera(this.mc));
+				break;
+			case 2:
+				this.screen = 2;
+				this.mc.displayGuiScreen(new GuiPhoneMessages(this.mc));
+				break;
+			case 3:
+				this.screen = 3;
+				this.mc.displayGuiScreen(new GuiPhoneContacts(this.mc));
+				break;
+			case 4:
+				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc, false));
+				this.screen = 0;
+				break;
 			}
 			if(this.app > 0)
 			{
-//				System.out.println("APP ID : " + app);
-//				try
-//				{
-//					GuiPhoneInGame appGui = AppRegistry.getAppGuiById(app - 1);
-//					if(appGui != null)
-//						this.mc.displayGuiScreen(appGui);
-//				}
-//				catch(NullPointerException e)
-//				{
-//					System.out.println("NULL POINTER FOR APP ID : " + app);
-//				}
+				System.out.println("APP ID : " + app);
+				try
+				{
+					GuiPhoneInGame appGui = AppRegistry.getAppGuiById(app - 1);
+					if(appGui != null)
+						this.mc.displayGuiScreen(appGui);
+				}
+				catch(NullPointerException e)
+				{
+					System.out.println("NULL POINTER FOR APP ID : " + app);
+				}
 			}
 		}
 		super.mouseClicked(i, j, k);
@@ -240,7 +242,6 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 
 	private void drawPage()
 	{
-		//System.out.println("PAGE");
 		onOverApps();
 		int t = (this.page * 16);
 		for(int line = 0; line < 4; line++)
@@ -251,20 +252,24 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 				try
 				{
 					String title = null;
-//					Application app = AppRegistry.getAppById(t - 1);
-//					if(app == null)
-//					{
-//						return;
-//					}
-//
-//					title = app.appname();
-
+					PhoneApps app = AppRegistry.getAppById(t - 1);
+					if(app == null)
+						return;
+					title = app.appname();
 
 					if(title == null)
-					{
-						//System.err.println("Problème app " + t);
 						return;
-					}
+					GL11.glPushMatrix();
+					this.mc.renderEngine.bindTexture(texturePhone);
+					GL11.glEnable(GL11.GL_BLEND);
+					GL11.glColor4f(1,  1,  1, this.transparency/2);
+					this.drawTexturedModalRect(this.width - 103 + (col * 23)+this.shift, this.height - 171 + 10 + (line * 30), 110 +((t - 1) % 16) * 14, 0, 14, 10);
+					GL11.glPushMatrix();
+						GL11.glScalef(0.5F, 0.5F, 1);
+						GL11.glTranslatef((this.width - 103 + this.shift + (col % 16) * 23 + 9) / 0.5F, (this.height - 161 + 10 + (line * 30)) / 0.5F, 0);
+						this.font.drawString(this, title, 0-(this.font.getStringWidth(title)/2), 0, 0xffd2d2d2, this.transparency);    				
+					GL11.glPopMatrix();
+				GL11.glPopMatrix();
 				}
 				catch(Exception e)
 				{
@@ -280,9 +285,9 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		this.app = -1;
 		if(!this.isFocused)
 			return;
-		if(this.mouseX >= this.width-106 && this.mouseX <= this.width-14)
+		if(this.mouseX >= this.width - 106 && this.mouseX <= this.width - 14)
 		{
-			if(this.mouseY >= this.height-191 && this.mouseY <= this.height-29)
+			if(this.mouseY >= this.height - 191 && this.mouseY <= this.height - 29)
 			{
 				int t = (this.page*16);
 				for(int line = 0; line < 4; line++)
@@ -293,19 +298,19 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 						try
 						{
 							String title = null;
-//							Application app = AppRegistry.getAppById(t - 1);
-//							if(app == null)
-//							{
-//								return;
-//							}
-//
-//							title = app.appname();
-
-
-							if(title == null)
-							{
-								//System.err.println("Probl�me app " + t);
+							PhoneApps app = AppRegistry.getAppById(t - 1);
+							if(app == null)
 								return;
+							title = app.appname();
+							if(title == null)
+								return;
+							if(this.mouseX >= this.width - 103 + (col * 23) - 1 && this.mouseX <= this.width - 103 + (col * 23) + 19)
+							{
+								if(this.mouseY >= this.height - 171 + 10 + (line * 30) - 2 && this.mouseY <= this.height - 171 + 10 + (line * 30) + 20)
+								{
+									this.drawRect(this.width - 103 + (col * 23) + this.shift - 1, this.height - 171 + 10 + (line * 30) - 2, this.width - 103 + (col * 23) + this.shift + 19, this.height - 171 + 10 + (line * 30) + 20, 0x55d2d2d2);
+									this.app = t;
+								}
 							}
 						}
 						catch(Exception e)
