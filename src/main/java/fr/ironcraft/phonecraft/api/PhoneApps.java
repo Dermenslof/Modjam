@@ -4,6 +4,7 @@ import fr.ironcraft.phonecraft.client.gui.GuiPhoneInGame;
 
 /**
  * @author Dermenslof, DrenBx
+ * @since Phonecraft 1.0 for Minecraft 1.7.2
  */
 public interface PhoneApps
 {

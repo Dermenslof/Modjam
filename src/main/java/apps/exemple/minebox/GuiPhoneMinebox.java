@@ -45,9 +45,9 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	public void initGui()
 	{
 		super.initGui();
-		this.textureBack = this.imageLoader.setupTexture("minebox:textures/mbrBack.png");
-		this.textureLogo = this.imageLoader.setupTexture("minebox:textures/mbrLogo.png");
-		this.textureUnknow = this.imageLoader.setupTexture("minebox:textures/unknow.png");
+		this.textureBack = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrBack.png");
+		this.textureLogo = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrLogo.png");
+		this.textureUnknow = this.imageLoader.setupTexture("apps/exemple/minebox:textures/unknow.png");
 		AppMinebox.sound = StreamSoundThread.getThread();
 		if(!StreamSoundThread.isStart())
 			AppMinebox.sound.start();

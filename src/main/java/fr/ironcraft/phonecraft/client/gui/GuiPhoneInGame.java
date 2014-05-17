@@ -177,9 +177,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		}
 	}
 
-	/**
-	 * Change focus (inGameGUI / PhoneGUI)
-	 */
+	/* Change focus (inGameGUI / PhoneGUI) */
 	private void setFocus()
 	{
 		//		if (!...controlFocus)
@@ -201,9 +199,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		}
 	}
 
-	/**
-	 * Move player focused into this GUI
-	 */
+	/*  player focused into this GUI */
 	private void setMovement()
 	{
 		float dir = 180;
