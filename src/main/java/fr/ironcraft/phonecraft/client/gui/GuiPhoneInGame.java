@@ -27,7 +27,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 {
 	protected Minecraft mc;
 
-	protected int shift = 0;
+	//protected int shift = 0;
 	protected boolean isFocused;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
@@ -35,7 +35,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	protected boolean isFullscreen = false;
 	protected boolean isCamera;
 	protected boolean shootCamera;
-	protected float transparency;
+	//protected float transparency;
 
 	public boolean hideGui;
 	protected boolean animPhoto;
