@@ -12,7 +12,6 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
 
-import scala.Application;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.ModClassLoader;
 import fr.ironcraft.phonecraft.Phonecraft;
@@ -54,7 +53,7 @@ public class AppServiceLoader
 		}
 		File[] files = dir.listFiles(new JarFilter());
 		for (File f : files)
-			findClassesInJar(Application.class, f);
+			findClassesInJar(PhoneApps.class, f);
 	}
 	
 	public synchronized boolean findClassesInJar(final Class<?> baseInterface, final File jarFullPath) throws Exception
@@ -67,12 +66,13 @@ public class AppServiceLoader
 			JarFile jar = new JarFile(jarFullPath);
 			String jarName = jar.getName().replace(".zip", "").replace(Phonecraft.phoneFolder + "apps/", "");
 			String zipname = jarFullPath.getName().replace(".zip", "");
-			File resourcesFile = new File(jarFullPath.getParentFile(), "resources/" + zipname);
+			//File resourcesFile = new File(jarFullPath.getParentFile(), "resources/" + zipname);
+			File resourcesFile = new File(jarFullPath.getParentFile(), "resources/");
 			
 			for (Enumeration<JarEntry> enums = jar.entries(); enums.hasMoreElements();)
 			{
 				JarEntry entry = (JarEntry) enums.nextElement();
-				String image = entry.getName().replace(zipname, "").replace("resources/", "");
+				String image = entry.getName().replace("resources/", "");
 				if (entry.getName().endsWith(".png") || entry.getName().endsWith(".jpg"))
 				{
 					File dest = new File(resourcesFile, image);

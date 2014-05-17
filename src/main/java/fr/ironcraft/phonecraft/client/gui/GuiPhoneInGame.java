@@ -293,6 +293,11 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		return false;
 	}
 	
+	public boolean getFocus()
+	{
+		return this.isFocused;
+	}
+	
 	public CustomFont getFont()
 	{
 		return this.font;

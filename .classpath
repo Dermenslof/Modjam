@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
-	<classpathentry kind="output" path="bin"/>
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="output" path="bin"/>
 	<classpathentry sourcepath="C:/Users/Dren/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.2-10.12.1.1082/forgeSrc-1.7.2-10.12.1.1082-sources.jar" kind="lib" path="C:/Users/Dren/.gradle/caches/minecraft/net/minecraftforge/forge/1.7.2-10.12.1.1082/forgeSrc-1.7.2-10.12.1.1082.jar" exported="true"/>
 	<classpathentry kind="lib" path="C:/Users/Dren/.gradle/caches/modules-2/files-2.1/net.minecraft/launchwrapper/1.9/116f2aad5b0c68353ebed66cd463517db6522f7e/launchwrapper-1.9.jar" exported="true"/>
 	<classpathentry sourcepath="C:/Users/Dren/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-debug-all/4.1/1c218d5a0b8b932a1528b74069aa6973dcfcea74/asm-debug-all-4.1-sources.jar" kind="lib" path="C:/Users/Dren/.gradle/caches/modules-2/files-2.1/org.ow2.asm/asm-debug-all/4.1/dd6ba5c392d4102458494e29f54f70ac534ec2a2/asm-debug-all-4.1.jar" exported="true">
@@ -137,4 +137,11 @@
 			<attribute name="javadoc_location" value="jar:file:/C:/Users/Dren/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-reflect/2.10.2/6bcae4ac7f8f165926785b5faf957f69405b73ed/scala-reflect-2.10.2-javadoc.jar!/"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/apache-httpcomponents-httpclient-cache.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/apache-httpcomponents-httpclient.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/apache-httpcomponents-httpcore.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/apache-httpcomponents-httpmime.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/commons-logging-1.1.3.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/mp3.jar" exported="true"/>
+	<classpathentry kind="lib" path="C:/Users/Dren/Desktop/Modjam4 - Phonecraft/libs/zxing.jar" exported="true"/>
 </classpath>

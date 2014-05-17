@@ -2,9 +2,12 @@ package fr.ironcraft.phonecraft.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import paulscode.sound.SoundSystemConfig;
+import paulscode.sound.SoundSystemException;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import de.cuina.fireandfuel.CodecJLayerMP3;
 import fr.ironcraft.phonecraft.client.render.RenderTileEntityQrCode;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
@@ -24,6 +27,14 @@ public class ClientProxy extends CommonProxy
 	
 	public void init()
 	{
+		try {
+			SoundSystemConfig.setCodec("mp3", CodecJLayerMP3.class);
+		}
+		catch (SoundSystemException e) {
+			System.err.println("error linking with the LibraryJavaSound plug-in");
+			e.printStackTrace();
+		}
+		
 		appRegistry = new AppRegistry(mc);
 		events();
 		achievements = new PhoneAchievements();

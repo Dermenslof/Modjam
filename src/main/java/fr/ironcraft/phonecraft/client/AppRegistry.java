@@ -57,7 +57,7 @@ public class AppRegistry
 		{
 			File phoneappdir = new File(this.mc.mcDataDir, Phonecraft.phoneFolder + "apps");
 			appFinder = new AppServiceLoader();
-			appFinder.search(phoneappdir);			
+			appFinder.search(phoneappdir);
 		}
 		catch (Exception e)
 		{

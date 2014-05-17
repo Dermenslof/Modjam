@@ -1,30 +1,19 @@
 package fr.ironcraft.phonecraft.client.gui;
 
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
-import java.util.List;
 import java.util.Locale;
 
-import javax.imageio.ImageIO;
+import net.minecraft.client.Minecraft;
 
-import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.util.Color;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.api.PhoneApps;
 import fr.ironcraft.phonecraft.client.AppRegistry;
 import fr.ironcraft.phonecraft.utils.TextUtils;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.util.ResourceLocation;
 
 /**
  * @author Dermenslof, DrenBx
