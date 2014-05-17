@@ -380,8 +380,9 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		GL11.glColor4f(1,  1,  1,  this.transparency);
 		GL11.glScalef(1.1F, 1.1F, 1);
 		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+		GL11.glTranslatef(this.width-104+this.shift, this.height-44, 0);
 		//this.drawTexturedModalRect(par1, par2, par3, par4, par5, par6);
-		this.drawTexturedModalRect(3, 0, 110 + 5 * 14, 15, 15, 10);
+		this.drawTexturedModalRect(0, 0, 0, 0, 10, 10);
 		GL11.glPopMatrix();
 		//return textureIcons;
 	}
