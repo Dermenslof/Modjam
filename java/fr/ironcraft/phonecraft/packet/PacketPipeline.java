@@ -1,4 +1,4 @@
-package fr.ironcraft.phonecraft.common.packet;
+package fr.ironcraft.phonecraft.packet;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -26,6 +26,9 @@ import cpw.mods.fml.common.network.internal.FMLProxyPacket;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 @ChannelHandler.Sharable
 public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, IBasePacket>
 {
@@ -97,7 +100,8 @@ public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, IBaseP
 
 	public void initialise()
 	{
-		this.channels = NetworkRegistry.INSTANCE.newChannel("QrCode", this);
+		this.channels = NetworkRegistry.INSTANCE.newChannel("qrcode", this);
+		System.out.println("register packet");
 		registerPacket(PacketQrCode.class);
 	}
 

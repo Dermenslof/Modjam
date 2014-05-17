@@ -11,7 +11,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.common.CommonProxy;
 import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
-import fr.ironcraft.phonecraft.common.packet.PacketPipeline;
+import fr.ironcraft.phonecraft.packet.PacketPipeline;
 
 /**
  * @author Dermenslof, DrenBx
@@ -51,11 +51,13 @@ public class Phonecraft
     public void init(FMLInitializationEvent event)
     {
     	clientProxy.init();
+    	packetPipeline.initialise();
     }
     
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+    	packetPipeline.postInitialise();
     	System.out.println("[PhoneCraft] Version: "+VERSION+" was loaded");
     }
     

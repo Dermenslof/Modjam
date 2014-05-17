@@ -2,9 +2,12 @@ package fr.ironcraft.phonecraft.client;
 
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.FMLCommonHandler;
+import fr.ironcraft.phonecraft.client.render.RenderTileEntityQrCode;
 import fr.ironcraft.phonecraft.common.CommonProxy;
+import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
 import fr.ironcraft.phonecraft.utils.ImageLoader;
 
 /**
@@ -25,6 +28,7 @@ public class ClientProxy extends CommonProxy
 		events();
 		achievements = new PhoneAchievements();
 		renderQrCodeID = RenderingRegistry.getNextAvailableRenderId();
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityQrCode.class, new RenderTileEntityQrCode());
 		fonts.init();
 	}
 	

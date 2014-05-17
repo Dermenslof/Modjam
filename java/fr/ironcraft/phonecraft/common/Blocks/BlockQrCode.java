@@ -1,15 +1,15 @@
 package fr.ironcraft.phonecraft.common.Blocks;
 
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import fr.ironcraft.phonecraft.client.ClientProxy;
-import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.URL;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -21,6 +21,15 @@ import net.minecraft.util.Vec3;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+import cpw.mods.fml.client.FMLClientHandler;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fr.ironcraft.phonecraft.Phonecraft;
+import fr.ironcraft.phonecraft.client.ClientProxy;
+import fr.ironcraft.phonecraft.client.gui.GuiQrCodeEdit;
+import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
+import fr.ironcraft.phonecraft.utils.DeleteFile;
 
 /**
  * @author Dermenslof, DrenBx
@@ -70,6 +79,8 @@ public class BlockQrCode extends BlockContainer
     {
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
         par1World.removeTileEntity(par2, par3, par4);
+        String data = "" + par2 + "_" + par3 + "_" + par4 + ".png";
+        new Thread(new DeleteFile(data)).start();
     }
 	
 	
@@ -129,6 +140,13 @@ public class BlockQrCode extends BlockContainer
 	
 	public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer, int par6, float par7, float par8, float par9)
 	{
+		Side side = FMLClientHandler.instance().getSide();
+        if (side == Side.CLIENT)
+        {
+        	TileEntityQrCode tile = (TileEntityQrCode)par1World.getTileEntity(par2, par3, par4);
+        	if (tile != null)
+        		new Thread(new TryOpenGui(tile, par5EntityPlayer.getDisplayName())).start();
+        }
 		return true;
 	}
 
@@ -142,5 +160,58 @@ public class BlockQrCode extends BlockContainer
 	public TileEntity createNewTileEntity(World var1, int var2)
 	{
 		return new TileEntityQrCode();
+	}
+	
+	@SideOnly(Side.CLIENT)
+	class TryOpenGui implements Runnable
+	{
+		private TileEntityQrCode tile;
+		private String username;
+		
+		public TryOpenGui(TileEntityQrCode par0, String par1)
+		{
+			this.tile = par0;
+			this.username = par1;
+		}
+		
+		@Override
+		public void run()
+		{
+			String result = "";
+			/*DEBUG*/
+			username = "Dermenslof";
+			Minecraft mc = FMLClientHandler.instance().getClient();
+			if (mc.isSingleplayer())
+			{
+				mc.displayGuiScreen(new GuiQrCodeEdit(mc, tile));
+				return;
+			}
+			try
+			{
+				URL url = new URL(Phonecraft.urlFiles + "ops.txt");
+				BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+				String line;
+				while ((line = in.readLine()) != null)
+					result += "\n" + line;
+				in.close();
+			}
+			catch(Exception ex){}
+			
+			if(!result.equals(""))
+			{
+				String[] names = result.split("\n");
+				for (String name : names)
+				{
+//					if (name.equals(mc.thePlayer))
+					if (name.equals(username))
+					{
+						mc.displayGuiScreen(new GuiQrCodeEdit(mc, tile));
+						break;
+					}
+				}
+			}
+			else
+				mc.thePlayer.sendChatMessage(I18n.format("error.permission", new Object[0]));
+		}
 	}
 }

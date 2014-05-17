@@ -6,6 +6,7 @@ import java.io.DataOutputStream;
 
 import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.common.Blocks.ICBlocks;
+import fr.ironcraft.phonecraft.packet.PacketQrCode;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -42,13 +43,12 @@ public class TileEntityQrCode extends TileEntity
         {
         	ex.printStackTrace();
         }
-        C17PacketCustomPayload packet = new C17PacketCustomPayload("QrCode", bos.toByteArray());
-//        Phonecraft.packetPipeline.sendToAll(new PacketQrCode(wName,  this.xCoord,  this.yCoord,  this.zCoord, data));
+        C17PacketCustomPayload packet = new C17PacketCustomPayload("qrcode", bos.toByteArray());
+        Phonecraft.packetPipeline.sendToAll(new PacketQrCode(wName,  this.xCoord,  this.yCoord,  this.zCoord, data));
       
         return packet;
 	}
     
-
     @Override
     public void onDataPacket (NetworkManager net, S35PacketUpdateTileEntity packet)
     {

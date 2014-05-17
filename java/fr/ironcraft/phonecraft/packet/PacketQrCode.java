@@ -1,4 +1,4 @@
-package fr.ironcraft.phonecraft.common.packet;
+package fr.ironcraft.phonecraft.packet;
 
 import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
@@ -11,6 +11,9 @@ import net.minecraft.network.PacketBuffer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
+/**
+ * @author Dermenslof, DrenBx
+ */
 public class PacketQrCode implements IBasePacket
 {
 	private int wName;
@@ -19,7 +22,10 @@ public class PacketQrCode implements IBasePacket
 	private int zCoord;
 	private String data;
 	
-	public PacketQrCode(){}
+	public PacketQrCode()
+	{
+		
+	}
 
 	public PacketQrCode(int name, int x, int y, int z, String d)
 	{
@@ -88,7 +94,6 @@ public class PacketQrCode implements IBasePacket
 		{
 			if (tile instanceof TileEntityQrCode)
 			{
-				System.out.println("Server set Qrcode by packet");
 				TileEntityQrCode tileQrCode = (TileEntityQrCode)tile;
 				tileQrCode.textureID = -1;
 				tileQrCode.texture = data;

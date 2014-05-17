@@ -1,4 +1,4 @@
-error.permission=§4Vous n'avez pas la permission !!!
+error.permission=Vous n'avez pas la permission !!!
 
 day.monday=Lundi
 day.tuesday=Mardi
@@ -16,3 +16,13 @@ tile.flash.name=Bloc Flash
 
 achievement.openPhone=Taking PhoneCraft
 achievement.openPhone.desc=Allumer son PhoneCraft.
+
+gui.qrcode.ok=Accepter
+gui.qrcode.cancel=Annuler
+gui.qrcode.title=Titre
+gui.qrcode.types=Catégories
+gui.qrcode.teleportation=Téléportation
+gui.qrcode.info=Informations
+gui.qrcode.description=Description
+gui.qrcode.bonus=Bonus
+gui.qrcode.event=Evènement
