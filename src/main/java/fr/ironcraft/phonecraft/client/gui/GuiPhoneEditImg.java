@@ -149,7 +149,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 			GL11.glTranslatef(-0.2F,  0,  0);
 			GL11.glScalef(1.001F,  1,  1);
 			this.drawRect(this.width - 106, this.height - 110, this.width - 14, this.height - 28, 0xff424242, this.transparency);
-			this.drawGradientRect(this.width - 106, this.height - 110, this.width - 14, this.height - 28, 0xff424242, 0xff222222, this.transparency);
+			this.drawGradientRect(106, 110, 14, 28, 0xff424242, 0xff222222);
 			GL11.glTranslatef(0.9F,  0,  0);
 			int num = 1;
 			for(int y=0; y<5; y++)
@@ -159,17 +159,17 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 					if(num == 13)
 					{
 						this.drawRoundedRect(this.width-104 + (x * 30), this.height - 105 + (y * 15), this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 2, 0xff007700, this.transparency);
-						this.drawGradientRect(this.width-104 + (x * 30), this.height - 105 + (y * 15) + 7, this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 0xff007700, 0xaa222222);
+						this.drawGradientRect(104 + (x * 30), 105 + (y * 15) + 7, 104 + 26 + (x * 30), 105 + 12 + (y * 15), 0xff007700, 0xaa222222);
 					}
 					else if(num == 14)
 					{
 						this.drawRoundedRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15), this.width-104 + 26 + (x * 30), this.height-105 + 12 + (y * 15), 2, 0xff770000, this.transparency);
-						this.drawGradientRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15) + 7, this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 0xff770000, 0xaa222222);
+						this.drawGradientRect(104 + (x * 30), 105 + (y * 15) + 7, 104 + 26 + (x * 30), 105 + 12 + (y * 15), 0xff770000, 0xaa222222);
 					}
 					else
 					{
 						this.drawRoundedRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15), this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 2, 0xffd2d2d2, this.transparency);
-						this.drawGradientRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15) + 7, this.width-104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 0x55d2d2d2, 0xaa222222);
+						this.drawGradientRect(104 + (x * 30), 105 + (y * 15) + 7, 104 + 26 + (x * 30), 105 + 12 + (y * 15), 0x55d2d2d2, 0xaa222222);
 					}
 					num++;
 				}

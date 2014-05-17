@@ -287,7 +287,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 						if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
 						{
 							GL11.glPushMatrix();
-							this.drawGradientRect(105 + (t*23), 47, 84 + (t*23), 29, 0xff626262, 0x55000000, -1.6F);
+							this.drawGradientRect(105 - (t*23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.6F);
 							GL11.glPopMatrix();
 							this.bouton = t+1;
 						}
