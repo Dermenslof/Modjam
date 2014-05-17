@@ -32,10 +32,10 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	private int textureBack;
 	private int textureLogo;
 	private int textureUnknow;
-	
-    public static Minecraft mc = Minecraft.getMinecraft();
-    private ImageLoader imageLoader;
-    
+
+	public static Minecraft mc = Minecraft.getMinecraft();
+	private ImageLoader imageLoader;
+
 	public GuiPhoneMinebox()
 	{
 		super(mc);
@@ -126,40 +126,40 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		drawBackground();
 		//infos
 		GL11.glPushMatrix();
-			GL11.glScalef(0.5F,  0.5F,  1);
-			if(info)
-			{
-				if (pub)
-					drawInfos();
-				else
-				{
-					GL11.glScalef(2F, 2F,  1);
-					this.font.drawString(this, "Pub", this.width - 71  + this.shift, this.height - 152,  0xd2d2d2, this.transparency);
-				}
-			}
+		GL11.glScalef(0.5F,  0.5F,  1);
+		if(info)
+		{
+			if (pub)
+				drawInfos();
 			else
-				drawWaiting();
+			{
+				GL11.glScalef(2F, 2F,  1);
+				this.font.drawString(this, "Pub", this.width - 71  + this.shift, this.height - 152,  0xd2d2d2, this.transparency);
+			}
+		}
+		else
+			drawWaiting();
 		GL11.glPopMatrix();
 		if (info && pub)
 			drawTimeLine();
 		drawButtons();
 		onMouseOverPhone(par1, par2);
 	}
-	
+
 	private void drawBackground()
 	{
 		GL11.glPushMatrix();
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
-			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			GL11.glScalef(0.61F,  0.61F,  1);
-			GL11.glTranslatef(-0.2F, 0F, 0);
-			//background
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.textureBack);
-			this.drawTexturedModalRect((int)((this.width - 105)/0.61F), (int)((this.height - 183)/0.61F), 0, 0, 150, 256);
-			//logo
-			GL11.glScalef(0.61F,  0.61F,  1);
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.textureLogo);
-			this.drawTexturedModalRect((int)(((this.width - 106)/0.61F)/0.61F), (int)(((this.height - 183)/0.61F)/0.61F), 0, 0, 256, 256);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glScalef(0.61F,  0.61F,  1);
+		GL11.glTranslatef(-0.2F, 0F, 0);
+		//background
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.textureBack);
+		this.drawTexturedModalRect((int)((this.width - 105)/0.61F), (int)((this.height - 183)/0.61F), 0, 0, 150, 256);
+		//logo
+		GL11.glScalef(0.61F,  0.61F,  1);
+		GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.textureLogo);
+		this.drawTexturedModalRect((int)(((this.width - 106)/0.61F)/0.61F), (int)(((this.height - 183)/0.61F)/0.61F), 0, 0, 256, 256);
 		GL11.glPopMatrix();
 		//cadres
 		this.drawRect(this.width - 100, this.height - 155, this.width - 20, this.height - 128, 0x0, this.transparency - 1.75F);
@@ -168,9 +168,9 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	private void drawInfos()
 	{
 		GL11.glPushMatrix();
-			GL11.glScalef(2F, 2F,  1);
-			this.drawRect(this.width - 84, this.height - 122, this.width - 35, this.height - 74, 0x00, this.transparency - 1.4F);
-			this.drawRoundedRect(this.width - 104, this.height - 67, this.width - 16, this.height - 50, 3, 0x00, this.transparency - 1.5F);
+		GL11.glScalef(2F, 2F,  1);
+		this.drawRect(this.width - 84, this.height - 122, this.width - 35, this.height - 74, 0x00, this.transparency - 1.4F);
+		this.drawRoundedRect(this.width - 104, this.height - 67, this.width - 16, this.height - 50, 3, 0x00, this.transparency - 1.5F);
 		GL11.glPopMatrix();
 		String[] names = infos[2].split(" - ");
 		this.font.drawString(this, "Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) ((this.height - 149)/0.5F),  0xd2d2d2, this.transparency);
@@ -179,7 +179,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.font.drawString(this, infos[1] , (int)((this.width - 98 + this.shift)/0.5F), (int)((this.height-156)/0.5F),  0xd2d2d2, this.transparency);
 		drawJacket();
 	}
-	
+
 	private void drawJacket()
 	{
 		if (this.albumImg != null)
@@ -194,10 +194,10 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		else
 			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.textureUnknow);
 		GL11.glPushMatrix();
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
-			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			GL11.glScalef(0.3F, 0.3F, 0.3F);
-			this.drawTexturedModalRect((int)(((this.width - 79 + this.shift)/0.3F)/0.5F), (int) (((this.height - 117)/0.3F)/0.5F), 0, 0, 256, 256);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glScalef(0.3F, 0.3F, 0.3F);
+		this.drawTexturedModalRect((int)(((this.width - 79 + this.shift)/0.3F)/0.5F), (int) (((this.height - 117)/0.3F)/0.5F), 0, 0, 256, 256);
 		GL11.glPopMatrix();
 	}
 
@@ -210,7 +210,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		else
 			this.getFont().drawString(this, "Loading", this.width - 80  + this.shift, this.height - 147,  0xd2d2d2);
 		long t = System.currentTimeMillis() % 1000 / 100;
-//		System.out.println(t);
+		//		System.out.println(t);
 		if (t < 2)
 			this.getFont().drawString(this, "", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
 		else if (t < 4)
@@ -222,7 +222,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		else
 			this.getFont().drawString(this, "....", this.width - 64  + this.shift, this.height - 105,  0xd2d2d2);
 	}
-	
+
 	private void drawTimeLine()
 	{
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
@@ -233,35 +233,31 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawRect(this.width - 100, this.height - 58, this.width - 100 + current, this.height - 57, 0xa21122, this.transparency);
 		this.drawRoundedRect(this.width - 101 + current, this.height - 60, this.width - 99 + current, this.height - 55, 1, 0xffffff, this.transparency);
 		GL11.glPushMatrix();
-			GL11.glScalef(0.5F, 0.5F, 1);
-			int minutes = (int)(last/60);
-			int seconds = (int)((last -((last/1000)-minutes))/1000) % 60;
-			this.getFont().drawString(this, "" + (minutes/1000) + ":" + (seconds < 10 ? "0" + seconds : (seconds == 60 ? "00" : "" + seconds)), (int)((this.width - 100 + this.shift)/0.5F), (int)((this.height - 68)/0.5F), 0xffffff, this.transparency);
+		GL11.glScalef(0.5F, 0.5F, 1);
+		int minutes = (int)(last/60);
+		int seconds = (int)((last -((last/1000)-minutes))/1000) % 60;
+		this.getFont().drawString(this, "" + (minutes/1000) + ":" + (seconds < 10 ? "0" + seconds : (seconds == 60 ? "00" : "" + seconds)), (int)((this.width - 100 + this.shift)/0.5F), (int)((this.height - 68)/0.5F), 0xffffff, this.transparency);
 		GL11.glPopMatrix();
 	}
-	
+
 	private void drawButtons()
 	{
 		GL11.glPushMatrix();
-			GL11.glColor4f(1,  1,  1,  this.transparency);
-			
-			this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111, 0);
-			
-			this.drawGradientRect(this.width-105+this.shift, this.height-47, this.width-84+this.shift, this.height-29, 0xff626262, 0xff424242, 0);
-			this.drawGradientRect(this.width-82+this.shift, this.height-47, this.width-61+this.shift, this.height-29, 0xff626262, 0xff424242, 0);
-			
-			//this.drawGradientRect(this.width-106+this.shift, this.height-48, this.width-14+this.shift, this.height-28, 0xff323232, 0xff111111, this.transparency);
-			
-			//this.drawGradientRect(this.width-105+this.shift, this.height-47, this.width-84+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-			//this.drawGradientRect(this.width-82+this.shift, this.height-47, this.width-61+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-//			this.drawGradientRect(this.width-59+this.shift, this.height-47, this.width-38+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-//			this.drawGradientRect(this.width-36+this.shift, this.height-47, this.width-15+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-			//icons boutons
-			this.drawIcon(0, 12, 280, 1F);
-			this.drawIcon(0, 12 + 46, 280, 1F);
+		GL11.glColor4f(1,  1,  1,  this.transparency);
+
+		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111, 0);
+
+		this.drawGradientRect(105, 47, 84, 29, 0xff626262, 0xff424242);
+		this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
+		this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
+		this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
+
+		//icons boutons
+		this.drawIcon(0, 12, 280, 1F);
+		this.drawIcon(0, 12 + 46, 280, 1F);
 		GL11.glPopMatrix();
 	}
-	
+
 	private void onMouseOverPhone(int x, int y)
 	{
 		if (this.getFocus())
@@ -272,12 +268,12 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 				if (y >= this.height - 19 && y <= this.height - 13)
 				{
 					GL11.glPushMatrix();
-						GL11.glTranslatef(0.5F, 1.22F, 0);
-						GL11.glEnable(GL11.GL_BLEND);
-						GL11.glColor4f(1F, 1F, 1F, 0.3F);
-						this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
-						this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
-						GL11.glDisable(GL11.GL_BLEND);
+					GL11.glTranslatef(0.5F, 1.22F, 0);
+					GL11.glEnable(GL11.GL_BLEND);
+					GL11.glColor4f(1F, 1F, 1F, 0.3F);
+					this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
+					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
+					GL11.glDisable(GL11.GL_BLEND);
 					GL11.glPopMatrix();
 					this.bouton = 0;
 				}
@@ -291,7 +287,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 						if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
 						{
 							GL11.glPushMatrix();
-								this.drawGradientRect(105 + (t*23), 47, 84 + (t*23), 29, 0xff626262, 0x55000000, -1.6F);
+							this.drawGradientRect(105 + (t*23), 47, 84 + (t*23), 29, 0xff626262, 0x55000000, -1.6F);
 							GL11.glPopMatrix();
 							this.bouton = t+1;
 						}

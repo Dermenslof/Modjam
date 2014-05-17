@@ -17,9 +17,14 @@ public class GuiScreenCustom extends GuiScreen
 	protected int shift = 0;
 	protected float transparency;
 	
-	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color, float trans)
+	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color)
 	{
-		this.drawGradientRect_(this.width - par1 + this.shift, this.height - par2, this.width - par3 +this.shift, this.height - par4, par5Color, par6Color, this.transparency + trans);
+		this.drawGradientRect_(this.width - par1 + this.shift, this.height - par2, this.width - par3 + this.shift, this.height - par4, par5Color, par6Color, this.transparency);
+	}
+	
+	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color, float par7TransparencyVar)
+	{
+		this.drawGradientRect_(this.width - par1 + this.shift, this.height - par2, this.width - par3 + this.shift, this.height - par4, par5Color, par6Color, this.transparency + par7TransparencyVar);
 	}
 	
 	private void drawGradientRect_(int par1, int par2, int par3, int par4, int par5, int par6, float trans)
