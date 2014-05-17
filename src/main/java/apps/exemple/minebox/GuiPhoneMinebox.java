@@ -32,6 +32,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	private int textureBack;
 	private int textureLogo;
 	private int textureUnknow;
+	private int textureIcons;
 
 	public static Minecraft mc = Minecraft.getMinecraft();
 	private ImageLoader imageLoader;
@@ -48,6 +49,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.textureBack = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrBack.png");
 		this.textureLogo = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrLogo.png");
 		this.textureUnknow = this.imageLoader.setupTexture("apps/exemple/minebox:textures/unknow.png");
+		this.textureIcons = this.imageLoader.setupTexture("apps/exemple/minebox:textures/icons.png");
 		AppMinebox.sound = StreamSoundThread.getThread();
 		if(!StreamSoundThread.isStart())
 			AppMinebox.sound.start();
@@ -68,16 +70,6 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		if(AppMinebox.sound != null)
 			AppMinebox.sound.updateSoundVolume();
 		super.updateScreen();
-	}
-
-	public boolean doesGuiPauseGame()
-	{
-		return false;
-	}
-
-	public void keyTyped(char par1, int par2)
-	{
-		super.keyTyped(par1, par2);
 	}
 
 	public void mouseClicked(int i, int j, int k)
@@ -245,16 +237,15 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		GL11.glPushMatrix();
 		GL11.glColor4f(1,  1,  1,  this.transparency);
 
-		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111, 0);
+		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
 
 		this.drawGradientRect(105, 47, 84, 29, 0xff626262, 0xff424242);
 		this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
 		this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
 		this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
 
-		//icons boutons
 		this.drawIcon(0, 12, 280, 1F);
-		this.drawIcon(0, 12 + 46, 280, 1F);
+		this.drawIcon(1, 12 + 46, 280, 1F);
 		GL11.glPopMatrix();
 	}
 
@@ -263,21 +254,21 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		if (this.getFocus())
 		{
 			this.bouton = -1;
-			if (x >= this.width - 71 && x <= this.width - 51)
-			{
-				if (y >= this.height - 19 && y <= this.height - 13)
-				{
-					GL11.glPushMatrix();
-					GL11.glTranslatef(0.5F, 1.22F, 0);
-					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glColor4f(1F, 1F, 1F, 0.3F);
-					this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
-					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
-					GL11.glDisable(GL11.GL_BLEND);
-					GL11.glPopMatrix();
-					this.bouton = 0;
-				}
-			}
+//			if (x >= this.width - 71 && x <= this.width - 51)
+//			{
+//				if (y >= this.height - 19 && y <= this.height - 13)
+//				{
+//					GL11.glPushMatrix();
+//					GL11.glTranslatef(0.5F, 1.22F, 0);
+//					GL11.glEnable(GL11.GL_BLEND);
+//					GL11.glColor4f(1F, 1F, 1F, 0.3F);
+//					this.mc.renderEngine.bindTexture(new ResourceLocation("textures/gui/phone1.png"));
+//					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
+//					GL11.glDisable(GL11.GL_BLEND);
+//					GL11.glPopMatrix();
+//					this.bouton = 0;
+//				}
+//			}
 			if(x >= this.width-106 && x <= this.width-14)
 			{
 				if(y >= this.height-191 && y <= this.height-29)
@@ -287,9 +278,9 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 						if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
 						{
 							GL11.glPushMatrix();
-							this.drawGradientRect(105 - (t*23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.6F);
+							this.drawGradientRect(105 - (t * 23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.6F);
 							GL11.glPopMatrix();
-							this.bouton = t+1;
+							this.bouton = t + 1;
 						}
 					}
 				}
