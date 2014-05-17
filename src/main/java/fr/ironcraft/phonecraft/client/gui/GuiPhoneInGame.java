@@ -376,13 +376,23 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	
 	public void drawIcon(int textureId, int posX, int posY)
 	{
+		int iconSize = 20;
+		int iconPosX = 0;
+		int iconPosY = 0;
 		GL11.glPushMatrix();
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		GL11.glScalef(1.1F, 1.1F, 1);
+		//GL11.glScalef(1.1F, 1.1F, 1);
 		this.mc.renderEngine.bindTexture(this.getTextureIcons());
-		GL11.glTranslatef(this.width-104+this.shift, this.height-44, 0);
+		//GL11.glTranslatef(this.width - 134 + this.shift, this.height - 188, 0);
+		
+		
+		GL11.glScalef(0.5F, 0.5F, 1F);
+		GL11.glTranslatef((this.width - 106F + this.shift) / 0.5F, (this.height - 183F) / 0.5F, 0.5F);
+		
+//		this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f-this.transparency);
+		
 		//this.drawTexturedModalRect(par1, par2, par3, par4, par5, par6);
-		this.drawTexturedModalRect(0, 0, 0, 0, 10, 10);
+		this.drawTexturedModalRect(posX, posY, iconPosX, iconPosY, iconSize, iconSize);
 		GL11.glPopMatrix();
 		//return textureIcons;
 	}
