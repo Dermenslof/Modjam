@@ -258,7 +258,8 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 //			GL11.glScalef(1.1F, 1.1F, 1);
 //			this.drawTexturedModalRect(3, 0, 110 + 5 * 14, 15, 15, 10);
 //			this.drawTexturedModalRect(21, 0, 110 + 4 * 14, 15, 15, 10);
-			this.drawIcon(0, 0, 0);
+			this.drawIcon(0, 10, 283, 1F);
+			this.drawIcon(0, 10, 283, 1F);
 		GL11.glPopMatrix();
 	}
 	

@@ -374,25 +374,21 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		return textureIcons;
 	}
 	
-	public void drawIcon(int textureId, int posX, int posY)
+	public void drawIcon(int textureId, int posX, int posY, float textureSize)
 	{
-		//HAAAAAAAAAAAAAAAAAAAAAAAAAA, posY has daemon...
-		textureId = 2;
 		int iconSize = 20;
-		int iconPerLine = 2;
-		int iconPerCol = 3;
+		int iconPerLine = 5;
+		int iconPerCol = 5;
 		int iconPosX = (textureId % iconPerLine) * iconSize;
-		int iconPosY = textureId;
-		System.out.println(iconPosY);
+		int iconPosY = ((textureId / iconPerLine) * iconSize) % iconPerCol;
 		GL11.glPushMatrix();
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		//GL11.glScalef(1.1F, 1.1F, 1);
-		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 		GL11.glScalef(0.5F, 0.5F, 1F);
+		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 		GL11.glTranslatef((this.width - 106F + this.shift) / 0.5F, (this.height - 183F) / 0.5F, 0.5F);
+		GL11.glScalef(textureSize, textureSize, 1F);
 		this.drawTexturedModalRect(posX, posY, iconPosX, iconPosY, iconSize, iconSize);
 		GL11.glPopMatrix();
-		//return textureIcons;
 	}
 
 	/**
