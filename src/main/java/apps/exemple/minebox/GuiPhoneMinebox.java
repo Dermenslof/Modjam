@@ -221,8 +221,8 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		long last = totalTime - backTime;
 		double percent = totalTime < 1 ? 0 : (((last)*100D)/totalTime);
 		int current = (int)((80D/100D)*percent);
-		this.drawRect(this.width - 100, this.height - 58, this.width - 20, this.height - 57, 0x232323, 0);
-		this.drawRect(this.width - 100, this.height - 58, this.width - 100 + current, this.height - 57, 0xa21122, 0);
+		this.drawRect(this.width - 100, this.height - 58, this.width - 20, this.height - 57, 0x232323, 1.0F);
+		this.drawRect(this.width - 100, this.height - 58, this.width - 100 + current, this.height - 57, 0xa21122, 1.0F);
 		this.drawRoundedRect(5 + current, 123, 7 + current, 128, 1, 0xffffff, 0);
 		GL11.glPushMatrix();
 		GL11.glScalef(0.5F, 0.5F, 1);
