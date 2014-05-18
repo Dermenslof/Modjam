@@ -235,26 +235,14 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	private void drawButtons()
 	{
 		GL11.glPushMatrix();
-		GL11.glColor4f(1,  1,  1,  this.transparency);
 
 		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
 
 		for (int i = 0; i < 4; i++)
 		this.drawGradientRect(105 - (i * 23), 47, 84 - (i * 23), 29, 0xff626262, 0xff424242);
-//		this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
-//		this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
-//		this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
-
-		
-//		GL11.glColor4f(1,  1,  1,  this.transparency);
-//		GL11.glScalef(0.5F, 0.5F, 1.0F);
-//		GL11.glTranslatef(x, y, z);
 		
 		for (int i=0; i < 3; ++i)
-			this.drawIcon(0, 11 + i * 23, 136, 0.5F);
-//		this.drawIcon(0, 12 + (i * 46), 140, 1F);
-//		this.drawIcon(1, 12 + 46, 280, 24);
-//		this.drawIcon(0, 58 + 46, 280, 24);
+			this.drawIcon(0, 5 + i * 23, 139, 0.5F);
 		GL11.glPopMatrix();
 	}
 
@@ -263,6 +251,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		if (this.getFocus())
 		{
 			this.bouton = -1;
+//			//Main button (move to super class)
 //			if (x >= this.width - 71 && x <= this.width - 51)
 //			{
 //				if (y >= this.height - 19 && y <= this.height - 13)
