@@ -45,6 +45,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 
 	protected static ResourceLocation texturePhone;
 	private static ResourceLocation textureIcons;
+	private static ResourceLocation textureIcons_white;
 
 	private int screenWidth;
 	private int screenHeight;
@@ -77,6 +78,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		setTexturePhone(phoneType);
 		setTextureIcons(iconsType);
+		setTextureIcons_white("icons/default_white");
 		this.mc = par1Minecraft;
 	}
 
@@ -374,6 +376,18 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		return textureIcons;
 	}
+	
+	/**
+	 * get the main Phonecraft icons_white
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return ResourceLocation texture
+	 */
+	public ResourceLocation getTextureIcons_white()
+	{
+		return textureIcons_white;
+	}
 
 	//	protected void drawStringOnScreen(int x, int y, String str, int color, float transparency)
 	//	{
@@ -413,6 +427,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		int iconPosY = ((textureId / iconPerLine) * iconSize) % iconPerCol;
 
 		GL11.glPushMatrix();
+		GL11.glColor4f(1, 1, 1, 1);
 		GL11.glScalef(textureSize, textureSize, 1.0F);
 		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 		GL11.glTranslatef((this.width - 105.5F + posX + this.shift) / textureSize, (this.height - 183 + posY) / textureSize, 0.5F);
@@ -445,5 +460,18 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	public ResourceLocation setTextureIcons(String iconsType)
 	{
 		return this.textureIcons = new ResourceLocation(TextureUtils.getTextureNameForGui(iconsType));
+	}
+	
+	/**
+	 * set the main icons used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @param filenam or domain:filename
+	 * @return new icons
+	 */
+	public ResourceLocation setTextureIcons_white(String iconsType)
+	{
+		return this.textureIcons_white = new ResourceLocation(TextureUtils.getTextureNameForGui(iconsType));
 	}
 }

@@ -42,7 +42,7 @@ public class GuiScreenCustom extends GuiScreen
 	 */
 	public int getScreenWidth()
 	{
-		return (this.width - 14) - getScreenPosX();
+		return (this.width - 13) - getScreenPosX();
 	}
 	
 	/**

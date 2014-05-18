@@ -35,6 +35,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 	public static boolean isFlash;
 	public static ResourceLocation textureFlash = new ResourceLocation(TextureUtils.getTextureNameForGui("icons/flash"));
 	public static ResourceLocation textureqrCode = new ResourceLocation("phonecraft:textures/blocks/qrCode.png");
+	public static ResourceLocation textureicon = new ResourceLocation("phonecraft:textures/gui/icons.png");
 
 	public GuiPhoneCamera (Minecraft par1Minecraft)
 	{
@@ -246,7 +247,6 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			this.drawAbsoluteRect(this.width - 28, 10 + qrcode, this.width - 12, 25 + qrcode, 0x00b2b2b2, 1F);
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
-			this.mc.renderEngine.bindTexture(textureFlash);
 			GL11.glEnable(GL11.GL_BLEND);
 			GL11.glColor4f(1F, 1F, 1F, 1F);
 			if (isQrCode)
@@ -257,8 +257,8 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			}
 			else
 			{
-				this.mc.renderEngine.bindTexture(texturePhone);
-				this.drawTexturedModalRect((int)((this.width - 27)), (int)(12), 112, 15, 12, 12);
+				this.mc.renderEngine.bindTexture(this.getTextureIcons());
+				this.drawTexturedModalRect(this.width - 28, 10, 0, 16, 16, 16);
 			}
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
@@ -268,19 +268,13 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			this.drawAbsoluteRect(12, 10 + flash, 28, 25 + flash, 0x00b2b2b2, 1F);
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
-			this.mc.renderEngine.bindTexture(textureFlash);
+			this.mc.renderEngine.bindTexture(this.getTextureIcons());
 			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glScalef(0.05F, 0.05F, 0.05F);
+//			GL11.glScalef(0.05F, 0.05F, 0.05F);
 			if (isFlash)
-			{
-				GL11.glColor4f(1F, 1F, 1F, 1F);
-				this.drawTexturedModalRect((int)(13/0.05F), (int)(26/0.05F), 0, 0, 256, 256);
-			}
+				this.drawTexturedModalRect(12, 25, 0, 96, 16, 16);
 			else
-			{
-				GL11.glColor4f(0.3F, 0F, 0F, 1F);
-				this.drawTexturedModalRect((int)(13/0.05F), (int)(11/0.05F), 0, 0, 256, 256);
-			}
+				this.drawTexturedModalRect(12, 10, 16, 96, 16, 16);
 			GL11.glPopMatrix();
 		}
 		else
