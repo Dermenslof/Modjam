@@ -26,7 +26,7 @@ public class GuiScreenCustom extends GuiScreen
 	 */
 	public int getScreenPosX()
 	{
-		return this.width - 106 + this.shift;
+		return this.width - 123 + this.shift;
 	}
 	
 	/**
@@ -34,7 +34,7 @@ public class GuiScreenCustom extends GuiScreen
 	 */
 	public int getScreenPosY()
 	{
-		return this.height - 183;
+		return this.height - 198;
 	}
 	
 	/**
