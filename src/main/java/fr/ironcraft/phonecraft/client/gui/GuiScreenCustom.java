@@ -38,7 +38,7 @@ public class GuiScreenCustom extends GuiScreen
 	}
 	
 	/**
-	 * @return Screen size for X
+	 * @return Screen Width
 	 */
 	public int getScreenWidth()
 	{
@@ -46,7 +46,7 @@ public class GuiScreenCustom extends GuiScreen
 	}
 	
 	/**
-	 * @return Screen size for Y
+	 * @return Screen Height
 	 */
 	public int getScreenHeight()
 	{
@@ -378,9 +378,36 @@ public class GuiScreenCustom extends GuiScreen
 		enableDefaults();
 	}
 	
+	/**
+	 * Draw rectangle with gradiant effect in Phonecraft
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency
+	 */
 	public void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Radius, int par6Color)
 	{
 		this.drawGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Radius, par6Color);
+	}
+	
+	/**
+	 * Draw rectangle with gradiant effect
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency
+	 */
+	public void drawAbsoluteGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Radius, int par6Color)
+	{
+		this.drawGradientRect_(par1PosX, par2PosY, par3PosX2, par4PosY2, par5Radius, par6Color);
 	}
 	
     private void drawGradientRect_(int par1, int par2, int par3, int par4, int par5, int par6)

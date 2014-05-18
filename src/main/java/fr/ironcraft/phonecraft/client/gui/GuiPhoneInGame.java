@@ -83,7 +83,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	@Override
 	public void initGui()
 	{
-		this.hidePhone = false;
+		this.hidePhone = this.screen == 1 ? true : false;
 		Keyboard.enableRepeatEvents(true);
 		this.setFont(ClientProxy.fonts.timenewRoman);
 		//		this.isFocused = false;

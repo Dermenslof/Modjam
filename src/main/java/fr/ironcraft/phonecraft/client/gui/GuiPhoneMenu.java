@@ -67,6 +67,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 				}
 				break;
 			case 1:
+				this.screen = 1;
 				this.isCamera = true;
 				this.mc.displayGuiScreen(new GuiPhoneCamera(this.mc));
 				break;
@@ -126,16 +127,18 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		//Horloge mainMenu
 //		GL11.glColor4f(1,  1,  1,  this.transparency);
 //		this.drawIcon(12, 2, 2, 3F);
-		drawQuarterCircle(25, 25, 20, 0, 0xFFFFFF, -1.5F);
-		drawQuarterCircle(25, 25, 20, 1, 0xFFFFFF, -1.5F);
-		drawQuarterCircle(25, 25, 20, 2, 0xFFFFFF, -1.5F);
-		drawQuarterCircle(25, 25, 20, 3, 0xFFFFFF, -1.5F);
+		
+		for (int i=0; i < 4; i++) {
+			drawQuarterCircle(25, 25, 22, i, 0x333333, -1.5F);
+			drawQuarterCircle(25, 25, 20, i, 0xFFFFFF, -1.5F);
+		}
+
 		Date d = new Date();
 		
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		this.drawIcon(13, 26, 26, 0.5F, d.getMinutes() * 6 + 180);
+		this.drawIcon(13, 25, 25, 0.5F, d.getMinutes() * 6 + 180);
 //		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 //		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
 //		GL11.glRotatef(d.getMinutes() * 6 + 180,  0,  0,  1);
@@ -145,7 +148,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		this.drawIcon(13, 26, 26, 0.65F, d.getHours() * 30 + 180);
+		this.drawIcon(13, 25, 25, 0.65F, d.getHours() * 30 + 180);
 		
 //		this.mc.renderEngine.bindTexture(this.getTextureIcons());
 //		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
@@ -161,7 +164,8 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 //		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
 //		GL11.glRotatef(d.getSeconds() * 6 + 180,  0, 0, 1);
 //		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
-		this.drawIcon(13, 26, 26, 0.7F, d.getSeconds() * 6 + 180);
+		this.drawIcon(13, 25, 25, 0.7F, d.getSeconds() * 6 + 180);
+		
 		GL11.glPopMatrix();
 
 		//------------------------------------------

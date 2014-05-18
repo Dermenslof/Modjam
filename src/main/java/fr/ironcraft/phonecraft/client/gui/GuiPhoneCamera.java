@@ -56,6 +56,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 
 	public void initGui()
 	{
+		this.hidePhone = true;
 		this.animPhoto = true;
 		super.initGui();
 	}
@@ -76,18 +77,19 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 		{
 			this.mc.gameSettings.fovSetting = 0;
 			this.mc.gameSettings.hideGUI = false;
+			this.hidePhone = false;
 			this.mc.displayGuiScreen(new GuiIngameMenu());
 		}
 	}
 
 	public void mouseClicked(int i, int j, int k)
 	{
+		this.hidePhone = true;
 		if(this.screen == 1 && !this.hideGui && !this.isFocused && k == 0)
 		{
 			if (isFlash)
 				this.setBlockFlash();
 			this.hideGui = true;
-			this.hidePhone = true;
 			this.shootCamera = true;
 		}
 		else

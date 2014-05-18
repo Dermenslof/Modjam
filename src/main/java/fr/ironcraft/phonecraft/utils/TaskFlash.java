@@ -28,6 +28,7 @@ public class TaskFlash extends GuiPhoneCamera
 	public void initGui()
 	{
 		super.initGui();
+		this.hidePhone = true;
 	}
 
 	public void drawScreen(int par1, int par2, float par3)
