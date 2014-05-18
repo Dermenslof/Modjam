@@ -374,7 +374,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.drawTexturedModalRect(this.width - 106 + x,  this.height - 183 + y,  imgX,  imgY,  sizeX,  sizeY);
 	}
 	
-	public void drawIcon(int textureId, int posX, int posY, int textureSize)
+	public void drawIcon(int textureId, int posX, int posY, float textureSize)
 	{
 		int iconSize = 24;
 		int iconPerLine = 5;
@@ -382,16 +382,15 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		int iconPosX = (textureId % iconPerLine) * iconSize;
 		int iconPosY = ((textureId / iconPerLine) * iconSize) % iconPerCol;
 
-		this.drawImageOnScreen(this.getTextureIcons(), posX, posY, iconPosX, iconPosY, textureSize, textureSize);
-		
-//		GL11.glPushMatrix();
-//		GL11.glColor4f(1,  1,  1,  this.transparency);
+		GL11.glPushMatrix();
+		GL11.glColor4f(1,  1,  1,  this.transparency);
 //		GL11.glScalef(0.5F, 0.5F, 1.0F);
-//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
-//		GL11.glTranslatef((this.width - 106F + this.shift) / 0.5F, (this.height - 183F) / 0.5F, 0.5F);
-//		GL11.glScalef(textureSize, textureSize, 1.0F);
-//		this.drawTexturedModalRect(posX, posY, iconPosX, iconPosY, iconSize, iconSize);
-//		GL11.glPopMatrix();
+		GL11.glScalef(textureSize, textureSize, 1.0F);
+		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+		GL11.glTranslatef((this.width - 106 + this.shift) / 2F, (this.height - 183) / 2F, 0.5F);
+		
+		this.drawTexturedModalRect(posX, posY, iconPosX, iconPosY, iconSize, iconSize);
+		GL11.glPopMatrix();
 	}
 
 	/**

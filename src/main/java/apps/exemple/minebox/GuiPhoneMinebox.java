@@ -247,11 +247,11 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 
 		
 //		GL11.glColor4f(1,  1,  1,  this.transparency);
-		GL11.glScalef(0.5F, 0.5F, 1.0F);
+//		GL11.glScalef(0.5F, 0.5F, 1.0F);
 //		GL11.glTranslatef(x, y, z);
 		
 		for (int i=0; i < 3; ++i)
-		this.drawIcon(0, 12 + (i * 46), 280, 24);
+			this.drawIcon(0, 12 + (i * 46), 280, 2F);
 //		this.drawIcon(1, 12 + 46, 280, 24);
 //		this.drawIcon(0, 58 + 46, 280, 24);
 		GL11.glPopMatrix();
