@@ -180,7 +180,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 					}
 					else
 					{
-						GL11.glTranslatef(this.getScreenPosX() + 0.6F, this.getScreenPosY() * 1.35F, 0);
+						GL11.glTranslatef(this.getScreenPosX() + 0.6F, this.getScreenPosY() + 41.5F, 0);
 						GL11.glScalef(0.354F, 0.21230769F, 1);
 					}
 					GL11.glColor4f(1,  1,  1,  this.transparency);
@@ -261,7 +261,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 		return list;
 	}
     
-    private void onMouseOverPhone(int x, int y)
+    protected void onMouseOverPhone(int x, int y)
     {
 		if(this.isTactile && !this.mouseIsDrag && this.clickX >= 0)
 		{
@@ -300,23 +300,8 @@ public class GuiPhoneImages extends GuiPhoneInGame
     					}
     				}
     			}
-//    			super.o
-//    			if(x >= this.width-71 && x <= this.width-51)
-//    			{
-//    				if(y >= this.height-19 && y <= this.height-13)
-//    				{
-//    					GL11.glPushMatrix();
-//    						GL11.glTranslatef(0.5F, 1.22F, 0);
-//    						GL11.glEnable(GL11.GL_BLEND);
-//    						GL11.glColor4f(1F,  1F,  1F,  0.3F);
-//    						this.mc.renderEngine.bindTexture(texturePhone);
-//    						this.drawTexturedModalRect(this.width-72+this.shift, this.height-19, 0, 414/2+6, 50, 6);
-//    						GL11.glDisable(GL11.GL_BLEND);
-//    					GL11.glPopMatrix();
-//    					this.bouton = 0;
-//    				}
-//    			}
     		}
     	}
+		super.onMouseOverPhone(x, y);
     }
 }

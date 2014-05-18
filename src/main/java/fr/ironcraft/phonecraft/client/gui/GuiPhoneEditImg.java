@@ -247,7 +247,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 		this.textField.drawTextBox();
 	}
 
-	private void onMouseOverPhone(int x, int y)
+	protected void onMouseOverPhone(int x, int y)
 	{
 		if(this.isFocused)
 		{
@@ -273,21 +273,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 					}
 				}
 			}
-			if(x >= this.width - 71 && x <= this.width - 51)
-			{
-				if(y >= this.height - 19 && y <= this.height - 13)
-				{
-					GL11.glPushMatrix();
-						GL11.glTranslatef(0.5F, 1.22F, 0);
-						GL11.glEnable(GL11.GL_BLEND);
-						GL11.glColor4f(1F,  1F,  1F,  0.3F);
-						this.mc.renderEngine.bindTexture(texturePhone);
-						this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414/2 + 6, 50, 6);
-						GL11.glDisable(GL11.GL_BLEND);
-					GL11.glPopMatrix();
-					this.bouton = 0;
-				}
-			}
 		}
+		super.onMouseOverPhone(x, y);
 	}    
 }

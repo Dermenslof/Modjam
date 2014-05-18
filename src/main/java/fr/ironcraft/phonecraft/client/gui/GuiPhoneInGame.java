@@ -292,7 +292,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 			this.mouseIsDrag = false;
 	}
 
-	private void onMouseOverPhone(int x, int y)
+	protected void onMouseOverPhone(int x, int y)
 	{
 		if(this.isFocused)
 		{

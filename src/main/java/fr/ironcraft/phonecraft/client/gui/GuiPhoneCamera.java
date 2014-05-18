@@ -316,4 +316,9 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 		this.lastBlocks.add(loc);
 		this.mc.theWorld.setBlock(loc[0], loc[1], loc[2], ICBlocks.flash, 0, 2);;
 	}
+	
+	protected void oonMouseOverPhone(int x, int y)
+	{
+		;
+	}
 }
