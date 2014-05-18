@@ -244,9 +244,14 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
 		this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
 
-		this.drawIcon(0, 12, 280, 0.5F);
-		this.drawIcon(1, 12 + 46, 280, 1.5F);
-		this.drawIcon(0, 58 + 46, 280, 1F);
+		
+//		GL11.glColor4f(1,  1,  1,  this.transparency);
+		GL11.glScalef(0.5F, 0.5F, 1.0F);
+		
+		
+		this.drawIcon(0, 12, 280, 24);
+		this.drawIcon(1, 12 + 46, 280, 24);
+		this.drawIcon(0, 58 + 46, 280, 24);
 		GL11.glPopMatrix();
 	}
 
