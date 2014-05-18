@@ -38,6 +38,7 @@ public class GuiScreenCustom extends GuiScreen
 	
 	/**
 	 * Draw the String in PhoneScreen
+	 * 
 	 * @param Text
 	 * @param Position X
 	 * @param Position Y
@@ -50,25 +51,45 @@ public class GuiScreenCustom extends GuiScreen
 	
 	/**
 	 * Draw the String in PhoneScreen
+	 * 
 	 * @param Text
 	 * @param Position X
 	 * @param Position Y
+	 * @param Colo
 	 * @param Transparency variation
-	 * @param Color
 	 */
 	protected void drawString(String par1Text, int par2PosX, int par3PosY, int par4Color, float par5Transparency)
 	{
 		this.font.drawString(this, par1Text, par2PosX, par3PosY, par4Color, this.transparency + par5Transparency);
 	}
 	
-	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color)
+	/**
+	 * Draw rectangle with gradiant effect in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 */
+	protected void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color)
 	{
-		this.drawGradientRect_(getScreenPosX() + par1 + this.shift, getScreenPosY() + par2, getScreenPosX() + par3 + this.shift, getScreenPosY() + par4, par5Color, par6Color, this.transparency);
+		this.drawGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Color, par6Color, this.transparency);
 	}
 	
-	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color, float par7TransparencyVar)
+	/**
+	 * Draw rectangle with gradiant effect in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Transparency variation
+	 */
+	protected void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color, float par7TransparencyVar)
 	{
-		this.drawGradientRect_(getScreenPosX() + par1 + this.shift, getScreenPosY() + par2, getScreenPosX() + par3 + this.shift, getScreenPosY() + par4, par5Color, par6Color, this.transparency + par7TransparencyVar);
+		this.drawGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Color, par6Color, this.transparency + par7TransparencyVar);
 	}
 	
 	private void drawGradientRect_(int par1, int par2, int par3, int par4, int par5, int par6, float trans)
@@ -177,6 +198,17 @@ public class GuiScreenCustom extends GuiScreen
 		drawQuarterCircle(newX1,newY1,radius,3,color, trans);
 	}
 	
+	
+	/**
+	 * Draw a quarter of circle in PhoneScreen
+	 * 
+	 * @param Position X
+	 * @param Position Y
+	 * @param Radius
+	 * @param Quarters (0, 1, 2, 3)
+	 * @param Color
+	 * @param Transparency variation
+	 */
 	protected void drawQuarterCircle(int par1X, int par2Y, int par3Radius, int par4Mode, int par5Color, float  par6TransparencyVar)
 	{
 		this.drawQuarterCircle_(getScreenPosX() + par1X + this.shift, getScreenPosY() + par2Y, par3Radius, par4Mode, par5Color, this.transparency + par6TransparencyVar);
