@@ -120,7 +120,6 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 	private void drawHome(int par1, int par2, float par3)
 	{
 		GL11.glPushMatrix();
-		GL11.glTranslatef(0F, + 0.5F, 0);
 		this.drawGradientRect(0, 0, 92, 154, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
 		GL11.glPopMatrix();
 
@@ -198,7 +197,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			
 			int[] ic = {48, 18, 16, 8};
 			for(int t=0; t<ic.length; t++) {
-				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0x626262, 0x424242, -1.0F);
+				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
 				this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
 			}
 

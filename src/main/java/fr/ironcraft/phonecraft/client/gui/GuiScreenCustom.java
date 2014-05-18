@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.ironcraft.phonecraft.utils.CustomFont;
 import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 
 /**
@@ -39,7 +40,7 @@ public class GuiScreenCustom extends GuiScreen
 	/**
 	 * @return Screen size for X
 	 */
-	public int getScreenSizeX()
+	public int getScreenWidth()
 	{
 		return (this.width - 14) - getScreenPosX();
 	}
@@ -47,9 +48,9 @@ public class GuiScreenCustom extends GuiScreen
 	/**
 	 * @return Screen size for Y
 	 */
-	public int getScreenSizeY()
+	public int getScreenHeight()
 	{
-		return (this.width - 29) - getScreenPosY();
+		return (this.height - 29) - getScreenPosY();
 	}
 	
 	/**
@@ -80,7 +81,7 @@ public class GuiScreenCustom extends GuiScreen
 	}
 	
 	/**
-	 * Draw rectangle with gradiant effect in PhoneScreen
+	 * Draw rectangle with gradiant effect
 	 * 
 	 * @param Position X1
 	 * @param Position Y1
@@ -89,9 +90,9 @@ public class GuiScreenCustom extends GuiScreen
 	 * @param Color
 	 * @param Color 2
 	 */
-	protected void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color)
+	protected void drawAbsoluteGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color, float par7TransparencyVar)
 	{
-		this.drawGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Color, par6Color, this.transparency);
+		this.drawGradientRect_(par1PosX, par2PosY, par3PosX2, par4PosY2, par5Color, par6Color, par7TransparencyVar);
 	}
 	
 	/**
@@ -183,11 +184,11 @@ public class GuiScreenCustom extends GuiScreen
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
 		GL11.glShadeModel(GL11.GL_SMOOTH);
-		drawRect(newX, newY, newX1, newY1, color, trans);
-		drawRect(x, newY, newX, newY1, color, trans);
-		drawRect(newX1, newY, x1, newY1, color, trans);
-		drawRect(newX, y, newX1, newY, color2, trans);
-		drawRect(newX, newY1, newX1, y1, color2, trans);
+		drawAbsoluteRect(newX, newY, newX1, newY1, color, trans);
+		drawAbsoluteRect(x, newY, newX, newY1, color, trans);
+		drawAbsoluteRect(newX1, newY, x1, newY1, color, trans);
+		drawAbsoluteRect(newX, y, newX1, newY, color2, trans);
+		drawAbsoluteRect(newX, newY1, newX1, y1, color2, trans);
 		drawAbsoluteQuarterCircle(newX+1,newY,radius,0,color, trans);
 		drawAbsoluteQuarterCircle(newX1,newY,radius,1,color, trans);
 		drawAbsoluteQuarterCircle(newX+1,newY1,radius,2,color2, trans);
@@ -198,7 +199,40 @@ public class GuiScreenCustom extends GuiScreen
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 	}
 
-	protected void drawRect(int par0, int par1, int par2, int par3, int par4, float trans)
+	
+	/**
+	 * Draw rectangle in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency variation
+	 */
+	protected void drawRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, float par6TransparencyVar)
+	{
+		this.drawRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Color, this.transparency + par6TransparencyVar);
+	}
+	
+	/**
+	 * Draw rectangle
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency
+	 */
+	protected void drawAbsoluteRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, float par6TransparencyVar)
+	{
+		this.drawRect_(par1PosX, par2PosY, par3PosX2, par4PosY2, par5Color, par6TransparencyVar);
+	}
+	
+	private void drawRect_(int par0, int par1, int par2, int par3, int par4, float trans)
 	{
 		int var5;
 		if (par0 < par2)
@@ -267,11 +301,11 @@ public class GuiScreenCustom extends GuiScreen
 		int newY = Math.abs(y+radius);
 		int newX1 = Math.abs(x1-radius);
 		int newY1 = Math.abs(y1-radius);
-		drawRect(newX, newY, newX1, newY1, color, trans);
-		drawRect(x, newY, newX, newY1, color, trans);
-		drawRect(newX1, newY, x1, newY1, color, trans);
-		drawRect(newX, y, newX1, newY, color, trans);
-		drawRect(newX, newY1, newX1, y1, color, trans);
+		drawAbsoluteRect(newX, newY, newX1, newY1, color, trans);
+		drawAbsoluteRect(x, newY, newX, newY1, color, trans);
+		drawAbsoluteRect(newX1, newY, x1, newY1, color, trans);
+		drawAbsoluteRect(newX, y, newX1, newY, color, trans);
+		drawAbsoluteRect(newX, newY1, newX1, y1, color, trans);
 		drawAbsoluteQuarterCircle(newX,newY,radius,0,color, trans);
 		drawAbsoluteQuarterCircle(newX1,newY,radius,1,color, trans);
 		drawAbsoluteQuarterCircle(newX,newY1,radius,2,color, trans);
@@ -343,6 +377,41 @@ public class GuiScreenCustom extends GuiScreen
 		GL11.glEnd();
 		enableDefaults();
 	}
+	
+	public void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Radius, int par6Color)
+	{
+		this.drawGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Radius, par6Color);
+	}
+	
+    private void drawGradientRect_(int par1, int par2, int par3, int par4, int par5, int par6)
+    {
+        float f = (float)(par5 >> 24 & 255) / 255.0F;
+        float f1 = (float)(par5 >> 16 & 255) / 255.0F;
+        float f2 = (float)(par5 >> 8 & 255) / 255.0F;
+        float f3 = (float)(par5 & 255) / 255.0F;
+        float f4 = (float)(par6 >> 24 & 255) / 255.0F;
+        float f5 = (float)(par6 >> 16 & 255) / 255.0F;
+        float f6 = (float)(par6 >> 8 & 255) / 255.0F;
+        float f7 = (float)(par6 & 255) / 255.0F;
+        GL11.glDisable(GL11.GL_TEXTURE_2D);
+        GL11.glEnable(GL11.GL_BLEND);
+        GL11.glDisable(GL11.GL_ALPHA_TEST);
+        OpenGlHelper.glBlendFunc(770, 771, 1, 0);
+        GL11.glShadeModel(GL11.GL_SMOOTH);
+        Tessellator tessellator = Tessellator.instance;
+        tessellator.startDrawingQuads();
+        tessellator.setColorRGBA_F(f1, f2, f3, f);
+        tessellator.addVertex((double)par3, (double)par2, (double)this.zLevel);
+        tessellator.addVertex((double)par1, (double)par2, (double)this.zLevel);
+        tessellator.setColorRGBA_F(f5, f6, f7, f4);
+        tessellator.addVertex((double)par1, (double)par4, (double)this.zLevel);
+        tessellator.addVertex((double)par3, (double)par4, (double)this.zLevel);
+        tessellator.draw();
+        GL11.glShadeModel(GL11.GL_FLAT);
+        GL11.glDisable(GL11.GL_BLEND);
+        GL11.glEnable(GL11.GL_ALPHA_TEST);
+        GL11.glEnable(GL11.GL_TEXTURE_2D);
+    }
 	
 	public void setupOverlayRendering()
 	{

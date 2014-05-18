@@ -151,7 +151,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
     
 	public void drawImages(int par1, int par2, float par3)
 	{
-		this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, 1);
+		this.drawRect(0, 0, 90, 154, 0xff000000, 1);
 		boolean doPop = false;
 		boolean noImg = false;
 		GL11.glPushMatrix();
@@ -174,7 +174,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 					GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.texture);
 					if(this.rotate)
 					{
-						GL11.glTranslatef(this.getScreenPosX() + this.getScreenSizeX() - 0.5F, this.getScreenPosY(), 0);
+						GL11.glTranslatef(this.getScreenPosX() + this.getScreenWidth() - 0.5F, this.getScreenPosY(), 0);
 						GL11.glRotatef(+90F, 0, 0, 1);
 						GL11.glScalef(0.602F, 0.35500256F, 1);
 					}
@@ -207,7 +207,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 				if(this.photos.size() != 0)
 				{
 					GL11.glPushMatrix();
-						drawRect(this.width-106+this.shift, this.height-28-155, this.width-106+this.shift+92, this.height-28-155+7, 0xff222222, this.transparency);
+						drawRect(0, 0, 92, 7, 0xff222222, 1.0F);
 						GL11.glTranslatef(this.width-56-0.5F,  this.height-28-157,  0);
 						GL11.glScalef(0.5F, 0.5F, 1);
 						this.drawString(String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()), (int) (0-(this.getFont().getStringWidth(String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()))/2F)/0.5F), 0, 0xffd2d2d2, this.transparency);
@@ -244,7 +244,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 //						this.drawTexturedModalRect(0+(t*23), 0, 110+(t+2)*14, 0, 15, 10);
 //				GL11.glPopMatrix();
 			}
-			this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, 1f-this.transparency);
+//			this.drawRect(0, 0, 92, 154, 0xff000000, 1.0F);
 	}
 	
 	public List<String> getImagesAvaiable()

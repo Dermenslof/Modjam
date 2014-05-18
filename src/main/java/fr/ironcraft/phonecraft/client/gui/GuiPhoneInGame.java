@@ -111,8 +111,8 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.mouseY = par2;
 		this.drawBackground();
 		if (!hidePhone)
-			this.drawGradientRect(0, -10, 92, 154, 0xFF252525, 0xFF101010, this.transparency);
-		//this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF202020);
+			this.drawGradientRect(0, -10, 92, 154, 0xFF252525, 0xFF101010, 1.0F);
+
 		this.drawForground();
 
 		this.onMouseOverPhone(par1, par2);
@@ -129,7 +129,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.drawTexturedModalRect(this.width - 106 + this.shift, this.height - 193, 0, 0, 92, 154);
 		GL11.glPopMatrix();*/
 
-			this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
+			this.drawRect(0, -10, 92, 0, 0xFFFFFF, -1.9F);
 			//time (real)
 			Calendar cal = new GregorianCalendar();
 			int hour = cal.get(Calendar.HOUR);
@@ -153,7 +153,8 @@ public class GuiPhoneInGame extends GuiScreenCustom
 			this.drawString("IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
 			GL11.glPopMatrix();
 		}
-		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 29, 0xff252525, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f -this.transparency);
+
+		this.drawAbsoluteRect(this.getScreenPosX(), this.getScreenPosY() - 10, this.getScreenPosX() + this.getScreenWidth() + this.getShift(), this.getScreenPosY() + this.getScreenHeight(), 0xff252525, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1F - this.transparency);
 	}
 
 	private void drawBackground()
@@ -320,16 +321,18 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		return false;
 	}
 
-	protected int getScreenWidth()
+	/**
+	 * get shift
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return value of shift
+	 */
+	public int getShift()
 	{
-		return this.screenWidth;
+		return this.shift;
 	}
-
-	protected int getScreenHeight()
-	{
-		return this.screenHeight;
-	}
-
+	
 	/**
 	 * get if mouse is grab on Minecraft or not
 	 * 
@@ -389,7 +392,6 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	 * @param Position Y on phone screen
 	 * @param Define the dimension size
 	 * 
-	 * @
 	 */
 	public void drawIcon(int textureId, int posX, int posY, float textureSize)
 	{

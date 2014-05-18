@@ -87,6 +87,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			if (isFlash)
 				this.setBlockFlash();
 			this.hideGui = true;
+			this.hidePhone = true;
 			this.shootCamera = true;
 		}
 		else
@@ -233,14 +234,14 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			double percentZoom = -this.mc.gameSettings.fovSetting * 100 / 1.6;
 			GL11.glColor4f(1,  1,  1,  1F);
 			this.drawAbsoluteRoundedRect(this.width - 30, this.height - 115, this.width - 10, this.height - 5, 5, 0x00000000, 0.8F);
-			this.drawRect(this.width - 21, this.height - 110, this.width - 19, this.height - 10, 0x00757575, 0.8F);
-			this.drawRect(this.width - 25, this.height - 12 - (int)percentZoom, this.width - 15, this.height - 8 - (int)percentZoom, 0x00b2b2b2, 1F);
+			this.drawAbsoluteRect(this.width - 21, this.height - 110, this.width - 19, this.height - 10, 0x00757575, 0.8F);
+			this.drawAbsoluteRect(this.width - 25, this.height - 12 - (int)percentZoom, this.width - 15, this.height - 8 - (int)percentZoom, 0x00b2b2b2, 1F);
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
 			int qrcode = isQrCode ? 15 : 0;
 			this.drawAbsoluteRoundedRect(this.width - 30, 5, this.width - 10, 45, 5, 0x00000000, 0.8F);
-			this.drawRect(this.width - 28, 10, this.width - 12, 40, 0x00757575, 0.15F);
-			this.drawRect(this.width - 28, 10 + qrcode, this.width - 12, 25 + qrcode, 0x00b2b2b2, 1F);
+			this.drawAbsoluteRect(this.width - 28, 10, this.width - 12, 40, 0x00757575, 0.15F);
+			this.drawAbsoluteRect(this.width - 28, 10 + qrcode, this.width - 12, 25 + qrcode, 0x00b2b2b2, 1F);
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
 			this.mc.renderEngine.bindTexture(textureFlash);
@@ -261,8 +262,8 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			GL11.glPushMatrix();
 			int flash = isFlash ? 15 : 0;
 			this.drawAbsoluteRoundedRect(10, 5, 30, 45, 5, 0x00000000, 0.8F);
-			this.drawRect(12, 10, 28, 40, 0x00757575, 0.15F);
-			this.drawRect(12, 10 + flash, 28, 25 + flash, 0x00b2b2b2, 1F);
+			this.drawAbsoluteRect(12, 10, 28, 40, 0x00757575, 0.15F);
+			this.drawAbsoluteRect(12, 10 + flash, 28, 25 + flash, 0x00b2b2b2, 1F);
 			GL11.glPopMatrix();
 			GL11.glPushMatrix();
 			this.mc.renderEngine.bindTexture(textureFlash);

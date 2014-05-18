@@ -144,11 +144,11 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 	{
 		this.textField.setFocused(true);
 		super.drawScreen(par1, par2, par3);
-		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000, 1);
+		this.drawRect(0, 0, 92, 154, 0xff000000, 1);
 		GL11.glPushMatrix();
 			GL11.glTranslatef(-0.2F,  0,  0);
 			GL11.glScalef(1.001F,  1,  1);
-			this.drawRect(this.width - 106, this.height - 110, this.width - 14, this.height - 28, 0xff424242, this.transparency);
+			this.drawRect(0, 73, 92, 155, 0xff424242, 1);
 			this.drawGradientRect(0, 73, 92, 155, 0xff424242, 0xff222222);
 			GL11.glTranslatef(0.9F,  0,  0);
 			int num = 1;
@@ -242,7 +242,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 				num++;
 			}
 		}
-		this.drawRect(this.width - 106+this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000, 1F - this.transparency);
+//		this.drawRect(0, 0, 92, 154, 0xff000000, 1F);
 		this.drawString("nom de l'image:", this.width - 104 + this.shift, this.height - 185, 0xffd2d2d2, this.transparency);
 		this.textField.drawTextBox();
 	}
