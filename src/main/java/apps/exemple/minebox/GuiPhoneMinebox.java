@@ -271,7 +271,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 //			}
 			if(x >= this.width-106 && x <= this.width-14)
 			{
-				if(y >= this.height-191 && y <= this.height-29)
+				if(y >= this.height - 191 && y <= this.height-29)
 				{
 					for(int t=0; t<4; t++)
 					{

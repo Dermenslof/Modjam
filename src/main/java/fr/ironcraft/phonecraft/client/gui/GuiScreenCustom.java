@@ -37,6 +37,22 @@ public class GuiScreenCustom extends GuiScreen
 	}
 	
 	/**
+	 * @return Screen position coordinate (0) for X
+	 */
+	public int getScreenSizeX()
+	{
+		return getScreenPosX() - 14;
+	}
+	
+	/**
+	 * @return Screen position coordinate (0) for Y
+	 */
+	public int getScreenSizeY()
+	{
+		return getScreenPosY() - 29;
+	}
+	
+	/**
 	 * Draw the String in PhoneScreen
 	 * 
 	 * @param Text
