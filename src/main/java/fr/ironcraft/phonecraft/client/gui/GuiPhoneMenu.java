@@ -121,13 +121,16 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 	{
 		GL11.glPushMatrix();
 		GL11.glTranslatef(0F, + 0.5F, 0);
-		this.drawGradientRect(106, 184, 14, 29, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
+		this.drawGradientRect(0, 0, 92, 154, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
 		GL11.glPopMatrix();
 
 		//Horloge mainMenu
-		GL11.glColor4f(1,  1,  1,  this.transparency);
-		this.drawIcon(12, 2, 2, 3F);
-
+//		GL11.glColor4f(1,  1,  1,  this.transparency);
+//		this.drawIcon(12, 2, 2, 3F);
+		drawQuarterCircle(25, 25, 20, 0, 0xFFFFFF, -1.5F);
+		drawQuarterCircle(25, 25, 20, 1, 0xFFFFFF, -1.5F);
+		drawQuarterCircle(25, 25, 20, 2, 0xFFFFFF, -1.5F);
+		drawQuarterCircle(25, 25, 20, 3, 0xFFFFFF, -1.5F);
 		Date d = new Date();
 		
 		GL11.glPushMatrix();
@@ -191,11 +194,11 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			GL11.glPushMatrix();
 			GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
 			
-			this.drawGradientRect(106, 48, 14, 28, 0x323232, 0x111111, -1.0F);
+			this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
 			
 			int[] ic = {48, 18, 16, 8};
 			for(int t=0; t<ic.length; t++) {
-				this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0x626262, 0x424242, -1.0F);
+				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0x626262, 0x424242, -1.0F);
 				this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
 			}
 
@@ -341,7 +344,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 							if(x >= this.width - 106 + (t * 23) && x <= this.width - 84 + (t * 23) && y >= this.height - 48 && y <= this.height - 31)
 							{
 								GL11.glPushMatrix();
-								this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0xff626262, 0x55000000, -1.6F);
+								this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0xff626262, 0x55000000, -1.6F);
 								GL11.glPopMatrix();
 								this.bouton = t + 1;
 							}

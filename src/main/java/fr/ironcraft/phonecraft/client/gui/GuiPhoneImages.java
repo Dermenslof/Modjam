@@ -88,8 +88,9 @@ public class GuiPhoneImages extends GuiPhoneInGame
 			switch(this.bouton)
 			{
 			case 0:
+				System.out.println("test ploplo");
 				this.app = -1;
-				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc));
+				this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc, false));
 				this.screen = 0;
 				break;
 			case 1:
@@ -214,11 +215,11 @@ public class GuiPhoneImages extends GuiPhoneInGame
 				}
 				//fond boutons
 				GL11.glPushMatrix();
-					this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
-					this.drawGradientRect(105, 47, 84, 29, 0xff626262, 0xff424242);
-					this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
-					this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
-					this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
+					this.drawGradientRect(0, 135, 92, 155, 0xff323232, 0xff111111);
+					this.drawGradientRect(1, 136, 22, 154, 0xff626262, 0xff424242);
+					this.drawGradientRect(82, 136, 45, 154, 0xff626262, 0xff424242);
+					this.drawGradientRect(59, 136, 68, 154, 0xff626262, 0xff424242);
+					this.drawGradientRect(36, 136, 91, 154, 0xff626262, 0xff424242);
 					//icons boutons
 					this.mc.renderEngine.bindTexture(texturePhone);
 					GL11.glEnable(GL11.GL_BLEND);
@@ -260,7 +261,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 			this.image = this.photos.size()-1;
 		if(this.image > this.photos.size()-1)
 			this.image = 0;
-    	if(this.isFocused)
+    	if(this.isFocused && this.bouton != 0)
     	{
     		this.bouton = -1;
     		if(!this.animPhoto)
@@ -276,7 +277,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
     							if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
     							{
     								GL11.glPushMatrix();
-    									this.drawGradientRect(105 - (t*23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.5F);
+    									this.drawGradientRect(1 + (t*23), 136, 22 + (t*23), 154, 0xff626262, 0x55000000, -1.5F);
     								GL11.glPopMatrix();
     								this.bouton = t+1;
     							}
@@ -284,21 +285,21 @@ public class GuiPhoneImages extends GuiPhoneInGame
     					}
     				}
     			}
-    			if(x >= this.width-71 && x <= this.width-51)
-    			{
-    				if(y >= this.height-19 && y <= this.height-13)
-    				{
-    					GL11.glPushMatrix();
-    						GL11.glTranslatef(0.5F, 1.22F, 0);
-    						GL11.glEnable(GL11.GL_BLEND);
-    						GL11.glColor4f(1F,  1F,  1F,  0.3F);
-    						this.mc.renderEngine.bindTexture(texturePhone);
-    						this.drawTexturedModalRect(this.width-72+this.shift, this.height-19, 0, 414/2+6, 50, 6);
-    						GL11.glDisable(GL11.GL_BLEND);
-    					GL11.glPopMatrix();
-    					this.bouton = 0;
-    				}
-    			}
+//    			if(x >= this.width-71 && x <= this.width-51)
+//    			{
+//    				if(y >= this.height-19 && y <= this.height-13)
+//    				{
+//    					GL11.glPushMatrix();
+//    						GL11.glTranslatef(0.5F, 1.22F, 0);
+//    						GL11.glEnable(GL11.GL_BLEND);
+//    						GL11.glColor4f(1F,  1F,  1F,  0.3F);
+//    						this.mc.renderEngine.bindTexture(texturePhone);
+//    						this.drawTexturedModalRect(this.width-72+this.shift, this.height-19, 0, 414/2+6, 50, 6);
+//    						GL11.glDisable(GL11.GL_BLEND);
+//    					GL11.glPopMatrix();
+//    					this.bouton = 0;
+//    				}
+//    			}
     		}
     	}
     }

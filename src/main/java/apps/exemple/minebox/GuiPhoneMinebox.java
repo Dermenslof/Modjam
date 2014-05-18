@@ -236,11 +236,12 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 	{
 		GL11.glPushMatrix();
 
-		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
+		this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
+//		this.drawGradientRect(0, 135, 169, 155, 0xff323232, 0xff111111);
 
 		int[] ic = {39, 38, 21, 36};
 		for(int t=0; t<ic.length; t++) {
-			this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0x626262, 0x424242, -1.0F);
+			this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
 			this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
 		}
 
@@ -277,7 +278,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 						if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
 						{
 							GL11.glPushMatrix();
-							this.drawGradientRect(105 - (t * 23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.6F);
+							this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0xff626262, 0x55000000, -1.6F);
 							GL11.glPopMatrix();
 							this.bouton = t + 1;
 						}

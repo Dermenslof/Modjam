@@ -20,24 +20,55 @@ public class GuiScreenCustom extends GuiScreen
 	
 	private CustomFont font;
 	
-	public void drawString(String text, int posX, int posY, int color)
+	/**
+	 * @return Screen position coordinate (0) for X
+	 */
+	public int getScreenPosX()
 	{
-		this.font.drawString(this, text, posX, posY, color, transparency);
+		return this.width - 106;
 	}
 	
-	public void drawString(String text, int posX, int posY, int color, float transparency)
+	/**
+	 * @return Screen position coordinate (0) for Y
+	 */
+	public int getScreenPosY()
 	{
-		this.font.drawString(this, text, posX, posY, color, this.transparency);
+		return this.height - 183;
+	}
+	
+	/**
+	 * Draw the String in PhoneScreen
+	 * @param Text
+	 * @param Position X
+	 * @param Position Y
+	 * @param Color
+	 */
+	protected void drawString(String par1Text, int par2PosX, int par3PosY, int par4Color)
+	{
+		this.font.drawString(this, par1Text, par2PosX, par3PosY, par4Color, this.transparency);
+	}
+	
+	/**
+	 * Draw the String in PhoneScreen
+	 * @param Text
+	 * @param Position X
+	 * @param Position Y
+	 * @param Transparency variation
+	 * @param Color
+	 */
+	protected void drawString(String par1Text, int par2PosX, int par3PosY, int par4Color, float par5Transparency)
+	{
+		this.font.drawString(this, par1Text, par2PosX, par3PosY, par4Color, this.transparency + par5Transparency);
 	}
 	
 	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color)
 	{
-		this.drawGradientRect_(this.width - par1 + this.shift, this.height - par2, this.width - par3 + this.shift, this.height - par4, par5Color, par6Color, this.transparency);
+		this.drawGradientRect_(getScreenPosX() + par1 + this.shift, getScreenPosY() + par2, getScreenPosX() + par3 + this.shift, getScreenPosY() + par4, par5Color, par6Color, this.transparency);
 	}
 	
 	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color, float par7TransparencyVar)
 	{
-		this.drawGradientRect_(this.width - par1 + this.shift, this.height - par2, this.width - par3 + this.shift, this.height - par4, par5Color, par6Color, this.transparency + par7TransparencyVar);
+		this.drawGradientRect_(getScreenPosX() + par1 + this.shift, getScreenPosY() + par2, getScreenPosX() + par3 + this.shift, getScreenPosY() + par4, par5Color, par6Color, this.transparency + par7TransparencyVar);
 	}
 	
 	private void drawGradientRect_(int par1, int par2, int par3, int par4, int par5, int par6, float trans)
@@ -145,8 +176,13 @@ public class GuiScreenCustom extends GuiScreen
 		drawQuarterCircle(newX,newY1,radius,2,color, trans);
 		drawQuarterCircle(newX1,newY1,radius,3,color, trans);
 	}
-
-	public void drawQuarterCircle(int x, int y, int radius, int mode, int color, float trans)
+	
+	protected void drawQuarterCircle(int par1X, int par2Y, int par3Radius, int par4Mode, int par5Color, float  par6TransparencyVar)
+	{
+		this.drawQuarterCircle_(getScreenPosX() + par1X + this.shift, getScreenPosY() + par2Y, par3Radius, par4Mode, par5Color, this.transparency + par6TransparencyVar);
+	}
+	
+	private void drawQuarterCircle_(int x, int y, int radius, int mode, int color, float trans)
 	{
 		float var6 = (float)(color >> 16 & 255) / 255.0F;
 		float var7 = (float)(color >> 8 & 255) / 255.0F;

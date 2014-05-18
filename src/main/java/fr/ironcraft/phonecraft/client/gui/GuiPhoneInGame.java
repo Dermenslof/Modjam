@@ -35,7 +35,6 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	protected boolean isFullscreen = false;
 	protected boolean isCamera;
 	protected boolean shootCamera;
-	//protected float transparency;
 
 	public boolean hideGui;
 	public boolean hidePhone;
@@ -87,7 +86,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.hidePhone = false;
 		Keyboard.enableRepeatEvents(true);
 		this.setFont(ClientProxy.fonts.timenewRoman);
-		this.isFocused = false;
+		//		this.isFocused = false;
 	}
 
 	@Override
@@ -112,10 +111,10 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.mouseY = par2;
 		this.drawBackground();
 		if (!hidePhone)
-			this.drawGradientRect(106, 193, 14, 29, 0xFF252525, 0xFF101010, this.transparency);
+			this.drawGradientRect(0, -10, 92, 154, 0xFF252525, 0xFF101010, this.transparency);
 		//this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 39, 0xFF202020);
 		this.drawForground();
-		
+
 		this.onMouseOverPhone(par1, par2);
 	}
 
@@ -123,36 +122,38 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{	
 		if(this.screen == 1)
 			return;
-		//Wallpaper
-		/*GL11.glPushMatrix();
+		if (!this.isAnimated) {
+			//Wallpaper
+			/*GL11.glPushMatrix();
 		this.mc.renderEngine.bindTexture(Wallpaper);
 		this.drawTexturedModalRect(this.width - 106 + this.shift, this.height - 193, 0, 0, 92, 154);
 		GL11.glPopMatrix();*/
 
-		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
-		//time (real)
-		Calendar cal = new GregorianCalendar();
-		int hour = cal.get(Calendar.HOUR);
-		String h = cal.get(Calendar.AM_PM) == 0 ? "" + hour : "" + (hour + 12);
-		h = hour < 10 ? "0" + h : h;
-		int minute = cal.get(Calendar.MINUTE);
-		String m =  minute < 10 ? "0" + minute : "" + minute;
+			this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 193, 0x22FFFFFF);
+			//time (real)
+			Calendar cal = new GregorianCalendar();
+			int hour = cal.get(Calendar.HOUR);
+			String h = cal.get(Calendar.AM_PM) == 0 ? "" + hour : "" + (hour + 12);
+			h = hour < 10 && cal.get(Calendar.AM_PM) == 0 ? "0" + h : h;
+			int minute = cal.get(Calendar.MINUTE);
+			String m =  minute < 10 ? "0" + minute : "" + minute;
 
-		GL11.glPushMatrix();
-		GL11.glScalef(0.5F, 0.5F, 1F);
-		GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
-		this.drawString(h, 0, 0, 0xd2d2d2, 0.3F);
-		this.drawString(":", 12 , -1, 0xd2d2d2, 0.3F);
-		this.drawString( m, 16, 0, 0xd2d2d2, 0.3F);
-		GL11.glPopMatrix();
+			GL11.glPushMatrix();
+			GL11.glScalef(0.5F, 0.5F, 1F);
+			GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
+			this.drawString(h, 0, 0, 0xd2d2d2, 0.3F);
+			this.drawString(":", 12 , -1, 0xd2d2d2, 0.3F);
+			this.drawString( m, 16, 0, 0xd2d2d2, 0.3F);
+			GL11.glPopMatrix();
 
-		//reseau
-		GL11.glPushMatrix();
-		GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
-		GL11.glScalef(0.5F, 0.5F, 1);
-		this.drawString("IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
-		GL11.glPopMatrix();
-		this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f-this.transparency);
+			//reseau
+			GL11.glPushMatrix();
+			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
+			GL11.glScalef(0.5F, 0.5F, 1);
+			this.drawString("IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
+			GL11.glPopMatrix();
+		}
+		this.drawRect(this.width - 106 + this.shift, this.height - 193, this.width - 14 + this.shift, this.height - 29, 0xff252525, this.screen == 4 ? 0 : this.screen == -1 ? this.transparency : 1f -this.transparency);
 	}
 
 	private void drawBackground()
@@ -254,50 +255,50 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		this.mc.thePlayer.motionX = (double)(-MathHelper.sin((this.mc.thePlayer.rotationYaw + dir) / 180.0F * (float)Math.PI) * power * 0.20F);
 	}
 
-//	@Override
-//	public void handleMouseInput()
-//	{
-//		int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
-//		int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
-//
-//		//Tactile slide gestion
-//		if (Mouse.isButtonDown(0) && this.isFocused)
-//		{
-//			if(x >= this.width - 106 && x <= this.width - 14)
-//			{
-//				if(y >= this.height - 193 && y <= this.height - 39)
-//				{
-//					if(!this.mouseIsDrag)
-//					{
-//						this.clickX = x;
-//						this.clickY = y;
-//						this.mouseIsDrag = true;
-//					}
-//					else
-//					{
-//						if(this.clickX != x || this.clickY != y)
-//							this.isTactile = true;
-//						this.releaseX = x;
-//						this.releaseY = y;
-//					}
-//				}
-//				else
-//					this.mouseIsDrag = false;
-//			}
-//			else
-//				this.mouseIsDrag = false;
-//		}
-//		else
-//			this.mouseIsDrag = false;
-//	}
-	
+	@Override
+	public void handleMouseInput()
+	{
+		int x = Mouse.getEventX() * this.width / this.mc.displayWidth;
+		int y = this.height - Mouse.getEventY() * this.height / this.mc.displayHeight - 1;
+
+		//Tactile slide gestion
+		if (Mouse.isButtonDown(0) && this.isFocused)
+		{
+			if(x >= this.width - 106 && x <= this.width - 14)
+			{
+				if(y >= this.height - 193 && y <= this.height - 39)
+				{
+					if(!this.mouseIsDrag)
+					{
+						this.clickX = x;
+						this.clickY = y;
+						this.mouseIsDrag = true;
+					}
+					else
+					{
+						if(this.clickX != x || this.clickY != y)
+							this.isTactile = true;
+						this.releaseX = x;
+						this.releaseY = y;
+					}
+				}
+				else
+					this.mouseIsDrag = false;
+			}
+			else
+				this.mouseIsDrag = false;
+		}
+		else
+			this.mouseIsDrag = false;
+	}
+
 	private void onMouseOverPhone(int x, int y)
 	{
 		if(this.isFocused)
 		{
 			if(x >= this.width - 71 && x <= this.width - 51)
 			{
-				if(y >= this.height - 19 && y <= this.height - 13)
+				if(y >= this.height - 19 && y <= this.height - 13)	
 				{
 					GL11.glPushMatrix();
 					GL11.glTranslatef(0.5F, 1.22F, 0);
@@ -394,7 +395,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	{
 		this.drawIcon(textureId, posX, posY, textureSize, 0);
 	}
-	
+
 	public void drawIcon(int textureId, int posX, int posY, float textureSize, float rotation)
 	{
 		int iconSize = 16;
