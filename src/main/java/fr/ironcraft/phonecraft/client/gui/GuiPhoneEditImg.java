@@ -181,27 +181,27 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 		{
 			for(int x=0; x<3; x++)
 			{
-				this.font.drawString(this, String.valueOf(num), this.width - 102 + (x * 30), this.height - 110 + (y * 15), 0xff000000, this.transparency);
+				this.drawString(String.valueOf(num), this.width - 102 + (x * 30), this.height - 110 + (y * 15), 0xff000000, this.transparency);
 				num++;
 			}
 		}
 		for(int x=0; x<3; x++)
 		{
 			if(x == 0)
-				this.font.drawString(this, "#", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("#", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
 			else if(x == 1)
-				this.font.drawString(this, "0", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("0", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
 			else if(x == 2)
-				this.font.drawString(this, "*", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("*", this.width - 102 + (x * 30), this.height - 110 + (3 * 15), 0xff000000, this.transparency);
 		}
 		for(int x=0; x<3; x++)
 		{
 			if(x == 0)
-				this.font.drawString(this, "", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
 			else if(x == 1)
-				this.font.drawString(this, "", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
 			else if(x == 2)
-				this.font.drawString(this, "", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
+				this.drawString("", this.width - 102 + (x * 30), this.height - 95 + (3 * 15), 0xff000000, this.transparency);
 		}
 		num = 1;
 		for(int y=0; y<3; y++)
@@ -214,28 +214,28 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 					switch(num)
 					{
 					case 2:
-						this.font.drawString(this, "ABC", 5, 0, 0xff434343, this.transparency);
+						this.drawString("ABC", 5, 0, 0xff434343, this.transparency);
 						break;
 					case 3:
-						this.font.drawString(this, "DEF", 5, 0, 0xff434343, this.transparency);
+						this.drawString("DEF", 5, 0, 0xff434343, this.transparency);
 						break;
 					case 4:
-						this.font.drawString(this, "GHI", 7, 0, 0xff434343, this.transparency);
+						this.drawString("GHI", 7, 0, 0xff434343, this.transparency);
 						break;
 					case 5:
-						this.font.drawString(this, "JKL", 7, 0, 0xff434343, this.transparency);
+						this.drawString("JKL", 7, 0, 0xff434343, this.transparency);
 						break;
 					case 6:
-						this.font.drawString(this, "MNO", 3, 0, 0xff434343, this.transparency);
+						this.drawString("MNO", 3, 0, 0xff434343, this.transparency);
 						break;
 					case 7:
-						this.font.drawString(this, "PQRS", 0, 0, 0xff434343, this.transparency);
+						this.drawString("PQRS", 0, 0, 0xff434343, this.transparency);
 						break;
 					case 8:
-						this.font.drawString(this, "TUV", 5, 0, 0xff434343, this.transparency);
+						this.drawString("TUV", 5, 0, 0xff434343, this.transparency);
 						break;
 					case 9:
-						this.font.drawString(this, "WXYZ", 0, 0, 0xff434343, this.transparency);
+						this.drawString("WXYZ", 0, 0, 0xff434343, this.transparency);
 						break;
 					}
 				GL11.glPopMatrix();
@@ -243,7 +243,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 			}
 		}
 		this.drawRect(this.width - 106+this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000, 1F - this.transparency);
-		this.font.drawString(this, "nom de l'image:", this.width - 104 + this.shift, this.height - 185, 0xffd2d2d2, this.transparency);
+		this.drawString("nom de l'image:", this.width - 104 + this.shift, this.height - 185, 0xffd2d2d2, this.transparency);
 		this.textField.drawTextBox();
 	}
 

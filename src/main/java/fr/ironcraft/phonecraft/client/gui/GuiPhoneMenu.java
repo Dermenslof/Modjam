@@ -1,5 +1,7 @@
 package fr.ironcraft.phonecraft.client.gui;
 
+import java.awt.List;
+import java.lang.reflect.Array;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -47,21 +49,6 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		this.screen = 0;
 		this.clickX = this.clickY = this.releaseX = this.releaseY = -1;
 		super.initGui();
-	}
-
-	public void updateScreen()
-	{
-		super.updateScreen();
-	}
-
-	public boolean doesGuiPauseGame()
-	{
-		return false;
-	}
-
-	public void keyTyped(char par1, int par2)
-	{
-		super.keyTyped(par1, par2);
 	}
 
 	public void mouseClicked(int i, int j, int k)
@@ -133,76 +120,88 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 	private void drawHome(int par1, int par2, float par3)
 	{
 		GL11.glPushMatrix();
-			GL11.glTranslatef(0F, + 0.5F, 0);
-			this.drawGradientRect(106, 184, 14, 29, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
+		GL11.glTranslatef(0F, + 0.5F, 0);
+		this.drawGradientRect(106, 184, 14, 29, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
 		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glColor4f(1,  1,  1,  this.transparency);
-			this.mc.renderEngine.bindTexture(this.getTextureIcons());
-			this.drawTexturedModalRect(this.width - 101 + this.shift, this.height - 178, 113, 78, 42, 42);
-			Date d = new Date();
-			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-			GL11.glRotatef(d.getMinutes() * 6 + 180,  0,  0,  1);
-			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
+
+		//Horloge mainMenu
+		GL11.glColor4f(1,  1,  1,  this.transparency);
+		this.drawIcon(12, 2, 2, 3F);
+
+		Date d = new Date();
 		
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4f(1,  1,  1,  this.transparency);
+		this.drawIcon(13, 26, 26, 0.5F, d.getMinutes() * 6 + 180);
+//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+//		GL11.glRotatef(d.getMinutes() * 6 + 180,  0,  0,  1);
+//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4f(1,  1,  1,  this.transparency);
+		this.drawIcon(13, 26, 26, 0.65F, d.getHours() * 30 + 180);
+		
+//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+//		GL11.glRotatef(d.getHours() * 30 + 180,  0,  0,  1);
+//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 10);
+		GL11.glPopMatrix();
+
+		GL11.glPushMatrix();
+		GL11.glEnable(GL11.GL_BLEND);
+		GL11.glColor4f(1,  0,  0,  this.transparency);
+
+//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+//		GL11.glRotatef(d.getSeconds() * 6 + 180,  0, 0, 1);
+//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
+		this.drawIcon(13, 26, 26, 0.7F, d.getSeconds() * 6 + 180);
+		GL11.glPopMatrix();
+
+		//------------------------------------------
+		
+		GL11.glPushMatrix();
 		Calendar cal = Calendar.getInstance();
 		String Day = TextUtils.getLanguage("day." + cal.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.US).toLowerCase());
 		if (Day.charAt(0) >= 'a')
 			Day = "" + (char)(Day.charAt(0) - 32) + Day.substring(1);
-		
-			GL11.glTranslatef(this.width - 30 + this.shift, this.height - 170, 0);
-			GL11.glScalef(0.7F,  0.7F,  1);
-			this.font.drawString(this, Day, - (int)((this.font.getStringWidth(Day) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
+
+		GL11.glTranslatef(this.width - 30 + this.shift, this.height - 170, 0);
+		GL11.glScalef(0.7F,  0.7F,  1);
+		this.drawString(Day, - (int)((this.getFont().getStringWidth(Day) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
 		GL11.glPopMatrix();
+
 		GL11.glPushMatrix();
-			GL11.glTranslatef(this.width - 30 + this.shift, this.height - 155, 0);
-			GL11.glScalef(0.5F,  0.5F,  1);
-			this.font.drawString(this, cal.get(Calendar.DAY_OF_MONTH)
-					+ "/" + (cal.get(Calendar.MONTH) + 1)
-					+ "/" + cal.get(Calendar.YEAR), - (int)((this.font.getStringWidth(cal.get(Calendar.DAY_OF_MONTH)
-					+ "/" + (cal.get(Calendar.MONTH) + 1)
-					+ "/" + cal.get(Calendar.YEAR)) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
+		GL11.glTranslatef(this.width - 30 + this.shift, this.height - 155, 0);
+		GL11.glScalef(0.5F,  0.5F,  1);
+		this.drawString(cal.get(Calendar.DAY_OF_MONTH)
+				+ "/" + (cal.get(Calendar.MONTH) + 1)
+				+ "/" + cal.get(Calendar.YEAR), - (int)((this.getFont().getStringWidth(cal.get(Calendar.DAY_OF_MONTH)
+						+ "/" + (cal.get(Calendar.MONTH) + 1)
+						+ "/" + cal.get(Calendar.YEAR)) / 2) / 0.7F + 2), 0, 0xffd2d2d2, this.transparency);
 		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glColor4f(1,  1,  1,  this.transparency);
-			this.mc.renderEngine.bindTexture(this.getTextureIcons());
-			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-			GL11.glRotatef(d.getHours() * 30 + 180,  0,  0,  1);
-			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 10);
-		GL11.glPopMatrix();
-		GL11.glPushMatrix();
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glColor4f(1,  0,  0,  this.transparency);
-			this.mc.renderEngine.bindTexture(this.getTextureIcons());
-			GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-			GL11.glRotatef(d.getSeconds() * 6 + 180,  0,  0,  1);
-			this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
-		GL11.glPopMatrix();
+
 		if(this.transparency >= 1F)
 		{
-			//fond boutons
+			//buttons back
 			GL11.glPushMatrix();
-				GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
-				this.drawGradientRect(106, 48, 14, 28, 0x323232, 0x111111, -1.0F);
-				this.drawGradientRect(105, 47, 84, 29, 0x626262, 0x424242, -1.0F);
-				this.drawGradientRect(82, 47, 61, 29, 0x626262, 0x424242, -1.0F);
-				this.drawGradientRect(59, 47, 38, 29, 0x626262, 0x424242, -1.0F);
-				this.drawGradientRect(36, 47, 15, 29, 0x626262, 0x424242, -1.0F);
-				//icons boutons
-				this.mc.renderEngine.bindTexture(this.getTextureIcons());
-				GL11.glEnable(GL11.GL_BLEND);
-				GL11.glColor4f(1,  1,  1,  (this.transparency - 1.0F));
-				GL11.glTranslatef(this.width - 104 + this.shift, this.height - 44, 0);
-				GL11.glScalef(1.1F, 1.1F, 1);
-				for(int t=0; t<4; t++)
-					this.drawTexturedModalRect(0 + (t * 21), 0, 110 + t * 14, 15, 15, 10);
+			GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
+			
+			this.drawGradientRect(106, 48, 14, 28, 0x323232, 0x111111, -1.0F);
+			
+			int[] ic = {48, 18, 16, 8};
+			for(int t=0; t<ic.length; t++) {
+				this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0x626262, 0x424242, -1.0F);
+				this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
+			}
+
 			GL11.glPopMatrix();
+
 		}
-		this.drawRect(this.width - 106 + this.shift, this.height - 183, this.width - 14 + this.shift, this.height - 29, 0xff000000, 1F - this.transparency / 2);
 	}
 
 	private void drawMainMenu(int par1, int par2, float par3)
@@ -254,11 +253,11 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					GL11.glColor4f(1,  1,  1, this.transparency/2);
 					this.drawTexturedModalRect(this.width - 103 + (col * 23)+this.shift, this.height - 171 + 10 + (line * 30), 110 +((t - 1) % 16) * 14, 0, 14, 10);
 					GL11.glPushMatrix();
-						GL11.glScalef(0.5F, 0.5F, 1);
-						GL11.glTranslatef((this.width - 103 + this.shift + (col % 16) * 23 + 9) / 0.5F, (this.height - 161 + 10 + (line * 30)) / 0.5F, 0);
-						this.font.drawString(this, title, 0-(this.font.getStringWidth(title)/2), 0, 0xffd2d2d2, this.transparency);    				
+					GL11.glScalef(0.5F, 0.5F, 1);
+					GL11.glTranslatef((this.width - 103 + this.shift + (col % 16) * 23 + 9) / 0.5F, (this.height - 161 + 10 + (line * 30)) / 0.5F, 0);
+					this.drawString(title, 0-(this.getFont().getStringWidth(title)/2), 0, 0xffd2d2d2, this.transparency);    				
 					GL11.glPopMatrix();
-				GL11.glPopMatrix();
+					GL11.glPopMatrix();
 				}
 				catch(Exception e)
 				{
@@ -350,21 +349,21 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					}
 				}
 			}
-			if(x >= this.width - 71 && x <= this.width - 51)
-			{
-				if(y >= this.height - 19 && y <= this.height - 13)
-				{
-					GL11.glPushMatrix();
-					GL11.glTranslatef(0.5F, 1.22F, 0);
-					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glColor4f(1F,  1F,  1F,  this.transparency - 0.7F);
-					this.mc.renderEngine.bindTexture(this.getTextureIcons());
-					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
-					GL11.glDisable(GL11.GL_BLEND);
-					GL11.glPopMatrix();
-					this.bouton = 0;
-				}
-			}
+//			if(x >= this.width - 71 && x <= this.width - 51)
+//			{
+//				if(y >= this.height - 19 && y <= this.height - 13)
+//				{
+//					GL11.glPushMatrix();
+//					GL11.glTranslatef(0.5F, 1.22F, 0);
+//					GL11.glEnable(GL11.GL_BLEND);
+//					GL11.glColor4f(1F,  1F,  1F,  this.transparency - 0.7F);
+//					this.mc.renderEngine.bindTexture(this.getTextureIcons());
+//					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
+//					GL11.glDisable(GL11.GL_BLEND);
+//					GL11.glPopMatrix();
+//					this.bouton = 0;
+//				}
+//			}
 		}
 	}
 }

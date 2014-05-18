@@ -195,7 +195,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 			}
 			if(noImg)
 			{
-				this.font.drawString(this, "pas d'image", this.width-60 -(this.font.getStringWidth("pas d'image")/2), this.height/2-40, 0xffd2d2d2, this.transparency);
+				this.drawString("pas d'image", this.width-60 -(this.getFont().getStringWidth("pas d'image")/2), this.height/2-40, 0xffd2d2d2, this.transparency);
 				this.image = -1;
 			}
 			if(doPop)
@@ -209,7 +209,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 						drawRect(this.width-106+this.shift, this.height-28-155, this.width-106+this.shift+92, this.height-28-155+7, 0xff222222, this.transparency);
 						GL11.glTranslatef(this.width-56-0.5F,  this.height-28-157,  0);
 						GL11.glScalef(0.5F, 0.5F, 1);
-						this.font.drawString(this, String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()), (int) (0-(this.font.getStringWidth(String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()))/2F)/0.5F), 0, 0xffd2d2d2, this.transparency);
+						this.drawString(String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()), (int) (0-(this.getFont().getStringWidth(String.valueOf(this.image+1)+"/"+String.valueOf(this.photos.size()))/2F)/0.5F), 0, 0xffd2d2d2, this.transparency);
 						GL11.glPopMatrix();
 				}
 				//fond boutons

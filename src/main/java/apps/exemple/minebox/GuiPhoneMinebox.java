@@ -49,7 +49,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.textureBack = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrBack.png");
 		this.textureLogo = this.imageLoader.setupTexture("apps/exemple/minebox:textures/mbrLogo.png");
 		this.textureUnknow = this.imageLoader.setupTexture("apps/exemple/minebox:textures/unknow.png");
-		this.textureIcons = this.imageLoader.setupTexture("apps/exemple/minebox:textures/icons.png");
+		//this.textureIcons = this.imageLoader.setupTexture("apps/exemple/minebox:textures/icons.png");
 		AppMinebox.sound = StreamSoundThread.getThread();
 		if(!StreamSoundThread.isStart())
 			AppMinebox.sound.start();
@@ -126,7 +126,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 			else
 			{
 				GL11.glScalef(2F, 2F,  1);
-				this.font.drawString(this, "Pub", this.width - 71  + this.shift, this.height - 152,  0xd2d2d2, this.transparency);
+				this.drawString("Pub", this.width - 71  + this.shift, this.height - 152,  0xd2d2d2, this.transparency);
 			}
 		}
 		else
@@ -165,10 +165,10 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawRoundedRect(this.width - 104, this.height - 67, this.width - 16, this.height - 50, 3, 0x00, this.transparency - 1.5F);
 		GL11.glPopMatrix();
 		String[] names = infos[2].split(" - ");
-		this.font.drawString(this, "Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) ((this.height - 149)/0.5F),  0xd2d2d2, this.transparency);
+		this.drawString("Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) ((this.height - 149)/0.5F),  0xd2d2d2, this.transparency);
 		for(int i=0; i<names.length; i++)
-			this.font.drawString(this, names[i] , (int)((this.width - 74  + this.shift)/0.5F), (int) ((this.height - 149 + 5*i)/0.5F),  0xd2d2d2, this.transparency);
-		this.font.drawString(this, infos[1] , (int)((this.width - 98 + this.shift)/0.5F), (int)((this.height-156)/0.5F),  0xd2d2d2, this.transparency);
+			this.drawString(names[i] , (int)((this.width - 74  + this.shift)/0.5F), (int) ((this.height - 149 + 5*i)/0.5F),  0xd2d2d2, this.transparency);
+		this.drawString(infos[1] , (int)((this.width - 98 + this.shift)/0.5F), (int)((this.height-156)/0.5F),  0xd2d2d2, this.transparency);
 		drawJacket();
 	}
 
@@ -198,21 +198,21 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		GL11.glScalef(2F, 2F,  1);
 		this.drawRect(this.width - 84, this.height - 122, this.width - 35, this.height - 74, 0x00, this.transparency - 1.4F);
 		if (mc.getLanguageManager().getCurrentLanguage().getLanguageCode().startsWith("fr"))
-			this.font.drawString(this, "Chargement", this.width - 88  + this.shift, this.height - 147,  0xd2d2d2);
+			this.drawString("Chargement", this.width - 88  + this.shift, this.height - 147,  0xd2d2d2);
 		else
 			this.getFont().drawString(this, "Loading", this.width - 80  + this.shift, this.height - 147,  0xd2d2d2);
 		long t = System.currentTimeMillis() % 1000 / 100;
 		//		System.out.println(t);
 		if (t < 2)
-			this.getFont().drawString(this, "", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
+			this.drawString("", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
 		else if (t < 4)
-			this.getFont().drawString(this, ".", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
+			this.drawString(".", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
 		else if (t < 6)
-			this.getFont().drawString(this, "..", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
+			this.drawString("..", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
 		else if (t < 8)
-			this.getFont().drawString(this, "...", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
+			this.drawString("...", this.width - 64 + this.shift, this.height - 105,  0xd2d2d2);
 		else
-			this.getFont().drawString(this, "....", this.width - 64  + this.shift, this.height - 105,  0xd2d2d2);
+			this.drawString("....", this.width - 64  + this.shift, this.height - 105,  0xd2d2d2);
 	}
 
 	private void drawTimeLine()
@@ -238,14 +238,15 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 
 		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
 
-		for (int i = 0; i < 4; i++)
-		this.drawGradientRect(105 - (i * 23), 47, 84 - (i * 23), 29, 0xff626262, 0xff424242);
-		
-		for (int i=0; i < 3; ++i)
-			this.drawIcon(0, 5 + i * 23, 139, 0.5F);
+		int[] ic = {39, 38, 21, 36};
+		for(int t=0; t<ic.length; t++) {
+			this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0x626262, 0x424242, -1.0F);
+			this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
+		}
+
 		GL11.glPopMatrix();
 	}
-
+	
 	private void onMouseOverPhone(int x, int y)
 	{
 		if (this.getFocus())

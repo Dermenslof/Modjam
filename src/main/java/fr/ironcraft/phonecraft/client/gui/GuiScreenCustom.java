@@ -4,6 +4,7 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.ironcraft.phonecraft.utils.CustomFont;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.renderer.Tessellator;
 
@@ -16,6 +17,18 @@ public class GuiScreenCustom extends GuiScreen
 	protected int phoneSize;
 	protected int shift = 0;
 	protected float transparency;
+	
+	private CustomFont font;
+	
+	public void drawString(String text, int posX, int posY, int color)
+	{
+		this.font.drawString(this, text, posX, posY, color, transparency);
+	}
+	
+	public void drawString(String text, int posX, int posY, int color, float transparency)
+	{
+		this.font.drawString(this, text, posX, posY, color, this.transparency);
+	}
 	
 	protected void drawGradientRect(int par1, int par2, int par3, int par4, int par5Color, int par6Color)
 	{
@@ -189,5 +202,30 @@ public class GuiScreenCustom extends GuiScreen
 	{
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
+	}
+	
+	/**
+	 * get the font used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @return CustomFont
+	 */
+	public CustomFont getFont()
+	{
+		return this.font;
+	}
+
+	/**
+	 * set the font used by Phonecraft
+	 * 
+	 * @author Dren
+	 * @since Phonecraft 1.0 for Minecraft 1.7.2
+	 * @param new font
+	 * @return font set
+	 */
+	public CustomFont setFont(CustomFont font)
+	{
+		return this.font = font;
 	}
 }

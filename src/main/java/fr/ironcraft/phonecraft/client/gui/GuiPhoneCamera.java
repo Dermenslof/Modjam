@@ -50,6 +50,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 			this.screen = 1;
 			this.angle = -90;
 			this.mc.gameSettings.hideGUI = true;
+			this.hidePhone = true;
 		}
 	}
 
@@ -144,6 +145,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 					this.scale = 2.8F;
 					this.screen = 1;
 					this.mc.gameSettings.hideGUI = true;
+					this.hidePhone = true;
 				}
 			}
 			this.angle -= 4;
@@ -166,6 +168,7 @@ public class GuiPhoneCamera extends GuiPhoneInGame
 				{
 					this.angle = 0;
 					this.mc.gameSettings.hideGUI = false;
+					this.hidePhone = false;
 					this.mc.displayGuiScreen(new GuiPhoneMenu(this.mc));
 				}
 			}
