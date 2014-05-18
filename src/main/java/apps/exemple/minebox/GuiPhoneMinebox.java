@@ -240,20 +240,20 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
 
 		for (int i = 0; i < 4; i++)
-			this.drawGradientRect(36 + (i * 23), 47, 15, 29, 0xff626262, 0xff424242);
-				
-//				this.drawGradientRect(105, 47, 84, 29, 0xff626262, 0xff424242);
-//				this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
-//				this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
+		this.drawGradientRect(105 - (i * 23), 47, 84 - (i * 23), 29, 0xff626262, 0xff424242);
+//		this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
+//		this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
+//		this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
 
 		
 //		GL11.glColor4f(1,  1,  1,  this.transparency);
 		GL11.glScalef(0.5F, 0.5F, 1.0F);
+//		GL11.glTranslatef(x, y, z);
 		
-		
-		this.drawIcon(0, 12, 280, 24);
-		this.drawIcon(1, 12 + 46, 280, 24);
-		this.drawIcon(0, 58 + 46, 280, 24);
+		for (int i=0; i < 3; ++i)
+		this.drawIcon(0, 12 + (i * 46), 280, 24);
+//		this.drawIcon(1, 12 + 46, 280, 24);
+//		this.drawIcon(0, 58 + 46, 280, 24);
 		GL11.glPopMatrix();
 	}
 
