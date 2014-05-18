@@ -203,9 +203,10 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			
 			this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
 			
-			int[] ic = {48, 18, 16, 8};
+			int[] ic = {16, 17, 19, 20};
 			for(int t=0; t<ic.length; t++) {
-				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
+//				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
+				this.drawIcon(3, 1 + (t * 23), 136, 1.23F);
 				this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
 			}
 

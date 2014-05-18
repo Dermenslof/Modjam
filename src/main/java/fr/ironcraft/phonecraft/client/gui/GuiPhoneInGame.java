@@ -162,21 +162,6 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		if(this.screen == 1)
 			return;
 		//image telephone
-//		GL11.glColor4f(1,  1,  1,  3 - this.scale);
-//		GL11.glTranslatef(this.width / 2, this.height / 2, 0);
-//		GL11.glRotatef(this.angle, 0, 0, 1);
-//		GL11.glScalef(this.scale, this.scale, 1);
-//		GL11.glTranslatef(-this.width / 2 - this.changePoint / 1.38F, -this.height / 2-this.changePoint / 15, 0);
-		
-		//Texture
-//		GL11.glPushMatrix();
-//		GL11.glTranslatef(-0.5F, 0F, 0);
-//		this.mc.renderEngine.bindTexture(this.getTexturePhone());
-//		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
-//		GL11.glPopMatrix();
-		
-		
-		//image telephone
 		GL11.glColor4f(1,  1,  1,  3 - this.scale);
 		GL11.glTranslatef(this.width / 2, this.height / 2, 0);
 		GL11.glRotatef(this.angle, 0, 0, 1);
@@ -185,10 +170,9 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		
 		//Texture
 		GL11.glPushMatrix();
-		GL11.glTranslatef(51.8F, -35F, 0);
-		GL11.glScalef(this.scale - 0.195F, this.scale - 0.043F, 1);
+		GL11.glTranslatef(-0.5F, 0F, 0);
 		this.mc.renderEngine.bindTexture(this.getTexturePhone());
-		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 500, 500);
+		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
 		GL11.glPopMatrix();
 		
 	}
@@ -320,12 +304,16 @@ public class GuiPhoneInGame extends GuiScreenCustom
 				if(y >= this.height - 19 && y <= this.height - 13)	
 				{
 					GL11.glPushMatrix();
-					GL11.glTranslatef(0.5F, 1.22F, 0);
-					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glColor4f(1F,  1F,  1F,  this.transparency - 0.7F);
-					this.mc.renderEngine.bindTexture(this.getTextureIcons());
-					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
-					GL11.glDisable(GL11.GL_BLEND);
+//					GL11.glTranslatef(0.5F, 1.22F, 0);
+//					GL11.glEnable(GL11.GL_BLEND);
+//					GL11.glColor4f(1F,  1F,  1F,  this.transparency - 0.7F);
+//					this.mc.renderEngine.bindTexture(this.getTextureIcons());
+//					this.drawTexturedModalRect(this.width - 72 + this.shift, this.height - 19, 0, 414 / 2 + 6, 50, 6);
+//					GL11.glDisable(GL11.GL_BLEND);
+					
+					GL11.glColor4f(1,  1,  1,  this.transparency);
+					this.drawIcon(4, 25, 25, 2F);
+					
 					GL11.glPopMatrix();
 					this.bouton = 0;
 				}
