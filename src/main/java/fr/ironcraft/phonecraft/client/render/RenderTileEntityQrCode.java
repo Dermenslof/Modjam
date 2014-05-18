@@ -46,8 +46,10 @@ public class RenderTileEntityQrCode extends TileEntitySpecialRenderer
 						par1TileEntityCR.img = ImageIO.read(new File(Phonecraft.phoneFolder + "solo_qrcodes/" + par1TileEntityCR.texture.substring((Phonecraft.urlFiles + "/qrcodes/").length())));
 					} catch (MalformedURLException e) {
 						e.printStackTrace();
+						par1TileEntityCR.img = null;
 					} catch (IOException e) {
 						e.printStackTrace();
+						par1TileEntityCR.img = null;
 					}
 				}
 			}

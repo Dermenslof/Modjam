@@ -80,4 +80,19 @@ public class ImageLoader
 		}
 		return setupTexture(img);
 	}
+	
+	public int setupTextureApp(String textureLocation) {
+		Minecraft mc = FMLClientHandler.instance().getClient();
+		String[] path = textureLocation.split(":");
+		File file = new File(mc.mcDataDir, "PhoneCraft/apps/resources/" + path[0] + "/" + path[1]);
+		BufferedImage img = null;
+		try {
+			img = (BufferedImage)ImageIO.read(file);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+			return -1;
+		}
+		return setupTexture(img);
+	}
 }

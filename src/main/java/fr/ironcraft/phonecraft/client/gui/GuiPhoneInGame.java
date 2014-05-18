@@ -177,11 +177,11 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		
 		
 		//image telephone
-//		GL11.glColor4f(1,  1,  1,  3 - this.scale);
-//		GL11.glTranslatef(this.width / 2, this.height / 2, 0);
-//		GL11.glRotatef(this.angle, 0, 0, 1);
-//		GL11.glScalef(this.scale, this.scale, 1);
-//		GL11.glTranslatef(-this.width / 2 - this.changePoint / 1.38F, -this.height / 2-this.changePoint / 15, 0);
+		GL11.glColor4f(1,  1,  1,  3 - this.scale);
+		GL11.glTranslatef(this.width / 2, this.height / 2, 0);
+		GL11.glRotatef(this.angle, 0, 0, 1);
+		GL11.glScalef(this.scale, this.scale, 1);
+		GL11.glTranslatef(-this.width / 2 - this.changePoint / 1.38F, -this.height / 2-this.changePoint / 15, 0);
 		
 		//Texture
 		GL11.glPushMatrix();

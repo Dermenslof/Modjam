@@ -7,7 +7,9 @@ import java.io.FilenameFilter;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.jar.JarInputStream;
@@ -58,8 +60,9 @@ public class AppServiceLoader
 	
 	public synchronized boolean findClassesInJar(final Class<?> baseInterface, final File jarFullPath) throws Exception
 	{
-		
 		final List<String> classesTobeReturned = new ArrayList<String>();
+		int init = 0;
+		String path = "";
 		if (!jarFullPath.isDirectory())
 		{
 			@SuppressWarnings("resource")
@@ -76,6 +79,13 @@ public class AppServiceLoader
 				if (entry.getName().endsWith(".png") || entry.getName().endsWith(".jpg"))
 				{
 					File dest = new File(resourcesFile, image);
+					if (init == 0)
+					{
+						String[] tab =  dest.getPath().split("\\" + File.separator);
+						for (int i=5; i< tab.length - 2; ++i)
+							path += tab[i] + File.separator;
+						init = 1;
+					}
 					System.out.println("[PhoneCraft] extract image " + image + " to " + dest.getPath());
 					if (!resourcesFile.exists())
 						resourcesFile.mkdir();
@@ -120,6 +130,7 @@ public class AppServiceLoader
 							if (baseInterface.isAssignableFrom(myLoadedClass))
 							{
 								PhoneApps app = (PhoneApps) myLoadedClass.newInstance();
+								Phonecraft.appResourcesPath.put(app.appname(), path);
 								appCollection.add(app);
 								System.out.println("[PhoneApps] " + app.appname() + " "+ app.version() + " ---> DONE");
 								return true;

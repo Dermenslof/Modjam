@@ -13,9 +13,13 @@ import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.api.PhoneApps;
 import fr.ironcraft.phonecraft.client.AppRegistry;
+import fr.ironcraft.phonecraft.client.ClientProxy;
+import fr.ironcraft.phonecraft.utils.ImageLoader;
 import fr.ironcraft.phonecraft.utils.TextUtils;
+import fr.ironcraft.phonecraft.utils.TextureUtils;
 
 /**
  * @author Dermenslof, DrenBx
@@ -254,10 +258,13 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					if(title == null)
 						return;
 					GL11.glPushMatrix();
-					this.mc.renderEngine.bindTexture(texturePhone);
 					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glColor4f(1,  1,  1, this.transparency/2);
-					this.drawTexturedModalRect(this.width - 103 + (col * 23)+this.shift, this.height - 171 + 10 + (line * 30), 110 +((t - 1) % 16) * 14, 0, 14, 10);
+					GL11.glColor4f(1,  1,  1, this.transparency / 2);
+//					if (!app.getIcon().equals(""))
+//					{
+//						GL11.glBindTexture(GL11.GL_TEXTURE_2D, ClientProxy.imageLoader.setupTexture(TextureUtils.getTextureNameForApp(app, app.getIcon())));
+//						this.drawTexturedModalRect(this.width - 103 + (col * 23)+this.shift, this.height - 171 + 10 + (line * 30), 110 +((t - 1) % 16) * 14, 0, 14, 10);
+//					}
 					GL11.glPushMatrix();
 					GL11.glScalef(0.5F, 0.5F, 1);
 					GL11.glTranslatef((this.width - 103 + this.shift + (col % 16) * 23 + 9) / 0.5F, (this.height - 161 + 10 + (line * 30)) / 0.5F, 0);

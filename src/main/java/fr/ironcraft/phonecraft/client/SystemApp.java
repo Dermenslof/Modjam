@@ -11,6 +11,7 @@ class SystemApp implements PhoneApps
 	private String appname;
 	private String version;
 	private GuiPhoneInGame gui;
+	private String icon;
 
 	public SystemApp(String string, String s, GuiPhoneInGame g)
 	{
@@ -35,5 +36,17 @@ class SystemApp implements PhoneApps
 	public GuiPhoneInGame ScreenInstance()
 	{
 		return gui;
+	}
+
+	@Override
+	public String getIcon()
+	{
+		return icon;
+	}
+
+	public SystemApp setIcon(String icon)
+	{
+		this.icon = icon;
+		return this;
 	}
 }

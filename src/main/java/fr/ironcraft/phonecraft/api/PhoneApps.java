@@ -11,4 +11,5 @@ public interface PhoneApps
 	 public abstract String appname();
 	 public abstract String version();
 	 public abstract GuiPhoneInGame ScreenInstance();
+	 public abstract String getIcon();
 }

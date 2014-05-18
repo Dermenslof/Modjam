@@ -24,4 +24,10 @@ public class AppMinebox implements PhoneApps
 	{
 		return new GuiPhoneMinebox();
 	}
+
+	@Override
+	public String getIcon()
+	{
+		return "icon.png";
+	}
 }

@@ -47,8 +47,8 @@ public class AppRegistry
 
 	private void registerSystemApps()
 	{
-		this.appsList.add(new SystemApp("Images", "1.0.0", new GuiPhoneImages(mc)));
-		this.appsList.add(new SystemApp("MAP", "1.0.0", new GuiPhoneMap(mc)));
+		this.appsList.add(new SystemApp("Images", "1.0.0", new GuiPhoneImages(mc)).setIcon(""));
+		this.appsList.add(new SystemApp("MAP", "1.0.0", new GuiPhoneMap(mc)).setIcon(""));
 	}
 
 	private void init()
