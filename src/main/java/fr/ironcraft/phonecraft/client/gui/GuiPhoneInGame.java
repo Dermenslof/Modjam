@@ -380,7 +380,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		int iconPerLine = 5;
 		int iconPerCol = 5;
 		int iconPosX = (textureId % iconPerLine) * iconSize;
-		int iconPosY = ((textureId / iconPerCol) * iconSize);
+		int iconPosY = ((textureId / iconPerLine) * iconSize) % iconPerCol;
 
 		this.drawImageOnScreen(this.getTextureIcons(), posX, posY, iconPosX, iconPosY, textureSize, textureSize);
 		
