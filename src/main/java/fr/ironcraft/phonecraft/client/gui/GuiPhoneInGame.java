@@ -140,7 +140,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 
 			GL11.glPushMatrix();
 			GL11.glScalef(0.5F, 0.5F, 1F);
-			GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F, 0.5F);
+			GL11.glTranslatef((this.width - 29.5F + this.shift) / 0.5F, (this.height - 192.5F) / 0.5F - 32, 0.5F);
 			this.drawString(h, 0, 0, 0xd2d2d2, 0.3F);
 			this.drawString(":", 12 , -1, 0xd2d2d2, 0.3F);
 			this.drawString( m, 16, 0, 0xd2d2d2, 0.3F);
@@ -148,7 +148,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 
 			//reseau
 			GL11.glPushMatrix();
-			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 192, 0);
+			GL11.glTranslatef(this.width - 105F + this.shift, this.height - 208, 0);
 			GL11.glScalef(0.5F, 0.5F, 1);
 			this.drawString("IC telecom", 0 + 1, 0, 0xd2d2d2, 0.3F);
 			GL11.glPopMatrix();
@@ -172,7 +172,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		GL11.glPushMatrix();
 		GL11.glTranslatef(-0.5F, 0F, 0);
 		this.mc.renderEngine.bindTexture(this.getTexturePhone());
-		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 210, 0, 0, 100, 200);
+		this.drawTexturedModalRect(this.width - 110 + this.shift, this.height - 235, 0, 0, 110, 250);
 		GL11.glPopMatrix();
 		
 	}
@@ -301,7 +301,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		{
 			if(x >= this.width - 71 && x <= this.width - 51)
 			{
-				if(y >= this.height - 19 && y <= this.height - 13)	
+				if(y >= this.height - 35 && y <= this.height - 20)	
 				{
 					GL11.glPushMatrix();
 //					GL11.glTranslatef(0.5F, 1.22F, 0);
@@ -312,7 +312,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 //					GL11.glDisable(GL11.GL_BLEND);
 					
 					GL11.glColor4f(1,  1,  1,  this.transparency);
-					this.drawIcon(4, 25, 25, 2F);
+					this.drawIcon(4, 36, 145, 1.2F);
 					
 					GL11.glPopMatrix();
 					this.bouton = 0;

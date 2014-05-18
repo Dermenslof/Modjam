@@ -168,10 +168,10 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawRoundedRect(2, 116, 90, 133, 3, 0x00, -1.5F);
 		GL11.glPopMatrix();
 		String[] names = infos[2].split(" - ");
-		this.drawString("Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) ((this.height - 149)/0.5F),  0xd2d2d2, this.transparency);
+		this.drawString("Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) (this.getScreenPosY() / 0.5F) + 55,  0xd2d2d2, this.transparency);
 		for(int i=0; i<names.length; i++)
-			this.drawString(names[i] , (int)((this.width - 74  + this.shift)/0.5F), (int) ((this.height - 149 + 5*i)/0.5F),  0xd2d2d2, this.transparency);
-		this.drawString(infos[1] , (int)((this.width - 98 + this.shift)/0.5F), (int)((this.height-156)/0.5F),  0xd2d2d2, this.transparency);
+			this.drawString(names[i] , (int)((this.width - 74  + this.shift)/0.5F), (int) ((this.getScreenPosY() + 5 * i) / 0.5F) + 55,  0xd2d2d2, this.transparency);
+		this.drawString(infos[1] , (int)((this.width - 98 + this.shift) / 0.5F), (int)((this.height - 156) / 0.5F) - 13,  0xd2d2d2, this.transparency);
 		drawJacket();
 	}
 
@@ -192,7 +192,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, this.transparency);
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 		GL11.glScalef(0.3F, 0.3F, 0.3F);
-		this.drawTexturedModalRect((int)(((this.width - 79 + this.shift)/0.3F)/0.5F), (int) (((this.height - 117)/0.3F)/0.5F), 0, 0, 256, 256);
+		this.drawTexturedModalRect((int)((this.getScreenPosX()/0.3F)/0.5F) + 182, (int) ((this.getScreenPosY() / 0.3F) /0.5F) + 440, 0, 0, 256, 256);
 		GL11.glPopMatrix();
 	}
 
@@ -231,7 +231,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		GL11.glScalef(0.5F, 0.5F, 1);
 		int minutes = (int)(last/60);
 		int seconds = (int)((last -((last/1000)-minutes))/1000) % 60;
-		this.getFont().drawString(this, "" + (minutes/1000) + ":" + (seconds < 10 ? "0" + seconds : (seconds == 60 ? "00" : "" + seconds)), (int)((this.width - 100 + this.shift)/0.5F), (int)((this.height - 68)/0.5F), 0xffffff, this.transparency);
+		this.getFont().drawString(this, "" + (minutes/1000) + ":" + (seconds < 10 ? "0" + seconds : (seconds == 60 ? "00" : "" + seconds)), (int)(this.getScreenPosX() / 0.5F + 13), (int)((this.height - 82) / 0.5F), 0xffffff, this.transparency);
 		GL11.glPopMatrix();
 	}
 
@@ -242,10 +242,10 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
 		//		this.drawGradientRect(0, 135, 169, 155, 0xff323232, 0xff111111);
 
-		int[] ic = {39, 38, 21, 36};
+		int[] ic = {51, 50, 80, 36};
 		for(int t=0; t<ic.length; t++) {
 			this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
-			this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
+			this.drawIcon(ic[t], 3 + (t * 23), 122, 1F);
 		}
 
 		GL11.glPopMatrix();
@@ -262,7 +262,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 				{
 					for(int t=0; t<4; t++)
 					{
-						if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
+						if(x >= this.getScreenPosX() + (t * 23) && x <= this.width - 84 + (t * 23) && y >= this.height - 62 && y <= this.height - 44)
 						{
 							GL11.glPushMatrix();
 							this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0xff626262, 0x55000000, -1.6F);

@@ -132,43 +132,43 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 //		GL11.glColor4f(1,  1,  1,  this.transparency);
 //		this.drawIcon(12, 2, 2, 3F);
 		
-		for (int i=0; i < 4; i++) {
-			drawQuarterCircle(25, 25, 22, i, 0x333333, -1.5F);
-			drawQuarterCircle(25, 25, 20, i, 0xFFFFFF, -1.5F);
-		}
+//		for (int i=0; i < 4; i++) {
+//			drawQuarterCircle(25, 25, 22, i, 0x333333, -1.5F);
+//			drawQuarterCircle(25, 25, 20, i, 0xFFFFFF, -1.5F);
+//		}
 
 		Date d = new Date();
 		
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		this.drawIcon(13, 25, 25, 0.5F, d.getMinutes() * 6 + 180);
-//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
-//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-//		GL11.glRotatef(d.getMinutes() * 6 + 180,  0,  0,  1);
-//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
+//		this.drawIcon(0, 24, 9, 0.5F, d.getMinutes() * 6 + 180);
+		this.mc.renderEngine.bindTexture(this.getTexturePhone());
+		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+		GL11.glRotatef(d.getMinutes() * 6 + 180,  0,  0,  1);
+		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  1,  1,  this.transparency);
-		this.drawIcon(13, 25, 25, 0.65F, d.getHours() * 30 + 180);
+//		this.drawIcon(0, 24, 9, 0.65F, d.getHours() * 30 + 180);
 		
-//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
-//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-//		GL11.glRotatef(d.getHours() * 30 + 180,  0,  0,  1);
-//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 10);
+		this.mc.renderEngine.bindTexture(this.getTexturePhone());
+		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+		GL11.glRotatef(d.getHours() * 30 + 180,  0,  0,  1);
+		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 10);
 		GL11.glPopMatrix();
 
 		GL11.glPushMatrix();
 		GL11.glEnable(GL11.GL_BLEND);
 		GL11.glColor4f(1,  0,  0,  this.transparency);
 
-//		this.mc.renderEngine.bindTexture(this.getTextureIcons());
-//		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
-//		GL11.glRotatef(d.getSeconds() * 6 + 180,  0, 0, 1);
-//		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
-		this.drawIcon(13, 25, 25, 0.7F, d.getSeconds() * 6 + 180);
+//		this.mc.renderEngine.bindTexture(this.getTexturePhone());
+		GL11.glTranslatef(this.width - 80 + this.shift, this.height - 157, 0);
+		GL11.glRotatef(d.getSeconds() * 6 + 180,  0, 0, 1);
+		this.drawTexturedModalRect(-1, 0, 156, 79, 2, 15);
+//		this.drawIcon(0, 25, 9, 0.7F, d.getSeconds() * 6 + 180);
 		
 		GL11.glPopMatrix();
 
@@ -199,15 +199,15 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 		{
 			//buttons back
 			GL11.glPushMatrix();
-			GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
+			GL11.glColor4f(1,  1,  1,  this.transparency - 1.0F);
 			
 			this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
 			
 			int[] ic = {16, 17, 19, 20};
 			for(int t=0; t<ic.length; t++) {
-//				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
-				this.drawIcon(3, 1 + (t * 23), 136, 1.23F);
-				this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
+				this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
+//				this.drawIcon(3, t * 23, 119, 1.45F);
+				this.drawIcon(ic[t], 3 + (t * 23), 122, 1F);
 			}
 
 			GL11.glPopMatrix();
@@ -352,10 +352,10 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 					{
 						for(int t = 0; t < 4; t++)
 						{
-							if(x >= this.width - 106 + (t * 23) && x <= this.width - 84 + (t * 23) && y >= this.height - 48 && y <= this.height - 31)
+							if(x >= this.getScreenPosX() + (t * 23) && x <= this.width - 84 + (t * 23) && y >= this.height - 62 && y <= this.height - 44)
 							{
 								GL11.glPushMatrix();
-								this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0xff626262, 0x55000000, -1.6F);
+								this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0xff626262, 0x55000000, -1.6F);
 								GL11.glPopMatrix();
 								this.bouton = t + 1;
 							}
