@@ -1,11 +1,20 @@
 package fr.ironcraft.phonecraft.client.render;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.imageio.ImageIO;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import fr.ironcraft.phonecraft.Phonecraft;
 import fr.ironcraft.phonecraft.client.ClientProxy;
 import fr.ironcraft.phonecraft.common.tileentities.TileEntityQrCode;
 import fr.ironcraft.phonecraft.utils.QrCodeThread;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
@@ -28,7 +37,20 @@ public class RenderTileEntityQrCode extends TileEntitySpecialRenderer
 		if (par1TileEntityCR.texture != null)
 		{
 			if (par1TileEntityCR.textureID < 0 && !par1TileEntityCR.data.equals(""))
-				new Thread(new QrCodeThread(par1TileEntityCR)).start();
+			{
+				if (!Minecraft.getMinecraft().isSingleplayer())
+					new Thread(new QrCodeThread(par1TileEntityCR)).start();
+				else
+				{
+					try {
+						par1TileEntityCR.img = ImageIO.read(new File(Phonecraft.phoneFolder + "solo_qrcodes/" + par1TileEntityCR.texture.substring((Phonecraft.urlFiles + "/qrcodes/").length())));
+					} catch (MalformedURLException e) {
+						e.printStackTrace();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
 			if(par1TileEntityCR.img != null && par1TileEntityCR.textureID < 0)
 				par1TileEntityCR.textureID = ClientProxy.imageLoader.setupTexture(par1TileEntityCR.img);
 			else if (par1TileEntityCR.textureID > 0)

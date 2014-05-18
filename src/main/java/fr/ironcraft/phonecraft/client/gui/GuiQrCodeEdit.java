@@ -398,8 +398,19 @@ public class GuiQrCodeEdit extends GuiScreen
 					bg + "\n" +
 					fg;
 			String name = this.tile.xCoord + "_" + this.tile.yCoord + "_" + this.tile.zCoord + ".png";
-			File qrcode = this.decoder.encode(new File(this.mc.mcDataDir, "PhoneCraft/" + name), data, "png", bg, fg);
-			new Thread(new PostFile(qrcode)).start();
+			File qrcode;
+			if (!this.mc.isSingleplayer())
+			{
+				qrcode = this.decoder.encode(new File(this.mc.mcDataDir, "PhoneCraft/" + name), data, "png", bg, fg);
+				new Thread(new PostFile(qrcode)).start();
+			}
+			else
+			{
+				File folder = new File(Phonecraft.phoneFolder + "solo_qrcodes");
+				if (!folder.exists())
+					folder.mkdirs();
+				qrcode = this.decoder.encode(new File(this.mc.mcDataDir, Phonecraft.phoneFolder + "solo_qrcodes/" + name), data, "png", bg, fg);
+			}
 
             Side side = FMLCommonHandler.instance().getEffectiveSide();
             if (side == Side.CLIENT)

@@ -1,6 +1,7 @@
 package fr.ironcraft.phonecraft.common.Blocks;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.net.URL;
 
@@ -80,7 +81,10 @@ public class BlockQrCode extends BlockContainer
         super.breakBlock(par1World, par2, par3, par4, par5, par6);
         par1World.removeTileEntity(par2, par3, par4);
         String data = "" + par2 + "_" + par3 + "_" + par4 + ".png";
-        new Thread(new DeleteFile(data)).start();
+        if (!Minecraft.getMinecraft().isSingleplayer())
+        	new Thread(new DeleteFile(data)).start();
+        else
+        	new File(Phonecraft.phoneFolder + "solo_qrcodes/" + data).delete();
     }
 	
 	
@@ -202,7 +206,6 @@ public class BlockQrCode extends BlockContainer
 				String[] names = result.split("\n");
 				for (String name : names)
 				{
-//					if (name.equals(mc.thePlayer))
 					if (name.equals(username))
 					{
 						mc.displayGuiScreen(new GuiQrCodeEdit(mc, tile));
