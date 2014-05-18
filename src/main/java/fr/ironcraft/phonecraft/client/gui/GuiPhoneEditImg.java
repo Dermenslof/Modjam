@@ -158,17 +158,17 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 				{
 					if(num == 13)
 					{
-						this.drawRoundedRect(this.width-104 + (x * 30), this.height - 105 + (y * 15), this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 2, 0xff007700, this.transparency);
+						this.drawRoundedRect(2 + (x * 30), 78 + (y * 15), 2 + 26 + (x * 30), 78 + 12 + (y * 15), 2, 0xff007700, 0);
 						this.drawGradientRect(2 + (x * 30), 78 + (y * 15) + 7, 2 + 26 + (x * 30), 78 + 12 + (y * 15), 0xff007700, 0xaa222222);
 					}
 					else if(num == 14)
 					{
-						this.drawRoundedRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15), this.width-104 + 26 + (x * 30), this.height-105 + 12 + (y * 15), 2, 0xff770000, this.transparency);
+						this.drawRoundedRect(2 + (x * 30), 78 + (y * 15), 2 + 26 + (x * 30), 78 + 12 + (y * 15), 2, 0xff770000, 0);
 						this.drawGradientRect(2 + (x * 30), 78 + (y * 15) + 7, 2 + 26 + (x * 30), 78 + 12 + (y * 15), 0xff770000, 0xaa222222);
 					}
 					else
 					{
-						this.drawRoundedRect(this.width - 104 + (x * 30), this.height - 105 + (y * 15), this.width - 104 + 26 + (x * 30), this.height - 105 + 12 + (y * 15), 2, 0xffd2d2d2, this.transparency);
+						this.drawRoundedRect(2 + (x * 30), 78 - 105 + (y * 15), 2 + 26 + (x * 30), 78 + 12 + (y * 15), 2, 0xffd2d2d2, 0);
 						this.drawGradientRect(2 + (x * 30), 78 + (y * 15) + 7, 2 + 26 + (x * 30), 78 + 12 + (y * 15), 0x55d2d2d2, 0xaa222222);
 					}
 					num++;
@@ -264,7 +264,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 							if(x >= this.width - 103 + (X * 30) && x <= this.width - 104 + 26 + (X * 30) && y >= this.height - 105+(Y * 15) && y <= this.height - 105 + 12 + (Y * 15)){
 								GL11.glPushMatrix();
 									GL11.glTranslatef(0.9F,  0,  0);
-									this.drawRoundedRect(this.width - 104 + (X * 30), this.height - 105 + (Y * 15), this.width - 104 + 26 + (X * 30), this.height - 105 + 12 + (Y * 15), 2, 0x88000000, 0.2F);
+									this.drawRoundedRect(2 + (X * 30), 78 + (Y * 15), 2 + 26 + (X * 30), 78 + 12 + (Y * 15), 2, 0x88000000, -0.8F);
 								GL11.glPopMatrix();
 								this.bouton = num;
 							}

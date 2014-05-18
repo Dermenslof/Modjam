@@ -214,20 +214,35 @@ public class GuiPhoneImages extends GuiPhoneInGame
 						GL11.glPopMatrix();
 				}
 				//fond boutons
+				
+				//buttons back
 				GL11.glPushMatrix();
-					this.drawGradientRect(0, 135, 92, 155, 0xff323232, 0xff111111);
-					this.drawGradientRect(1, 136, 22, 154, 0xff626262, 0xff424242);
-					this.drawGradientRect(82, 136, 45, 154, 0xff626262, 0xff424242);
-					this.drawGradientRect(59, 136, 68, 154, 0xff626262, 0xff424242);
-					this.drawGradientRect(36, 136, 91, 154, 0xff626262, 0xff424242);
-					//icons boutons
-					this.mc.renderEngine.bindTexture(texturePhone);
-					GL11.glEnable(GL11.GL_BLEND);
-					GL11.glColor4f(1,  1,  1, this.transparency);
-					GL11.glTranslatef(this.width-103.5F+this.shift, this.height-43, 0);
-					for(int t=0; t<4; t++)
-						this.drawTexturedModalRect(0+(t*23), 0, 110+(t+2)*14, 0, 15, 10);
+				GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
+				
+				this.drawGradientRect(0, 135, 92, 155, 0x323232, 0x111111, -1.0F);
+				
+				int[] ic = {22, 0, 9, 15};
+				for(int t=0; t<ic.length; t++) {
+					this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0x626262, 0x424242, -1.0F);
+					this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
+				}
+
 				GL11.glPopMatrix();
+				
+//				GL11.glPushMatrix();
+//					this.drawGradientRect(0, 135, 92, 155, 0xff323232, 0xff111111);
+//					this.drawGradientRect(1, 136, 22, 154, 0xff626262, 0xff424242);
+//					this.drawGradientRect(82, 136, 45, 154, 0xff626262, 0xff424242);
+//					this.drawGradientRect(59, 136, 68, 154, 0xff626262, 0xff424242);
+//					this.drawGradientRect(36, 136, 91, 154, 0xff626262, 0xff424242);
+//					//icons boutons
+//					this.mc.renderEngine.bindTexture(texturePhone);
+//					GL11.glEnable(GL11.GL_BLEND);
+//					GL11.glColor4f(1,  1,  1, this.transparency);
+//					GL11.glTranslatef(this.width-103.5F+this.shift, this.height-43, 0);
+//					for(int t=0; t<4; t++)
+//						this.drawTexturedModalRect(0+(t*23), 0, 110+(t+2)*14, 0, 15, 10);
+//				GL11.glPopMatrix();
 			}
 			this.drawRect(this.width-106+this.shift, this.height-183, this.width-14+this.shift, this.height-29, 0xff000000, 1f-this.transparency);
 	}
@@ -261,7 +276,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 			this.image = this.photos.size()-1;
 		if(this.image > this.photos.size()-1)
 			this.image = 0;
-    	if(this.isFocused && this.bouton != 0)
+    	if(this.isFocused)
     	{
     		this.bouton = -1;
     		if(!this.animPhoto)
@@ -285,6 +300,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
     					}
     				}
     			}
+//    			super.o
 //    			if(x >= this.width-71 && x <= this.width-51)
 //    			{
 //    				if(y >= this.height-19 && y <= this.height-13)

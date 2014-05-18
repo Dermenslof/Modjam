@@ -71,6 +71,7 @@ public class GuiScreenCustom extends GuiScreen
 	 * @param Position X2
 	 * @param Position Y2
 	 * @param Color
+	 * @param Color 2
 	 */
 	protected void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color)
 	{
@@ -85,6 +86,7 @@ public class GuiScreenCustom extends GuiScreen
 	 * @param Position X2
 	 * @param Position Y2
 	 * @param Color
+	 * @param Color 2
 	 * @param Transparency variation
 	 */
 	protected void drawGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color, float par7TransparencyVar)
@@ -122,7 +124,39 @@ public class GuiScreenCustom extends GuiScreen
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
 	}
 
-	protected void drawRoundedGradientRect(int x, int y, int x1, int y1, int color, int color2, int radius, float trans)
+	/**
+	 * Draw rectangle with gradiant effect and round corners in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency variation
+	 */
+	protected void drawRoundedGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color, int par7Radius, float par8TransparencyVar)
+	{
+		this.drawRoundedGradientRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Color, par6Color, par7Radius, this.transparency + par8TransparencyVar);
+	}
+	
+	/**
+	 * Draw rectangle with gradiant effect and round corners
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Color2
+	 * @param Transparency
+	 */
+	protected void drawAbsoluteRoundedGradientRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Color, int par6Color, int par7Radius, float par8Transparency)
+	{
+		this.drawRoundedGradientRect_(par1PosX, par2PosY, par3PosX2, par4PosY2, par5Color, par6Color, par7Radius, par8Transparency);
+	}
+	
+	private void drawRoundedGradientRect_(int x, int y, int x1, int y1, int color, int color2, int radius, float trans)
 	{
 		int newX = Math.abs(x+radius);
 		int newY = Math.abs(y+radius);
@@ -138,10 +172,10 @@ public class GuiScreenCustom extends GuiScreen
 		drawRect(newX1, newY, x1, newY1, color, trans);
 		drawRect(newX, y, newX1, newY, color2, trans);
 		drawRect(newX, newY1, newX1, y1, color2, trans);
-		drawQuarterCircle(newX+1,newY,radius,0,color, trans);
-		drawQuarterCircle(newX1,newY,radius,1,color, trans);
-		drawQuarterCircle(newX+1,newY1,radius,2,color2, trans);
-		drawQuarterCircle(newX1,newY1,radius,3,color2, trans);
+		drawAbsoluteQuarterCircle(newX+1,newY,radius,0,color, trans);
+		drawAbsoluteQuarterCircle(newX1,newY,radius,1,color, trans);
+		drawAbsoluteQuarterCircle(newX+1,newY1,radius,2,color2, trans);
+		drawAbsoluteQuarterCircle(newX1,newY1,radius,3,color2, trans);
 		GL11.glShadeModel(GL11.GL_FLAT);
 		GL11.glDisable(GL11.GL_BLEND);
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
@@ -181,7 +215,37 @@ public class GuiScreenCustom extends GuiScreen
 		GL11.glDisable(GL11.GL_BLEND);
 	}
 
-	public void drawRoundedRect(int x, int y, int x1, int y1, int radius, int color, float trans)
+	/**
+	 * Draw rectangle with round corners in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Transparency
+	 */
+	public void drawRoundedRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Radius, int par6Color, float  par7Transparency)
+	{
+		this.drawRoundedRect_(getScreenPosX() + par1PosX + this.shift, getScreenPosY() + par2PosY, getScreenPosX() + par3PosX2 + this.shift, getScreenPosY() + par4PosY2, par5Radius, par6Color, this.transparency + par7Transparency);
+	}
+	
+	/**
+	 * Draw rectangle with round corners in PhoneScreen
+	 * 
+	 * @param Position X1
+	 * @param Position Y1
+	 * @param Position X2
+	 * @param Position Y2
+	 * @param Color
+	 * @param Transparency
+	 */
+	public void drawAbsoluteRoundedRect(int par1PosX, int par2PosY, int par3PosX2, int par4PosY2, int par5Radius, int par6Color, float  par7Transparency)
+	{
+		drawRoundedRect_(par1PosX, par2PosY, par3PosX2, par4PosY2, par5Radius, par6Color, par7Transparency);
+	}
+	
+	private void drawRoundedRect_(int x, int y, int x1, int y1, int radius, int color, float trans)
 	{
 		int newX = Math.abs(x+radius);
 		int newY = Math.abs(y+radius);
@@ -192,10 +256,10 @@ public class GuiScreenCustom extends GuiScreen
 		drawRect(newX1, newY, x1, newY1, color, trans);
 		drawRect(newX, y, newX1, newY, color, trans);
 		drawRect(newX, newY1, newX1, y1, color, trans);
-		drawQuarterCircle(newX,newY,radius,0,color, trans);
-		drawQuarterCircle(newX1,newY,radius,1,color, trans);
-		drawQuarterCircle(newX,newY1,radius,2,color, trans);
-		drawQuarterCircle(newX1,newY1,radius,3,color, trans);
+		drawAbsoluteQuarterCircle(newX,newY,radius,0,color, trans);
+		drawAbsoluteQuarterCircle(newX1,newY,radius,1,color, trans);
+		drawAbsoluteQuarterCircle(newX,newY1,radius,2,color, trans);
+		drawAbsoluteQuarterCircle(newX1,newY1,radius,3,color, trans);
 	}
 	
 	
@@ -212,6 +276,21 @@ public class GuiScreenCustom extends GuiScreen
 	protected void drawQuarterCircle(int par1X, int par2Y, int par3Radius, int par4Mode, int par5Color, float  par6TransparencyVar)
 	{
 		this.drawQuarterCircle_(getScreenPosX() + par1X + this.shift, getScreenPosY() + par2Y, par3Radius, par4Mode, par5Color, this.transparency + par6TransparencyVar);
+	}
+	
+	/**
+	 * Draw a quarter of circle in PhoneScreen
+	 * 
+	 * @param Position X
+	 * @param Position Y
+	 * @param Radius
+	 * @param Quarters (0, 1, 2, 3)
+	 * @param Color
+	 * @param Transparency
+	 */
+	protected void drawAbsoluteQuarterCircle(int par1X, int par2Y, int par3Radius, int par4Mode, int par5Color, float  par6Transparency)
+	{
+		this.drawQuarterCircle_(par1X, par2Y, par3Radius, par4Mode, par5Color, par6Transparency);
 	}
 	
 	private void drawQuarterCircle_(int x, int y, int radius, int mode, int color, float trans)

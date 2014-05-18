@@ -162,7 +162,7 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		GL11.glPushMatrix();
 		GL11.glScalef(2F, 2F,  1);
 		this.drawRect(this.width - 84, this.height - 122, this.width - 35, this.height - 74, 0x00, this.transparency - 1.4F);
-		this.drawRoundedRect(this.width - 104, this.height - 67, this.width - 16, this.height - 50, 3, 0x00, this.transparency - 1.5F);
+		this.drawRoundedRect(2, 116, 90, 133, 3, 0x00, -1.5F);
 		GL11.glPopMatrix();
 		String[] names = infos[2].split(" - ");
 		this.drawString("Artiste(s):" , (int)((this.width - 98  + this.shift)/0.5F), (int) ((this.height - 149)/0.5F),  0xd2d2d2, this.transparency);
@@ -221,9 +221,9 @@ public class GuiPhoneMinebox extends GuiPhoneInGame
 		long last = totalTime - backTime;
 		double percent = totalTime < 1 ? 0 : (((last)*100D)/totalTime);
 		int current = (int)((80D/100D)*percent);
-		this.drawRect(this.width - 100, this.height - 58, this.width - 20, this.height - 57, 0x232323, this.transparency);
-		this.drawRect(this.width - 100, this.height - 58, this.width - 100 + current, this.height - 57, 0xa21122, this.transparency);
-		this.drawRoundedRect(this.width - 101 + current, this.height - 60, this.width - 99 + current, this.height - 55, 1, 0xffffff, this.transparency);
+		this.drawRect(this.width - 100, this.height - 58, this.width - 20, this.height - 57, 0x232323, 0);
+		this.drawRect(this.width - 100, this.height - 58, this.width - 100 + current, this.height - 57, 0xa21122, 0);
+		this.drawRoundedRect(5 + current, 123, 7 + current, 128, 1, 0xffffff, 0);
 		GL11.glPushMatrix();
 		GL11.glScalef(0.5F, 0.5F, 1);
 		int minutes = (int)(last/60);
