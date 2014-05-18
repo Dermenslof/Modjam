@@ -27,7 +27,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 {
 	protected Minecraft mc;
 
-	protected int shift = 0;
+	//protected int shift = 0;
 	protected boolean isFocused;
 	protected boolean isOpen = true;
 	protected boolean isAnimated = false;
@@ -35,7 +35,7 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	protected boolean isFullscreen = false;
 	protected boolean isCamera;
 	protected boolean shootCamera;
-	protected float transparency;
+	//protected float transparency;
 
 	public boolean hideGui;
 	protected boolean animPhoto;
@@ -302,17 +302,6 @@ public class GuiPhoneInGame extends GuiScreenCustom
 		return this.screenHeight;
 	}
 	
-	protected void drawStringOnScreen(int x, int y, String str, int color, float transparency)
-	{
-		this.font.drawString(this, str, this.width - 106 + x, this.height - 193 + y, color, transparency);
-	}
-	
-	protected void drawImageOnScreen(ResourceLocation img, int x, int y, int imgX, int imgY, int sizeX, int sizeY)
-	{
-		this.mc.renderEngine.bindTexture(img);
-		this.drawTexturedModalRect(this.width - 106 + x,  this.height - 183 + y,  imgX,  imgY,  sizeX,  sizeY);
-	}
-	
 	/**
 	 * get if mouse is grab on Minecraft or not
 	 * 
@@ -372,6 +361,35 @@ public class GuiPhoneInGame extends GuiScreenCustom
 	public ResourceLocation getTextureIcons()
 	{
 		return textureIcons;
+	}
+	
+	protected void drawStringOnScreen(int x, int y, String str, int color, float transparency)
+	{
+		this.font.drawString(this, str, this.width - 106 + x, this.height - 193 + y, color, transparency);
+	}
+	
+	protected void drawImageOnScreen(ResourceLocation img, int x, int y, int imgX, int imgY, int sizeX, int sizeY)
+	{
+		this.mc.renderEngine.bindTexture(img);
+		this.drawTexturedModalRect(this.width - 106 + x,  this.height - 183 + y,  imgX,  imgY,  sizeX,  sizeY);
+	}
+	
+	public void drawIcon(int textureId, int posX, int posY, float textureSize)
+	{
+		int iconSize = 24;
+		int iconPerLine = 5;
+		int iconPerCol = 5;
+		int iconPosX = (textureId % iconPerLine) * iconSize;
+		int iconPosY = ((textureId / iconPerLine) * iconSize) % iconPerCol;
+
+		GL11.glPushMatrix();
+//		GL11.glColor4f(1,  1,  1,  this.transparency);
+		GL11.glScalef(textureSize, textureSize, 1.0F);
+		this.mc.renderEngine.bindTexture(this.getTextureIcons());
+		GL11.glTranslatef((this.width - 105.5F + posX + this.shift) / textureSize, (this.height - 183 + posY) / textureSize, 0.5F);
+		
+		this.drawTexturedModalRect(0, 0, iconPosX, iconPosY, iconSize, iconSize);
+		GL11.glPopMatrix();
 	}
 
 	/**

@@ -214,11 +214,11 @@ public class GuiPhoneImages extends GuiPhoneInGame
 				}
 				//fond boutons
 				GL11.glPushMatrix();
-					this.drawGradientRect(this.width-106+this.shift, this.height-48, this.width-14+this.shift, this.height-28, 0xff323232, 0xff111111, this.transparency);
-					this.drawGradientRect(this.width-105+this.shift, this.height-47, this.width-84+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-					this.drawGradientRect(this.width-82+this.shift, this.height-47, this.width-61+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-					this.drawGradientRect(this.width-59+this.shift, this.height-47, this.width-38+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
-					this.drawGradientRect(this.width-36+this.shift, this.height-47, this.width-15+this.shift, this.height-29, 0xff626262, 0xff424242, this.transparency);
+					this.drawGradientRect(106, 48, 14, 28, 0xff323232, 0xff111111);
+					this.drawGradientRect(105, 47, 84, 29, 0xff626262, 0xff424242);
+					this.drawGradientRect(82, 47, 61, 29, 0xff626262, 0xff424242);
+					this.drawGradientRect(59, 47, 38, 29, 0xff626262, 0xff424242);
+					this.drawGradientRect(36, 47, 15, 29, 0xff626262, 0xff424242);
 					//icons boutons
 					this.mc.renderEngine.bindTexture(texturePhone);
 					GL11.glEnable(GL11.GL_BLEND);
@@ -276,7 +276,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
     							if(x >= this.width-106+(t*23) && x <= this.width-84+(t*23) && y >= this.height-48 && y <= this.height-31)
     							{
     								GL11.glPushMatrix();
-    									this.drawGradientRect(this.width-105+this.shift+(t*23), this.height-47, this.width-84+this.shift+(t*23), this.height-29, 0xff626262, 0x55000000, this.transparency-1.5F);
+    									this.drawGradientRect(105 - (t*23), 47, 84 - (t*23), 29, 0xff626262, 0x55000000, -1.5F);
     								GL11.glPopMatrix();
     								this.bouton = t+1;
     							}

@@ -134,7 +134,7 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 	{
 		GL11.glPushMatrix();
 			GL11.glTranslatef(0F, + 0.5F, 0);
-			this.drawGradientRect(this.width - 106 + this.shift, this.height - 184, this.width - 14 + this.shift, this.height - 29, 0x553388ee, 0x22000000,  this.transparency > 0.3F ? 0.3F : this.transparency);
+			this.drawGradientRect(106, 184, 14, 29, 0x553388ee, 0x22000000, this.transparency > 0.3F ? -0.7F : 0);
 		GL11.glPopMatrix();
 		GL11.glPushMatrix();
 			GL11.glEnable(GL11.GL_BLEND);
@@ -187,11 +187,11 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 			//fond boutons
 			GL11.glPushMatrix();
 				GL11.glColor4f(1,  1,  1,  this.transparency-1.0F);
-				this.drawGradientRect(this.width - 106 + this.shift, this.height - 48, this.width - 14 + this.shift, this.height - 28, 0x323232, 0x111111, this.transparency - 1.0F);
-				this.drawGradientRect(this.width - 105 + this.shift, this.height - 47, this.width - 84 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
-				this.drawGradientRect(this.width - 82 + this.shift, this.height - 47, this.width - 61 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
-				this.drawGradientRect(this.width - 59 + this.shift, this.height - 47, this.width - 38 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
-				this.drawGradientRect(this.width - 36 + this.shift, this.height - 47, this.width - 15 + this.shift, this.height - 29, 0x626262, 0x424242, this.transparency - 1.0F);
+				this.drawGradientRect(106, 48, 14, 28, 0x323232, 0x111111, -1.0F);
+				this.drawGradientRect(105, 47, 84, 29, 0x626262, 0x424242, -1.0F);
+				this.drawGradientRect(82, 47, 61, 29, 0x626262, 0x424242, -1.0F);
+				this.drawGradientRect(59, 47, 38, 29, 0x626262, 0x424242, -1.0F);
+				this.drawGradientRect(36, 47, 15, 29, 0x626262, 0x424242, -1.0F);
 				//icons boutons
 				this.mc.renderEngine.bindTexture(this.getTextureIcons());
 				GL11.glEnable(GL11.GL_BLEND);
@@ -337,12 +337,12 @@ public class GuiPhoneMenu extends GuiPhoneInGame
 				{
 					if((this.screen == 0 && this.isHome))
 					{
-						for(int t=0; t<4; t++)
+						for(int t = 0; t < 4; t++)
 						{
 							if(x >= this.width - 106 + (t * 23) && x <= this.width - 84 + (t * 23) && y >= this.height - 48 && y <= this.height - 31)
 							{
 								GL11.glPushMatrix();
-								this.drawGradientRect(this.width - 105 + this.shift + (t * 23), this.height - 47, this.width - 84 + this.shift + (t * 23), this.height - 29, 0xff626262, 0x55000000, this.transparency-1.6F);
+								this.drawGradientRect(105 - (t * 23), 47, 84 - (t * 23), 29, 0xff626262, 0x55000000, -1.6F);
 								GL11.glPopMatrix();
 								this.bouton = t + 1;
 							}
