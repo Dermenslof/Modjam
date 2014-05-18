@@ -174,14 +174,14 @@ public class GuiPhoneImages extends GuiPhoneInGame
 					GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.texture);
 					if(this.rotate)
 					{
-						GL11.glTranslatef(this.width-106+91.75F+this.shift, this.height-28-155, 0);
+						GL11.glTranslatef(this.getScreenPosX() + this.getScreenSizeX() - 0.5F, this.getScreenPosY(), 0);
 						GL11.glRotatef(+90F, 0, 0, 1);
 						GL11.glScalef(0.602F, 0.35500256F, 1);
 					}
 					else
 					{
-						GL11.glTranslatef(this.width-106+this.shift, this.height-20-120, 0);
-						GL11.glScalef(0.360F, 0.21230769F, 1);
+						GL11.glTranslatef(this.getScreenPosX() + 0.6F, this.getScreenPosY() * 1.35F, 0);
+						GL11.glScalef(0.354F, 0.21230769F, 1);
 					}
 					GL11.glColor4f(1,  1,  1,  this.transparency);
 					this.drawTexturedModalRect(0, 0, 0, 0, sizeX, sizeY);
@@ -223,7 +223,7 @@ public class GuiPhoneImages extends GuiPhoneInGame
 				
 				int[] ic = {22, 0, 9, 15};
 				for(int t=0; t<ic.length; t++) {
-					this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 153, 0x626262, 0x424242, -1.0F);
+					this.drawGradientRect(1 + (t * 23), 136, 22 + (t * 23), 154, 0x626262, 0x424242, -1.0F);
 					this.drawIcon(ic[t], 3 + (t * 23), 137, 1F);
 				}
 

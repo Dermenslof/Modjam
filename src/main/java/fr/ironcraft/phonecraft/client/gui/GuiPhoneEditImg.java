@@ -168,7 +168,7 @@ public class GuiPhoneEditImg extends GuiPhoneInGame
 					}
 					else
 					{
-						this.drawRoundedRect(2 + (x * 30), 78 - 105 + (y * 15), 2 + 26 + (x * 30), 78 + 12 + (y * 15), 2, 0xffd2d2d2, 0);
+						this.drawRoundedRect(2 + (x * 30), 78 + (y * 15), 2 + 26 + (x * 30), 78 + 12 + (y * 15), 2, 0xffd2d2d2, 0);
 						this.drawGradientRect(2 + (x * 30), 78 + (y * 15) + 7, 2 + 26 + (x * 30), 78 + 12 + (y * 15), 0x55d2d2d2, 0xaa222222);
 					}
 					num++;
